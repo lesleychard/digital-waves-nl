@@ -1,10 +1,7 @@
-
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
 
 import Layout from '../layout/Layout';
-import HomeAboutUs from '../modules/home/HomeAboutUs';
-import HomeHero from '../modules/home/HomeHero';
 
 const useStyles = makeStyles(
   () => ({
@@ -12,15 +9,16 @@ const useStyles = makeStyles(
   })
 );
 
-const index = (): ReactElement => {
+const contest2021 = (): ReactElement => {
   const classes = useStyles();
 
   return (
     <Layout>
-      <HomeHero />
-      <HomeAboutUs />
+      <div className={classes.root}>
+        Contest 2021
+      </div>
     </Layout>
   );
 };
 
-export default index;
+export default contest2021;
