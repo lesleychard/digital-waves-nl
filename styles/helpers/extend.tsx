@@ -1,4 +1,26 @@
+import { Theme } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+
+export const container = (theme: Theme): CSSProperties => ({
+  padding: theme.spacing(3),
+  margin: '0 auto',
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '80vw',
+    padding: '10vw 0',
+  },
+});
+
+export const containerSm = (theme: Theme): CSSProperties => ({
+  padding: theme.spacing(3),
+  margin: '0 auto',
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '80vw',
+    padding: '10vw 0',
+  },
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '52rem',
+  },
+});
 
 /**
  * Strips default UL styles
