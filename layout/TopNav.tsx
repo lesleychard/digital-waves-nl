@@ -2,12 +2,14 @@ import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useState, useEffect } from 'react';
 
 import { stripUl } from '../styles/helpers/extend';
 import { light } from '../styles/theme/_palette';
 import Button from '../components/Button';
 import MobileMenu from './MobileMenu';
+import ScrollMonitor from '../components/ScrollMonitor';
+import Logo from '../components/Logo';
 
 export const NAV_ITEMS: NavItem[][] = [
   [
@@ -45,16 +47,36 @@ const useStyles = makeStyles(
       alignItems: 'center',
       left: 0,
       right: 0,
-      top: 0,
+      top: '0.5rem',
       padding: theme.spacing(2),
-      borderTop: `10px solid ${theme.palette.secondary.light}`,
-      zIndex: 1,
+      zIndex: 99,
+      background: 'transparent',
+      transition: `padding ${theme.transitions.duration.short}ms`,
+      '&:before': {
+        display: 'block',
+        content: '""',
+        position: 'absolute',
+        zIndex: -1,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: '-3rem',
+        opacity: 0,
+        background: `linear-gradient(to bottom, ${theme.palette.text.primary}, transparent 75%)`,
+        transition: `opacity ${theme.transitions.duration.short}ms`,
+      },
       [theme.breakpoints.up('lg')]: {
         padding: theme.spacing(4),
       },
     },
+    dense: {
+      padding: theme.spacing(2),
+      '&:before': {
+        opacity: 0.8,
+      },
+    },
     buttonMenu: {
-      background: `url(assets/images/icon-menu.svg) no-repeat center center`,
+      background: `url(assets/images/icons/icon-menu.svg) no-repeat center center`,
       backgroundSize: '60%',
       borderRadius: '50%',
       fontSize: 0,
@@ -69,11 +91,30 @@ const useStyles = makeStyles(
       },
     },
     buttomMenuOpened: {
-      backgroundImage: 'url(assets/images/icon-menu-closed.svg)',
+      backgroundImage: 'url(assets/images/icons/menu-closed.svg)',
       backgroundSize: '50%',
+    },
+    containerLogo: {
+      width: '9rem',
+      position: 'absolute',
+      left: '50%',
+      top: '1.25rem',
+      opacity: 0,
+      transform: 'translateX(-50%)',
+      transition: `opacity ${theme.transitions.duration.short}ms`,
+      [theme.breakpoints.up('md')]: {
+        '$dense &': {
+          opacity: 1,
+        },
+      },
     },
     ul: {
       ...stripUl,
+      transform: 'scale(1)',
+      transition: `transform ${theme.transitions.duration.short}ms`,
+      '$dense &': {
+        transform: 'scale(0.9)',
+      },
     },
     li: {
       display: 'inline-block',
@@ -128,6 +169,7 @@ const useStyles = makeStyles(
 const TopNav = (): ReactElement => {
   const classes = useStyles();
   const router = useRouter();
+  const [navDense, setNavDense] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const mobileMenuButtonClick = () => {
@@ -141,8 +183,30 @@ const TopNav = (): ReactElement => {
     }
   };
 
+  const toggleNavDense = () => {
+    setNavDense(window.pageYOffset >= 100);
+  };
+
+  useEffect(
+    () => {
+      window.addEventListener('scroll', toggleNavDense);
+      return () => {
+        window.removeEventListener('scroll', toggleNavDense);
+      };
+    },
+    []
+  );
+
   return (
-    <nav className={classes.root}>
+    <nav
+      className={classNames(
+        classes.root,
+        {
+          [classes.dense]: navDense,
+        }
+      )}
+    >
+      <ScrollMonitor />
       <Button
         className={classNames(
           classes.buttonMenu,
@@ -154,6 +218,9 @@ const TopNav = (): ReactElement => {
       >
         View Menu
       </Button>
+      <div className={classes.containerLogo}>
+        <Logo />
+      </div>
       {
         NAV_ITEMS.map((navCol, index) => (
           <div key={index}>

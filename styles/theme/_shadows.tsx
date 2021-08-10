@@ -5,37 +5,37 @@
 import { Shadows } from '@material-ui/core/styles/shadows';
 
 import createShadow from '../helpers/createShadow';
-import { primaryDark } from './_palette';
+import { dark } from './_palette';
 
 // Shadows type requires exactly 25 elements so array cannot
 // be generated via iteration
 
 const shadows: Shadows = [
   'none',
-  createShadow(primaryDark, 1),
-  createShadow(primaryDark, 2),
-  createShadow(primaryDark, 3),
-  createShadow(primaryDark, 4),
-  createShadow(primaryDark, 5),
-  createShadow(primaryDark, 6),
-  createShadow(primaryDark, 7),
-  createShadow(primaryDark, 8),
-  createShadow(primaryDark, 9),
-  createShadow(primaryDark, 10),
-  createShadow(primaryDark, 11),
-  createShadow(primaryDark, 12),
-  createShadow(primaryDark, 13),
-  createShadow(primaryDark, 14),
-  createShadow(primaryDark, 15),
-  createShadow(primaryDark, 16),
-  createShadow(primaryDark, 17),
-  createShadow(primaryDark, 18),
-  createShadow(primaryDark, 19),
-  createShadow(primaryDark, 20),
-  createShadow(primaryDark, 21),
-  createShadow(primaryDark, 22),
-  createShadow(primaryDark, 23),
-  createShadow(primaryDark, 24),
+  createShadow(dark, 1),
+  createShadow(dark, 2),
+  createShadow(dark, 3),
+  createShadow(dark, 4),
+  createShadow(dark, 5),
+  createShadow(dark, 6),
+  createShadow(dark, 7),
+  createShadow(dark, 8),
+  createShadow(dark, 9),
+  createShadow(dark, 10),
+  createShadow(dark, 11),
+  createShadow(dark, 12),
+  createShadow(dark, 13),
+  createShadow(dark, 14),
+  createShadow(dark, 15),
+  createShadow(dark, 16),
+  createShadow(dark, 17),
+  createShadow(dark, 18),
+  createShadow(dark, 19),
+  createShadow(dark, 20),
+  createShadow(dark, 21),
+  createShadow(dark, 22),
+  createShadow(dark, 23),
+  createShadow(dark, 24),
 ];
 
 export default shadows;

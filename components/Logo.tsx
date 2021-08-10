@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { ReactElement } from 'react';
-import { light } from '../styles/theme/_palette';
 
 type Props = {
   color?: 'black' | 'white',
@@ -10,9 +10,9 @@ type Props = {
 };
 
 const useStyles = makeStyles(
-  () => ({
+  (theme) => ({
     root: {
-      background: 'url(assets/images/logo-white.svg) no-repeat center center',
+      background: 'url(assets/images/brand/logo-white.svg) no-repeat center center',
       backgroundSize: 'contain',
       width: '100%',
       paddingBottom: '30%',
@@ -20,14 +20,18 @@ const useStyles = makeStyles(
       position: 'relative',
     },
     black: {
-      backgroundImage: 'url(assets/images/logo-black.svg)',
+      backgroundImage: 'url(assets/images/brand/logo-black.svg)',
     },
-    spanIntro: {
-      fontSize: '0.8rem',
-      textTransform: 'uppercase',
-      color: light,
+    typographyIntro: {
       position: 'absolute',
-      top: '-3rem',
+      top: '-2.5rem',
+      lineHeight: 1,
+      textAlign: 'center',
+      fontSize: '0.7rem',
+      [theme.breakpoints.up('md')]: {
+        fontSize: '0.8rem',
+        top: '-3.25rem',
+      },
     },
   })
 );
@@ -49,9 +53,13 @@ const Logo = ({ color = 'white', component, includeIntro = false }: Props): Reac
       {
         includeIntro
           ? (
-            <span className={classes.spanIntro}>
+            <Typography
+              component="span"
+              className={classes.typographyIntro}
+              variant="overline"
+            >
               Newfoundland &amp; Labrador Youth Make
-            </span>
+            </Typography>
           )
           : null
       }

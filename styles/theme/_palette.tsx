@@ -6,7 +6,7 @@ import {
 
 export const dark = '#292929';
 export const light = '#fff';
-export const background = '#83BCD9';
+export const background = '#53AED8';
 
 // Teal
 export const primary = '#5BD6DE';
@@ -40,7 +40,7 @@ const palette = {
     light: lighten(highlight, 0.15),
     main: highlight,
     dark: highlightDark,
-    contrastText: light,
+    contrastText: dark,
   },
   lowlight: {
     light: lighten(lowlight, 0.15),

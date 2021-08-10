@@ -8,6 +8,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(
   (theme) => ({
+    outlined: {
+      borderColor: theme.palette.text.primary,
+    },
+    outlinedSizeSmall: {
+      lineHeight: 1,
+      padding: '8px 10px 6px',
+    },
+    sizeSmall: {
+      letterSpacing: 0,
+      textTransform: 'none',
+    },
     raised: {
       position: 'relative',
       border: `1px solid ${theme.palette.text.primary}`,
@@ -67,6 +78,35 @@ const useStyles = makeStyles(
         background: theme.palette.secondary.light,
       },
     },
+    raisedHighlight: {
+      background: theme.palette.highlight.main,
+      '&:before': {
+        background: theme.palette.lowlight.main,
+      },
+      '&:hover': {
+        background: theme.palette.highlight.dark,
+        color: theme.palette.highlight.contrastText,
+      },
+      '&:active, &:focus': {
+        background: theme.palette.highlight.main,
+      },
+    },
+    raisedLowlight: {
+      background: theme.palette.lowlight.light,
+      '&:before': {
+        background: theme.palette.primary.main,
+      },
+      '&:hover': {
+        background: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText,
+      },
+      '&:active, &:focus': {
+        background: theme.palette.secondary.light,
+      },
+    },
+    raisedSmall: {
+      padding: `${theme.spacing(1) + 1}px ${theme.spacing(2)}px ${theme.spacing(1)}px`,
+    },
   }),
 );
 
@@ -99,9 +139,16 @@ const Button = (props: ButtonProps): ReactElement => {
           [classes.raised]: variant === 'raised',
           [classes.raisedPrimary]: color === 'primary' && variant === 'raised',
           [classes.raisedSecondary]: color === 'secondary' && variant === 'raised',
+          [classes.raisedHighlight]: color === 'highlight' && variant === 'raised',
+          [classes.raisedLowlight]: color === 'lowlight' && variant === 'raised',
         }
       )}
-      classes={classesProp}
+      classes={{
+        outlined: classes.outlined,
+        outlinedSizeSmall: classes.outlinedSizeSmall,
+        sizeSmall: classes.sizeSmall,
+        ...classesProp,
+      }}
       color={colorProp}
       variant={variantProp}
     >
