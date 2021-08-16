@@ -1,0 +1,124 @@
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { ReactElement } from 'react';
+import Button from '../../components/Button';
+
+import { fade, lighten } from '../../styles/helpers/color';
+import { container } from '../../styles/helpers/extend';
+
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      background: 'url(assets/images/brand/section-bg-gradient.png) no-repeat center center',
+      backgroundSize: 'cover',
+      paddingBottom: theme.spacing(2),
+    },
+    container: {
+      ...container(theme),
+    },
+    containerContent: {
+      background: fade(lighten(theme.palette.primary.light, 0.1), 0.3),
+      padding: `${theme.spacing(6)}px ${theme.spacing(3)}px ${theme.spacing(8)}px`,
+      maxWidth: '40rem',
+      margin: '6rem auto 2rem',
+      position: 'relative',
+      textAlign: 'center',
+      '&:before': {
+        content: '""',
+        display: 'block',
+        width: '4rem',
+        height: '4rem',
+        background: 'url(assets/images/emojis/emoji-earth.svg) no-repeat center center',
+        backgroundSize: 'contain',
+        position: 'absolute',
+        left: '50%',
+        top: 0,
+        transform: 'translate(-50%, -50%)',
+      },
+      [theme.breakpoints.up('sm')]: {
+        padding: `${theme.spacing(8)}px ${theme.spacing(5)}px`,
+      },
+    },
+    typographyOverline: {
+      // color: light,
+      marginBottom: theme.spacing(2),
+    },
+    typographyH1: {
+      lineHeight: 1.25,
+      '& strong': {
+        background: theme.palette.text.primary,
+        color: theme.palette.highlight.main,
+        fontWeight: theme.typography.fontWeightRegular,
+        display: 'inline-block',
+        position: 'relative',
+        '&:after': {
+          content: '""',
+          display: 'block',
+          width: '3rem',
+          height: '3rem',
+          background: 'url(assets/images/icons/icon-cursor-text.svg) no-repeat center center',
+          backgroundSize: 'contain',
+          position: 'absolute',
+          right: 0,
+          top: '10%',
+          transform: 'translateX(50%)',
+        },
+      },
+    },
+    containerButton: {
+      position: 'absolute',
+      zIndex: 1,
+      bottom: 0,
+      left: '50%',
+      transform: 'translate(-50%, 50%)',
+    },
+    buttonCta: {
+    },
+    imgEmoji:{
+      marginRight: '1rem',
+    },
+  })
+);
+
+const ContestHero = (): ReactElement => {
+  const classes = useStyles();
+
+  return (
+    <section className={classes.root}>
+      <div className={classes.container}>
+        <div className={classes.containerContent}>
+          <Typography
+            className={classes.typographyOverline}
+            variant="overline"
+            component="h1"
+          >
+            This year&rsquo;s design challenge:
+          </Typography>
+          <Typography
+            className={classes.typographyH1}
+            variant="h1"
+            component="p"
+          >
+            How might we make Newfoundland &amp; Labrador more <strong>sustainable</strong> by using our smartphones?
+          </Typography>
+          <div className={classes.containerButton}>
+            <Button
+              className={classes.buttonCta}
+              variant="raised"
+              color="secondary"
+            >
+              <img
+                className={classes.imgEmoji}
+                src="assets/images/emojis/emoji-hand-raised.svg"
+                alt="Girl-representing person raises hand"
+              />
+              I&rsquo;ve Got an Idea
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContestHero;
