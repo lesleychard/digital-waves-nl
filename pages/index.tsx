@@ -14,20 +14,7 @@ import FooterSubscribe from '../modules/footer/FooterSubscribe';
 
 const useStyles = makeStyles(
   (theme) => ({
-    root: {
-      '&:before': {
-        content: '""',
-        display: 'block',
-        background: 'url(assets/images/home/home-hero-bg.png) no-repeat top center',
-        backgroundSize: 'cover',
-        zIndex: -1,
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-      },
-    },
+    root: {},
     containerImg: {
       background: 'url(assets/images/home/home-hero-img-multiplied.jpg) no-repeat center center',
       backgroundSize: 'cover',
@@ -52,7 +39,7 @@ const useStyles = makeStyles(
         position: 'absolute',
         width: '48vw',
         height: '48vw',
-        opacity: 1,
+        opacity: 0.8,
         '&:before': {
           display: 'none',
         },

@@ -9,6 +9,7 @@ type Props = {
   children?: ReactNode,
   className?: string,
   showTopButtons?: boolean,
+  title?: ReactNode,
 };
 
 const useStyles = makeStyles(
@@ -62,6 +63,13 @@ const useStyles = makeStyles(
     topButtonIcon: {
       fontSize: 'inherit',
     },
+    containerTitle: {
+      position: 'absolute',
+      zIndex: 2,
+      top: '-1rem',
+      left: 0,
+      right: 0,
+    },
     content: {
       border: `1px solid ${theme.palette.text.primary}`,
       borderBottomLeftRadius: theme.shape.borderRadius,
@@ -102,6 +110,7 @@ const RetroUI = (props: Props): ReactElement => {
     children,
     className: classNameProp,
     showTopButtons,
+    title,
   } = props;
 
   return (
@@ -109,7 +118,7 @@ const RetroUI = (props: Props): ReactElement => {
       className={classNames(
         classes.root,
         {
-          [classes.showTopButtons]: showTopButtons,
+          [classes.showTopButtons]: showTopButtons || title,
         },
         classNameProp
       )}
@@ -127,6 +136,15 @@ const RetroUI = (props: Props): ReactElement => {
               <div className={classNames(classes.topButton, classes.topButtonExpand)}>
                 <UnfoldMoreIcon className={classes.topButtonIcon} />
               </div>
+            </div>
+          )
+          : null
+      }
+      {
+        title
+          ? (
+            <div className={classes.containerTitle}>
+              {title}
             </div>
           )
           : null
