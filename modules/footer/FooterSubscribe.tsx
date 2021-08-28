@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Link from 'next/link';
 import { ReactElement } from 'react';
 import Button from '../../components/Button';
 
@@ -31,13 +32,16 @@ const FooterSubscribe = (): ReactElement => {
       <Typography className={classes.typography}>
         Want to stay updated about our 2021 contest?
       </Typography>
-      <Button
-        variant="raised"
-        color="highlight"
-        size="small"
-      >
-        Subscribe Now
-      </Button>
+      <Link href="/subscribe">
+        <Button
+          variant="raised"
+          color="highlight"
+          size="small"
+          component="a"
+        >
+          Subscribe Now
+        </Button>
+      </Link>
     </div>
   );
 };

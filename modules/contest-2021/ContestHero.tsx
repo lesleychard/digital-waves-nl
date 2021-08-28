@@ -1,10 +1,12 @@
-import { Typography } from '@material-ui/core';
+import { Dialog, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
 import { ReactElement } from 'react';
 import Button from '../../components/Button';
 
 import { fade, lighten } from '../../styles/helpers/color';
 import { container } from '../../styles/helpers/extend';
+import ContestHeroIdeaDialog from './ContestHeroIdeaDialog';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -82,6 +84,15 @@ const useStyles = makeStyles(
 
 const ContestHero = (): ReactElement => {
   const classes = useStyles();
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
+  const openDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
 
   return (
     <section className={classes.root}>
@@ -106,6 +117,7 @@ const ContestHero = (): ReactElement => {
               className={classes.buttonCta}
               variant="raised"
               color="secondary"
+              onClick={openDialog}
             >
               <img
                 className={classes.imgEmoji}
@@ -117,6 +129,9 @@ const ContestHero = (): ReactElement => {
           </div>
         </div>
       </div>
+      <Dialog onClose={handleDialogClose} open={dialogOpen}>
+        <ContestHeroIdeaDialog />
+      </Dialog>
     </section>
   );
 };

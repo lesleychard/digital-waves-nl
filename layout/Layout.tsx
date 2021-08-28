@@ -32,7 +32,7 @@ const Layout = ({ children }: Props): ReactElement => {
   return (
     <div>
       <div className={classes.videoContainer}>
-        <video autoPlay className={classes.video}>
+        <video autoPlay className={classes.video} loop>
           <source src="assets/videos/video-bg.mp4" type="video/mp4" />
         </video>
       </div>

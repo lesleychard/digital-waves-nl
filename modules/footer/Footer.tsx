@@ -127,7 +127,7 @@ const Footer = (): ReactElement => {
         <Grid
           container
           spacing={4}
-          justify="space-between"
+          justifyContent="space-between"
         >
           <Grid
             item
