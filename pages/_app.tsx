@@ -22,6 +22,8 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
     }
 
     jssGlobals.createStyleSheet(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       globals,
       { meta: 'RanLabGlobals' },
     ).attach();
