@@ -1,23 +1,23 @@
-import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
+
 import Layout from '../layout/Layout';
+import ShortPage from '../layout/ShortPage';
+import Footer from '../modules/footer/Footer';
+import FooterCTA from '../modules/footer/FooterCTA';
+import FooterSubscribe from '../modules/footer/FooterSubscribe';
+import VolunteerForm from '../modules/volunteer/VolunteerForm';
 
-const useStyles = makeStyles(
-  () => ({
-    root: {},
-  })
-);
-
-const volunteer = (): ReactElement => {
-  const classes = useStyles();
-
+const subscribe = (): ReactElement => {
   return (
     <Layout>
-      <div className={classes.root}>
-        Volunteer With Us
-      </div>
+      <ShortPage>
+        <VolunteerForm />
+      </ShortPage>
+      <FooterCTA noMinHeight hideVolunteer />
+      <Footer />
+      <FooterSubscribe />
     </Layout>
   );
 };
 
-export default volunteer;
+export default subscribe;

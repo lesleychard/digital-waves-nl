@@ -1,5 +1,6 @@
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
@@ -7,6 +8,12 @@ import Button from '../../components/Button';
 import { fade } from '../../styles/helpers/color';
 import { containerSm } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
+
+type Props = {
+  hideVolunteer?: boolean;
+  hideSponsor?: boolean;
+  noMinHeight?: boolean;
+};
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -20,6 +27,9 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+    },
+    noMinHeight: {
+      minHeight: 'auto',
     },
     container: {
       ...containerSm(theme),
@@ -45,11 +55,23 @@ const useStyles = makeStyles(
   })
 );
 
-const FooterCTA = (): ReactElement => {
+const FooterCTA = ( props: Props ): ReactElement => {
+  const {
+    hideVolunteer = false,
+    hideSponsor = false,
+    noMinHeight = false,
+  } = props;
   const classes = useStyles();
 
   return (
-    <section className={classes.root}>
+    <section
+      className={classNames(
+        classes.root,
+        {
+          [classes.noMinHeight]: noMinHeight,
+        },
+      )}
+    >
       <div className={classes.container}>
         <Typography variant="h1" className={classes.typographyH1}>
           We can&rsquo;t close the technology gender gap without your help.
@@ -63,38 +85,50 @@ const FooterCTA = (): ReactElement => {
             spacing={4}
             container
           >
-            <Grid
-              item
-              xs={12}
-              sm={6}
-            >
-              <Link href="/volunteer">
-                <Button
-                  className={classes.button}
-                  component="a"
-                  variant="raised"
-                  color="highlight"
-                >
-                  Volunteer With Us
-                </Button>
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-            >
-              <Link href="/volunteer">
-                <Button
-                  className={classes.button}
-                  component="a"
-                  variant="raised"
-                  color="secondary"
-                >
-                  Sponsor Us
-                </Button>
-              </Link>
-            </Grid>
+            {
+              hideVolunteer
+                ? null
+                : (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={hideSponsor ? 12 : 6}
+                  >
+                    <Link href="/volunteer">
+                      <Button
+                        className={classes.button}
+                        component="a"
+                        variant="raised"
+                        color="highlight"
+                      >
+                        Volunteer With Us
+                      </Button>
+                    </Link>
+                  </Grid>
+                )
+            }
+            {
+              hideSponsor
+                ? null
+                : (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={hideVolunteer ? 12 : 6}
+                  >
+                    <Link href="/volunteer">
+                      <Button
+                        className={classes.button}
+                        component="a"
+                        variant="raised"
+                        color="secondary"
+                      >
+                        Sponsor Us
+                      </Button>
+                    </Link>
+                  </Grid>
+                )
+            }
           </Grid>
         </div>
       </div>
