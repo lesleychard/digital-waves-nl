@@ -1,16 +1,17 @@
 import { FormControlLabel, TextField, Typography, Checkbox, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ReactElement } from 'react';
+import fetchJsonp from 'fetch-jsonp';
+import { ReactElement, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import Button from '../../components/Button';
 
 type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  inProvince: boolean;
-  canSponsor: boolean;
+  FNAME: string;
+  LNAME: string;
+  EMAIL: string;
+  ISNL: boolean;
+  SPONSOR: boolean;
 };
 
 const useStyles = makeStyles(
@@ -48,7 +49,44 @@ const SubscribeForm = (): ReactElement => {
   const classes = useStyles();
   const { control, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const [submitLoading, setSubmitLoading] = useState<boolean>(false);
+  const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string>();
+
+  const defaultErrorMsg = (
+    'Something went wrong and we could not subscribe you to updates at this time.'
+    + 'Please try again. If this error persists, please contact '
+    + '<a href="mailto:info@digitalwavesnl.ca">info@digitalwavesnl.ca</a>'
+  );
+
+  const onSubmit = (data: FormData) => {
+    setSubmitLoading(true);
+    setSubmitError(undefined);
+
+    const formData = new URLSearchParams(data as unknown as URLSearchParams).toString();
+    const submitUrl = `${process.env.MAILCHIMP_SUBSCRIBE_URL}&amp;c=?&${formData}`;
+    fetchJsonp(submitUrl, { jsonpCallback: 'c', jsonpCallbackFunction: '' })
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonRes) => {
+        if (jsonRes.result === 'success') {
+          setSubmitSuccess(true);
+        }
+        else {
+          const errorMsg = jsonRes.msg
+            ? jsonRes.msg
+            : defaultErrorMsg;
+          setSubmitError(errorMsg);
+          setSubmitLoading(false);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        setSubmitError(defaultErrorMsg);
+        setSubmitLoading(false);
+      });
+  };
 
   return (
     <div className={classes.root}>
@@ -59,98 +97,122 @@ const SubscribeForm = (): ReactElement => {
         Stay updated on all news for the 2021 Digital Waves experience.
         We will only send you the important stuff, like prize announcements and reminders of key contest dates.
       </Typography>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={classes.form}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Controller
-              name="firstName"
-              control={control}
-              defaultValue=""
-              rules={{ required: true }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  label="First Name"
-                  required
-                  fullWidth
-                />
-              )}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Controller
-              name="lastName"
-              control={control}
-              defaultValue=""
-              rules={{ required: true }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  label="Last Name"
-                  required
-                  fullWidth
-                />
-              )}
-            />
-          </Grid>
-        </Grid>
-        <Controller
-          name="email"
-          control={control}
-          defaultValue=""
-          rules={{ required: true }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              className={classes.textField}
-              variant="outlined"
-              label="Email"
-              type="email"
-              fullWidth
-            />
-          )}
-        />
-        <Controller
-          name="inProvince"
-          control={control}
-          defaultValue={false}
-          render={({ field }) => (
-            <FormControlLabel
-              control={(
-                <Checkbox {...field} />
-              )}
-              label="I reside in the province of Newfoundland & Labrador."
-            />
-          )}
-        />
-        <Controller
-          name="canSponsor"
-          control={control}
-          defaultValue={false}
-          render={({ field }) => (
-            <FormControlLabel
-              control={(
-                <Checkbox {...field} />
-              )}
-              label="I am interested in becoming a sponsor."
-            />
-          )}
-        />
-        <div className={classes.containerSubmit}>
-          <Button
-            variant="raised"
-            color="secondary"
-            type="submit"
-          >
-            Subscribe to Updates
-          </Button>
-        </div>
-      </form>
+      {
+        submitSuccess
+          ? (
+            <Typography className={classes.form}>
+              <strong>
+                Thanks for subscribing to Digital Waves NL.
+                We will be in touch with important updates, announcements, and key contest reminders.
+              </strong>
+            </Typography>
+          )
+          : (
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={classes.form}
+              id="subscribe-form"
+            >
+              {
+                submitError
+                  ? (
+                    <Typography component="div" color="error">
+                      <p dangerouslySetInnerHTML={{ __html: submitError }} />
+                    </Typography>
+                  )
+                  : null
+              }
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Controller
+                    name="FNAME"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        variant="outlined"
+                        label="First Name"
+                        required
+                        fullWidth
+                      />
+                    )}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Controller
+                    name="LNAME"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        variant="outlined"
+                        label="Last Name"
+                        required
+                        fullWidth
+                      />
+                    )}
+                  />
+                </Grid>
+              </Grid>
+              <Controller
+                name="EMAIL"
+                control={control}
+                defaultValue=""
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    className={classes.textField}
+                    variant="outlined"
+                    label="Email"
+                    type="email"
+                    fullWidth
+                  />
+                )}
+              />
+              <Controller
+                name="ISNL"
+                control={control}
+                defaultValue={false}
+                render={({ field }) => (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox {...field} />
+                    )}
+                    label="I reside in the province of Newfoundland & Labrador."
+                  />
+                )}
+              />
+              <Controller
+                name="SPONSOR"
+                control={control}
+                defaultValue={false}
+                render={({ field }) => (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox {...field} />
+                    )}
+                    label="I am interested in becoming a sponsor."
+                  />
+                )}
+              />
+              <div className={classes.containerSubmit}>
+                <Button
+                  variant="raised"
+                  color="secondary"
+                  type="submit"
+                  disabled={submitLoading}
+                >
+                  Subscribe to Updates
+                </Button>
+              </div>
+            </form>
+          )
+      }
     </div>
   );
 };

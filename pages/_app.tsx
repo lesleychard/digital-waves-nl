@@ -1,3 +1,4 @@
+import { init } from 'emailjs-com';
 import { create } from 'jss';
 import type { AppProps } from 'next/app';
 import {
@@ -27,6 +28,8 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
       globals,
       { meta: 'RanLabGlobals' },
     ).attach();
+
+    init(process.env.EMAILJS_USER_ID as string);
   }, []);
 
   return (
