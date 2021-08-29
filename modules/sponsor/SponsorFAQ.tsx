@@ -107,7 +107,7 @@ const SponsorFAQ = (): ReactElement => {
         <Typography className={classes.typographyBody}>
           We&rsquo;re new in town and we know you have a lot of questions before partnering with us.
           These frequently asked questions should cover the basics, but we&rsquo;re here to assist with any additional questions you may have.
-          Please contact <a href="mailto:sponsorship@digitalwavesnl.ca">sponsorship@digitalwavesnl.ca</a> to connect with one of our team members, or simply submit our Sponsor Us form and we will follow up.
+          Please contact <a href="mailto:info@digitalwavesnl.ca">info@digitalwavesnl.ca</a> to connect with one of our team members, or simply submit our Sponsor Us form and we will follow up.
         </Typography>
         {
           FAQ_ITEMS.map((faq, faqIndex) => (

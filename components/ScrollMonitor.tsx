@@ -1,21 +1,22 @@
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import { ReactElement, useEffect, useState } from 'react';
+import { forwardRef, ReactElement, LegacyRef } from 'react';
 
 type Props = {
-  className?: string,
+  className?: string;
+  progress: number;
 };
 
 const useStyles = makeStyles(
   (theme) => ({
     root: {
-      position: 'absolute',
+      position: 'fixed',
       width: '100%',
-      top: '-0.5rem',
+      top: 0,
       left: 0,
       height: '0.5rem',
       background: theme.palette.secondary.light,
-      zIndex: 0,
+      zIndex: 1,
     },
     scrollProgress: {
       height: '0.5rem',
@@ -26,38 +27,19 @@ const useStyles = makeStyles(
   })
 );
 
-const ScrollMonitor = ({ className: classNameProp }: Props): ReactElement => {
+const ScrollMonitor = ({ className: classNameProp, progress }: Props, ref: LegacyRef<HTMLDivElement>): ReactElement => {
   const classes = useStyles();
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
-
-  const updateScrollProgress = () => {
-    const body = document.body,
-      html = document.documentElement;
-    const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
-    const newScrollProgress = window.pageYOffset / height * 100;
-    setScrollProgress(+newScrollProgress.toFixed(2));
-  };
-
-  useEffect(
-    () => {
-      window.addEventListener('scroll', updateScrollProgress);
-      return () => {
-        window.removeEventListener('scroll', updateScrollProgress);
-      };
-    },
-    []
-  );
 
   return (
-    <div className={classNames(classes.root, classNameProp)}>
+    <div className={classNames(classes.root, classNameProp)} ref={ref}>
       <div
         className={classes.scrollProgress}
         style={{
-          width: `${scrollProgress}%`,
+          width: `${progress * 100}%`,
         }}
       />
     </div>
   );
 };
 
-export default ScrollMonitor;
+export default forwardRef(ScrollMonitor);

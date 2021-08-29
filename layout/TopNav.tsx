@@ -8,7 +8,6 @@ import { stripUl } from '../styles/helpers/extend';
 import { light } from '../styles/theme/_palette';
 import Button from '../components/Button';
 import MobileMenu from './MobileMenu';
-import ScrollMonitor from '../components/ScrollMonitor';
 import Logo from '../components/Logo';
 
 export const NAV_ITEMS: NavItem[][] = [
@@ -91,7 +90,7 @@ const useStyles = makeStyles(
       },
     },
     buttomMenuOpened: {
-      backgroundImage: 'url(assets/images/icons/menu-closed.svg)',
+      backgroundImage: 'url(assets/images/icons/icon-menu-closed.svg)',
       backgroundSize: '50%',
     },
     containerLogo: {
@@ -206,7 +205,6 @@ const TopNav = (): ReactElement => {
         }
       )}
     >
-      <ScrollMonitor />
       <Button
         className={classNames(
           classes.buttonMenu,

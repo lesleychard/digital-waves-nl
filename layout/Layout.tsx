@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement, ReactNode } from 'react';
+import { Controller, Scene } from 'react-scrollmagic';
+import ScrollMonitor from '../components/ScrollMonitor';
 
 import TopNav from './TopNav';
 
@@ -30,17 +32,24 @@ const Layout = ({ children }: Props): ReactElement => {
   const classes = useStyles();
 
   return (
-    <div>
-      <div className={classes.videoContainer}>
-        <video autoPlay className={classes.video} loop>
-          <source src="assets/videos/video-bg.mp4" type="video/mp4" />
-        </video>
+    <Controller>
+      <Scene triggerHook="onLeave" triggerElement="#main-layout" duration="50%">
+        {(progress: number) => (
+          <ScrollMonitor progress={progress} />
+        )}
+      </Scene>
+      <div>
+        <div className={classes.videoContainer}>
+          <video autoPlay className={classes.video} loop>
+            <source src="assets/videos/video-bg.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <TopNav />
+        <main id="main-layout">
+          {children}
+        </main>
       </div>
-      <TopNav />
-      <main>
-        {children}
-      </main>
-    </div>
+    </Controller>
   );
 };
 
