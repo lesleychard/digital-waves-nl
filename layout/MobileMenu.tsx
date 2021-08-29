@@ -81,6 +81,10 @@ const MobileMenu = ({ open = false }: Props): ReactElement => {
   const classes = useStyles();
   const router = useRouter();
 
+  const handleMenuClose = () => {
+    document.body.classList.remove('prevent-scroll');
+  };
+
   return (
     <div
       aria-hidden={!open}
@@ -111,6 +115,7 @@ const MobileMenu = ({ open = false }: Props): ReactElement => {
                           })}
                           variant="raised"
                           color={item.id === 'sponsor' ? 'secondary' : 'primary'}
+                          onClick={handleMenuClose}
                         >
                           {item.label}
                         </Button>

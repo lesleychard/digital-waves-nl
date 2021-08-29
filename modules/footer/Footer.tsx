@@ -207,8 +207,8 @@ const Footer = (): ReactElement => {
                   All inquiries:
                 </Typography>
                 <Typography gutterBottom>
-                  <a href="mailto:info@digitalwavesnl.com" className={classes.link}>
-                    info@digitalwavesnl.com
+                  <a href="mailto:info@digitalwavesnl.ca" className={classes.link}>
+                    info@digitalwavesnl.ca
                   </a>
                 </Typography>
 

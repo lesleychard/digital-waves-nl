@@ -11,15 +11,21 @@ const useStyles = makeStyles(
       zIndex: 1,
       textAlign: 'center',
       background: theme.palette.secondary.main,
-      display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       padding: theme.spacing(1),
+      [theme.breakpoints.up('sm')]: {
+        display: 'flex',
+      },
     },
     typography: {
-      margin: `0 ${theme.spacing(1.5)}px`,
+      margin: `0 ${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
       fontSize: '1em',
       fontWeight: theme.typography.fontWeightBold,
+      [theme.breakpoints.up('sm')]: {
+        display: 'flex',
+        margin: `0 ${theme.spacing(1.5)}px`,
+      },
     },
   })
 );

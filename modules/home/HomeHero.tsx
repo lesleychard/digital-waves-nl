@@ -34,7 +34,7 @@ const useStyles = makeStyles(
     containerContent: {
       position: 'relative',
       zIndex: 1,
-      padding: theme.spacing(3),
+      padding: `${theme.spacing(20)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
       maxWidth: '55rem',
       [theme.breakpoints.up('sm')]: {
         padding: 0,
@@ -82,7 +82,7 @@ const useStyles = makeStyles(
     retroUI: {
       zIndex: 1,
       maxWidth: '28rem',
-      margin: `${theme.spacing(4)}px ${theme.spacing(3)}px 0`,
+      margin: `${theme.spacing(4)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
       position: 'relative',
       [theme.breakpoints.up('sm')]: {
         width: '18rem',
