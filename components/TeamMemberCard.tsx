@@ -20,24 +20,42 @@ type Props = {
 
 const useStyles = makeStyles(
   (theme) => ({
-    root: {},
+    root: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      '& > div': {
+        width: '100%',
+      },
+    },
     img: {
       width: '100%',
     },
+    imgPlaceholder: {
+      width: '103%',
+    },
     typographyName: {
+      color: light,
       fontWeight: theme.typography.fontWeightBold,
       fontSize: '1.33em',
       paddingTop: theme.spacing(1),
       marginTop: theme.spacing(0.33),
-      marginBottom: theme.spacing(0.33),
+      marginBottom: theme.spacing(1),
       borderTop: `1px solid ${theme.palette.text.primary}`,
     },
     typographyJob: {
       ...fontSmoothOn,
-      color: light,
+      fontSize: '0.8rem',
+      lineHeight: 1.3,
+      '& strong': {
+        display: 'block',
+        marginBottom: theme.spacing(1),
+      },
     },
     button: {
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(1.5),
     },
     buttonPlaceholder: {
       background: theme.palette.text.primary,
@@ -103,19 +121,27 @@ const TeamMemberCard = (props: Props): ReactElement => {
 
   return (
     <div className={classes.root}>
-      <img
-        src={imageUrl && !isPlaceholder ? imageUrl : 'assets/images/home/home-team-card-empty.svg'}
-        alt={name}
-        className={classes.img}
-      />
-      <Typography className={classes.typographyName}>
-        {cardName}
-      </Typography>
-      <Typography className={classes.typographyJob}>
-        {position && !isPlaceholder ? position : 'Your Position'},
-        <br />
-        {company && !isPlaceholder ? company : 'Your Company'},
-      </Typography>
+      <div>
+        <img
+          src={imageUrl && !isPlaceholder ? imageUrl : 'assets/images/home/home-team-card-empty.svg'}
+          alt={name}
+          className={classNames(
+            classes.img,
+            {
+              [classes.imgPlaceholder]: isPlaceholder,
+            }
+          )}
+        />
+        <Typography className={classes.typographyName}>
+          {cardName}
+        </Typography>
+        <Typography className={classes.typographyJob}>
+          <strong>
+            {position && !isPlaceholder ? position : 'Your Position'}
+          </strong>
+          {company && !isPlaceholder ? company : 'Your Company'}
+        </Typography>
+      </div>
       {
         isPlaceholder
           ? (
@@ -145,6 +171,7 @@ const TeamMemberCard = (props: Props): ReactElement => {
                 variant="outlined"
                 size="small"
                 onClick={openProfileDialog}
+                disabled={!profile}
               >
                 View Profile
               </Button>

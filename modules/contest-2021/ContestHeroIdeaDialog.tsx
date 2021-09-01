@@ -29,7 +29,6 @@ const useStyles = makeStyles(
   (theme) => ({
     root: {
       padding: theme.spacing(3),
-      textAlign: 'center',
       position: 'relative',
       zIndex: 1,
       [theme.breakpoints.up('md')]: {
@@ -108,8 +107,26 @@ const ContestHeroIdeaDialog = ({ handleDialogClose }: Props): ReactElement => {
         <CloseIcon />
       </IconButton>
 
-      <Typography variant="h1" gutterBottom>
+      <Typography variant="h1" gutterBottom align="center">
         Got an Idea?
+      </Typography>
+      <Typography>
+        <strong>
+          Some broad ideas to get you started...
+        </strong>
+      </Typography>
+      <Typography component="div">
+        <ul>
+          <li>
+            An app that rewards users for making sustainable choices.
+          </li>
+          <li>
+            A mobile game that helps teach children about climate change.
+          </li>
+          <li>
+            A dashboard that shows users the environmental impact of their purchases.
+          </li>
+        </ul>
       </Typography>
       <Typography>
         Do you have an amazing idea on how to solve this year’s design challenge? Please subscribe to receive updates and we’ll let you know when registration opens.

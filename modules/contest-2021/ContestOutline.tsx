@@ -14,7 +14,7 @@ const BODY_ELIGIBILITY = [
 
 const BODY_COMPETE = [
   'All applicants will receive a registration package which includes important information about this year’s design challenge, such as tips on effective brainstorming and current sustainability issues our province is facing.',
-  'After sending a game-changing idea submission, our contestants will be invited to be taught digital skills by local industry leaders. Our applicants will learn the skills to create: interactive prototypes to help their ideas come to life; how to reach people to effect real change; and how to transform their idea into a branded business.',
+  'After sending a game-changing idea submission, our contestants will be invited to digital skills workshops hosted by local industry leaders. Our applicants will learn the skills to create: interactive prototypes to help their ideas come to life; how to reach people to effect real change; and how to transform their idea into a branded, impact-driven business.',
   'Using new digital skills, contestants will create a set of prototypes for their ideas, a unique name and logo design, and a 5-minute presentation explaining how their design will make our province a more sustainable place to live.',
   'Submissions will then be judged by local industry experts, and winners for all predetermined categories will be selected.',
 ];
