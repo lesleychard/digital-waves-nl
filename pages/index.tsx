@@ -11,6 +11,7 @@ import HomeWhatWeDo from '../modules/home/HomeWhatWeDo';
 import FooterCTA from '../modules/footer/FooterCTA';
 import Footer from '../modules/footer/Footer';
 import FooterSubscribe from '../modules/footer/FooterSubscribe';
+import SocialMeta from '../components/SocialMeta';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -57,6 +58,7 @@ const index = (): ReactElement => {
 
   return (
     <Layout>
+      <SocialMeta title="About Us" />
       <div className={classes.root}>
         <div className={classes.containerImg} />
         <HomeHero />

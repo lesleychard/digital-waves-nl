@@ -40,6 +40,11 @@ const useStyles = makeStyles(
         padding: 0,
       },
     },
+    containerLogo: {
+      [theme.breakpoints.up('md')]: {
+        marginTop: '12rem',
+      },
+    },
     containerDescription: {
       marginTop: theme.spacing(4),
       maxWidth: '28rem',
@@ -78,6 +83,10 @@ const useStyles = makeStyles(
       '&:first-of-type': {
         marginRight: theme.spacing(2),
       },
+    },
+    imgPartnerWiseAtlantic: {
+      width: '5.75rem',
+      opacity: 0.8,
     },
     retroUI: {
       zIndex: 1,
@@ -164,7 +173,9 @@ const HomeHero = (): ReactElement => {
   return (
     <section className={classes.root}>
       <div className={classes.containerContent}>
-        <Logo component="h1" includeIntro />
+        <div className={classes.containerLogo}>
+          <Logo component="h1" includeIntro />
+        </div>
         <div className={classes.containerDescription}>
           <Typography
             className={classes.typographyH2}
@@ -181,16 +192,20 @@ const HomeHero = (): ReactElement => {
           <Typography variant="overline" component="h2">
             Our Partners
           </Typography>
-          <img
-            className={classes.imgPartner}
-            src="assets/images/home/home-hero-partner-wrdc.png"
-            alt="Women in Resource Development Corporation"
-          />
-          <img
-            className={classes.imgPartner}
-            src="assets/images/home/home-hero-partner-wrdc.png"
-            alt="Women in Resource Development Corporation"
-          />
+          <a href="https://stemforgirls.ca" target="_blank" rel="noreferrer">
+            <img
+              className={classes.imgPartner}
+              src="assets/images/home/home-hero-partner-wrdc.png"
+              alt="Women in Resource Development Corporation"
+            />
+          </a>
+          <a href="http://wiseatlantic.ca/" target="_blank" rel="noreferrer">
+            <img
+              className={classNames(classes.imgPartner, classes.imgPartnerWiseAtlantic)}
+              src="assets/images/home/home-hero-partner-wiseatlantic.svg"
+              alt="WISEatlantic"
+            />
+          </a>
         </div>
       </div>
       <RetroUI className={classes.retroUI}>

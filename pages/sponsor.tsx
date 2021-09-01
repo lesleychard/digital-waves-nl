@@ -9,6 +9,7 @@ import SponsorForm from '../modules/sponsor/SponsorForm';
 import FooterCTA from '../modules/footer/FooterCTA';
 import Footer from '../modules/footer/Footer';
 import FooterSubscribe from '../modules/footer/FooterSubscribe';
+import SocialMeta from '../components/SocialMeta';
 
 const useStyles = makeStyles(
   () => ({
@@ -21,6 +22,7 @@ const sponsor = (): ReactElement => {
 
   return (
     <Layout>
+      <SocialMeta title="Sponsor Us" />
       <div className={classes.root}>
         <SponsorHero />
         <SponsorFAQ />

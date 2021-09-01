@@ -16,7 +16,7 @@ const useStyles = makeStyles(
       left: 0,
       height: '0.5rem',
       background: theme.palette.secondary.light,
-      zIndex: 1,
+      zIndex: 99,
     },
     scrollProgress: {
       height: '0.5rem',
@@ -32,12 +32,12 @@ const ScrollMonitor = ({ className: classNameProp, progress }: Props, ref: Legac
 
   return (
     <div className={classNames(classes.root, classNameProp)} ref={ref}>
-      <div
+      {/* <div
         className={classes.scrollProgress}
         style={{
           width: `${progress * 100}%`,
         }}
-      />
+      /> */}
     </div>
   );
 };

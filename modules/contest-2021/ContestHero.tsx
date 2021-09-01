@@ -42,7 +42,6 @@ const useStyles = makeStyles(
       },
     },
     typographyOverline: {
-      // color: light,
       marginBottom: theme.spacing(2),
     },
     typographyH1: {
@@ -130,7 +129,7 @@ const ContestHero = (): ReactElement => {
         </div>
       </div>
       <Dialog onClose={handleDialogClose} open={dialogOpen}>
-        <ContestHeroIdeaDialog />
+        <ContestHeroIdeaDialog handleDialogClose={handleDialogClose} />
       </Dialog>
     </section>
   );

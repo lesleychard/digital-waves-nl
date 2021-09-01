@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 
+import SocialMeta from '../components/SocialMeta';
 import Layout from '../layout/Layout';
 import ShortPage from '../layout/ShortPage';
 import Footer from '../modules/footer/Footer';
@@ -15,6 +16,7 @@ const subscribe = (): ReactElement => {
 
   return (
     <Layout>
+      <SocialMeta title="Stay Updated" />
       <ShortPage title={title}>
         <SubscribeForm />
       </ShortPage>

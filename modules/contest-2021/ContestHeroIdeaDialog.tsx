@@ -1,10 +1,22 @@
 import fetchJsonp from 'fetch-jsonp';
-import { Grid, TextField, Typography, Checkbox, FormControlLabel } from '@material-ui/core';
+import {
+  Grid,
+  TextField,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  IconButton,
+} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core/styles';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useState, MouseEvent } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import Button from '../../components/Button';
+
+type Props = {
+  handleDialogClose: (e: MouseEvent) => void;
+};
 
 type FormData = {
   firstName: string;
@@ -24,6 +36,11 @@ const useStyles = makeStyles(
         padding: theme.spacing(6),
       },
     },
+    iconButtonDialogClose: {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+    },
     form: {
       textAlign: 'left',
       marginTop: theme.spacing(3),
@@ -38,7 +55,7 @@ const useStyles = makeStyles(
   })
 );
 
-const ContestHeroIdeaDialog = (): ReactElement => {
+const ContestHeroIdeaDialog = ({ handleDialogClose }: Props): ReactElement => {
   const classes = useStyles();
   const { control, handleSubmit } = useForm<FormData>();
 
@@ -83,6 +100,14 @@ const ContestHeroIdeaDialog = (): ReactElement => {
 
   return (
     <div className={classes.root}>
+      <IconButton
+        className={classes.iconButtonDialogClose}
+        onClick={handleDialogClose}
+        aria-label="Close profile"
+      >
+        <CloseIcon />
+      </IconButton>
+
       <Typography variant="h1" gutterBottom>
         Got an Idea?
       </Typography>

@@ -30,33 +30,33 @@ const SOCIAL_ITEMS = [
   {
     id: 'facebook',
     title: 'Facebook',
-    link: '#',
+    link: 'https://facebook.com/digitalwavesnlca',
   },
   {
     id: 'instagram',
     title: 'Instagram',
-    link: '#',
+    link: 'https://instagram.com/digitalwavesnl',
   },
   {
     id: 'twitter',
     title: 'Twitter',
-    link: '#',
+    link: 'https://twitter.com/digitalwavesnl',
   },
-  {
-    id: 'snapchat',
-    title: 'Snapchat',
-    link: '#',
-  },
-  {
-    id: 'slack',
-    title: 'Slack',
-    link: '#',
-  },
-  {
-    id: 'tiktok',
-    title: 'TikTok',
-    link: '#',
-  },
+  // {
+  //   id: 'snapchat',
+  //   title: 'Snapchat',
+  //   link: '#',
+  // },
+  // {
+  //   id: 'slack',
+  //   title: 'Slack',
+  //   link: '#',
+  // },
+  // {
+  //   id: 'tiktok',
+  //   title: 'TikTok',
+  //   link: '#',
+  // },
 ];
 
 const useStyles = makeStyles(
@@ -141,15 +141,17 @@ const Footer = (): ReactElement => {
               {
                 SOCIAL_ITEMS.map((item) => (
                   <li key={item.id}>
-                    <Link href={item.link}>
-                      <a className={classes.link}>
-                        <img
-                          className={classes.imgSocialIcon}
-                          src={`/assets/images/icons/icon-${item.id}.svg`}
-                          alt={`Follow us on ${item.title}`}
-                        />
-                      </a>
-                    </Link>
+                    <a
+                      href={item.link}
+                      className={classes.link}
+                      target="_blank" rel="noreferrer"
+                    >
+                      <img
+                        className={classes.imgSocialIcon}
+                        src={`/assets/images/icons/icon-${item.id}.svg`}
+                        alt={`Follow us on ${item.title}`}
+                      />
+                    </a>
                   </li>
                 ))
               }
