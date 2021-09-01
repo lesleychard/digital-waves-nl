@@ -126,7 +126,7 @@ const ContestOutline = (): ReactElement => {
         <Grid container className={classes.gridContainer}>
           <Grid item md={5}>
             <TypographyHeading>
-              Juding &amp; Prizes
+              Judging &amp; Prizes
             </TypographyHeading>
           </Grid>
           <Grid item md={7}>
