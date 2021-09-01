@@ -8,6 +8,9 @@ import theme from '../styles/theme/theme';
 
 export default class MyDocument extends Document {
   render(): ReactElement {
+    const pageTitle = 'Digital Waves NL';
+    const baseUri = 'https://digitalwavesnl.ca';
+
     return (
       <Html lang="en">
         <Head>
@@ -16,6 +19,21 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&display=swap" rel="stylesheet" />
+          <meta name="description" property="description" content="We are a grassroots organization dedicated to closing the gender gap in tech, starting with our home province of NL." />
+          <meta name="og:locale" property="og:locale" content="en_US" />
+          <meta name="og:type" property="og:type" content="website" />
+          <meta name="og:title" property="og:title" content={pageTitle} />
+          <meta name="og:description" property="og:description" content="We are a grassroots organization dedicated to closing the gender gap in tech, starting with our home province of NL." />
+          <meta name="og:url" property="og:url" content={baseUri} />
+          <meta name="og:site_name" property="og:site_name" content="Digital Waves NL" />
+          <meta name="og:image" property="og:image" content={`${baseUri}/assets/images/social/social-facebook.png`} />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@DigitalWavesNL" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:creator" property="twitter:creator" content="@DigitalWavesNL" />
+          <meta name="twitter:image" content={`${baseUri}/assets/images/social/social-twitter.png`} />
+          <meta name="twitter:url" content={baseUri} />
+          <meta name="twitter:description" content="We are a grassroots organization dedicated to closing the gender gap in tech, starting with our home province of NL." />
         </Head>
         <body>
           <Main />
