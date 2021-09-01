@@ -139,7 +139,7 @@ const HomeWhatWeDo = (): ReactElement => {
           component="p"
           variant="h1"
         >
-          The Digital Waves experience will incentivize young women and gender-diverse youth to become&nbsp;
+          The Digital Waves experience incentivizes young women and gender-diverse youth to become&nbsp;
           <strong>technology creators</strong>.
         </Typography>
         <Typography align="center">

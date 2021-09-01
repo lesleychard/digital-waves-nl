@@ -47,11 +47,9 @@ const useStyles = makeStyles(
         fontSize: '3rem',
       },
     },
-    containerContentBody: {
-      '& p': {
-        fontSize: '1rem',
-        lineHeight: 1.75,
-      },
+    typographyBody: {
+      fontSize: '1rem',
+      marginBottom: theme.spacing(4),
     },
     aside: {
       background: 'url(assets/images/home/home-about-us-aside.jpg) no-repeat center center',
@@ -129,13 +127,35 @@ const HomeAboutUs = (): ReactElement => {
         >
           We are a grassroots organization dedicated to <strong>closing the gender gap</strong> in tech.
         </Typography>
-        <div className={classes.containerContentBody}>
-          <p>
-            Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they&rsquo;re actually proud of that shit. 
-          </p>
-          <p>
-            Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that&rsquo;s what you see at a toy store. And you must think you&rsquo;re in a toy store, because you&rsquo;re here shopping for an infant named Jeb.
-          </p>
+        <div>
+          <Typography variant="h2" gutterBottom>
+            Helping Youth
+          </Typography>
+          <Typography className={classes.typographyBody}>
+            Digital Waves aims to help young women and gender-diverse youth develop new skills, and to inspire young people who are underrepresented in technology fields.
+            As our dependency on technology grows, we wish to show the next generation of engineers, designers and entrepreneurs that tech can be harnessed to make the world a better place.
+            We hope that by learning the creative aspects of the tech industry, and meeting adults who they can see themselves in, our participants will leave with not only new skills and confidence, but new ideas about their own future in our digital landscape.
+          </Typography>
+
+          <Typography variant="h2" gutterBottom>
+            Helping Parents
+          </Typography>
+          <Typography className={classes.typographyBody}>
+            Inspiring your kids to get out of their comfort zone can be tough, which is why we have incentivized our program to excite and motivate our participants.
+            We also know that extracurricular activities in tech related fields can be impossible to find, especially in our rural communities.
+            Digital Waves is a completely remote experience so we can deliver to as many diverse participants from across our province as possible.
+            Our experience will also reveal new ideas of who can succeed in a career in science and technology, and how impactful a future in technology can be.
+          </Typography>
+
+          <Typography variant="h2" gutterBottom>
+            Helping Business
+          </Typography>
+          <Typography className={classes.typographyBody}>
+            Hiring tech talent in NL has been difficult -- finding diverse candidates with fresh perspectives can be nearly impossible.
+            Our team of volunteers are dedicated to our mission of closing the gender gap in technology.
+            When the impact and inclusiveness of technology is taught to a more diverse selection of young people, the future of our industry will also be more diverse.
+            By helping Digital Waves you are not only providing a young person with a potentially life-changing experience, you are also communicating to our participants that they are welcome in our community.
+          </Typography>
         </div>
       </div>
       <aside className={classes.aside}>
