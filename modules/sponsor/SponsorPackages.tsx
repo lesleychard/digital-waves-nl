@@ -134,7 +134,7 @@ const SponsorPackages = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root}  id="sponsor-packages">
       <div className={classes.container}>
         <Typography
           variant="overline"

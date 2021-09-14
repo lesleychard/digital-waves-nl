@@ -102,6 +102,21 @@ const TEAM_MEMBERS = [
     company: 'Memorial University of Newfoundland (MUN)',
     imageUrl: 'assets/images/bios/kara-strickland.jpg',
   },
+  {
+    id: 'jillian-breau',
+    name: 'Jillian Breau',
+    position: 'Software Team Lead',
+    company: 'HYKE Technologies',
+    imageUrl: 'assets/images/bios/jillian-breau.jpg',
+    profile: (
+      <Typography>
+        Jillian (she/her) works with the software team at HYKE Technologies, a local tech startup focused on bringing their first product to market. 
+        She completed her Computer Engineering degree at Memorial University, where she volunteered with groups focused on mental health and academic advocacy. 
+        Jillian currently volunteers with She Connects, a mentorship program for female and gender-diverse students across Canada. 
+        As someone passionate about sustainability and about helping young people of all identities see a future for themselves in tech, she is very excited for this year’s design challenge.
+      </Typography>
+    ),
+  },
 ];
 
 const useStyles = makeStyles(
