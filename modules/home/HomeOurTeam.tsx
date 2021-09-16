@@ -121,7 +121,7 @@ const TEAM_MEMBERS = [
     id: 'susan-kelly',
     name: 'Susan Kelly',
     position: 'High School Talent Lead',
-    company: 'techNL',
+    company: 'TechNL',
     imageUrl: 'assets/images/bios/susan-kelly.jpg',
     profile: (
       <Typography>
