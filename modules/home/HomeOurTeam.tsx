@@ -117,6 +117,21 @@ const TEAM_MEMBERS = [
       </Typography>
     ),
   },
+  {
+    id: 'susan-kelly',
+    name: 'Susan Kelly',
+    position: 'High School Talent Lead',
+    company: 'techNL',
+    imageUrl: 'assets/images/bios/susan-kelly.jpg',
+    profile: (
+      <Typography>
+        Susan Kelly is an experienced educator and passionate community connector who is currently serving as the High School Talent Lead at techNL.
+        She holds a B. Ed and M. Ed (Leadership Studies) and has professional experience in the education and community sectors.
+        Susan has worked as a classroom teacher in various communities in the province as well as in the community sector with youth and social programming.
+        She is passionate about inspiring students to discover a passion for tech and envision meaningful careers right here in Newfoundland and Labrador.
+      </Typography>
+    ),
+  },
 ];
 
 const useStyles = makeStyles(
