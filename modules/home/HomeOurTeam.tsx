@@ -126,6 +126,46 @@ const TEAM_MEMBERS = [
     imageUrl: "assets/images/bios/kara-strickland.jpg",
   },
   {
+    id: "jillian-breau",
+    name: "Jillian Breau",
+    position: "Software Team Lead",
+    company: "HYKE Technologies",
+    imageUrl: "assets/images/bios/jillian-breau.jpg",
+    profile: (
+      <Typography>
+        Jillian (she/her) works with the software team at HYKE Technologies, a
+        local tech startup focused on bringing their first product to market.
+        She completed her Computer Engineering degree at Memorial University,
+        where she volunteered with groups focused on mental health and academic
+        advocacy. Jillian currently volunteers with She Connects, a mentorship
+        program for female and gender-diverse students across Canada. As someone
+        passionate about sustainability and about helping young people of all
+        identities see a future for themselves in tech, she is very excited for
+        this year’s design challenge.
+      </Typography>
+    ),
+  },
+  {
+    id: "susan-kelly",
+    name: "Susan Kelly",
+    position: "High School Talent Lead",
+    company: "techNL",
+    imageUrl: "assets/images/bios/susan-kelly.jpg",
+    profile: (
+      <Typography>
+        Susan Kelly is an experienced educator and passionate community
+        connector who is currently serving as the High School Talent Lead at
+        techNL. She holds a B. Ed and M. Ed (Leadership Studies) and has
+        professional experience in the education and community sectors. Susan
+        has worked as a classroom teacher in various communities in the province
+        as well as in the community sector with youth and social programming.
+        She is passionate about inspiring students to discover a passion for
+        tech and envision meaningful careers right here in Newfoundland and
+        Labrador.
+      </Typography>
+    ),
+  },
+  {
     id: "steph-walsh",
     name: "Steph Walsh",
     position: "Software Developer",
@@ -144,36 +184,6 @@ const TEAM_MEMBERS = [
         when she was growing up STEM wasn't a huge push for young females in
         school and loves that she can help change that for the current and
         future teenagers.
-      </Typography>
-    ),
-  },
-  {
-    id: 'jillian-breau',
-    name: 'Jillian Breau',
-    position: 'Software Team Lead',
-    company: 'HYKE Technologies',
-    imageUrl: 'assets/images/bios/jillian-breau.jpg',
-    profile: (
-      <Typography>
-        Jillian (she/her) works with the software team at HYKE Technologies, a local tech startup focused on bringing their first product to market. 
-        She completed her Computer Engineering degree at Memorial University, where she volunteered with groups focused on mental health and academic advocacy. 
-        Jillian currently volunteers with She Connects, a mentorship program for female and gender-diverse students across Canada. 
-        As someone passionate about sustainability and about helping young people of all identities see a future for themselves in tech, she is very excited for this year’s design challenge.
-      </Typography>
-    ),
-  },
-  {
-    id: 'susan-kelly',
-    name: 'Susan Kelly',
-    position: 'High School Talent Lead',
-    company: 'techNL',
-    imageUrl: 'assets/images/bios/susan-kelly.jpg',
-    profile: (
-      <Typography>
-        Susan Kelly is an experienced educator and passionate community connector who is currently serving as the High School Talent Lead at techNL.
-        She holds a B. Ed and M. Ed (Leadership Studies) and has professional experience in the education and community sectors.
-        Susan has worked as a classroom teacher in various communities in the province as well as in the community sector with youth and social programming.
-        She is passionate about inspiring students to discover a passion for tech and envision meaningful careers right here in Newfoundland and Labrador.
       </Typography>
     ),
   },
