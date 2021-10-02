@@ -9,7 +9,7 @@ import { fontFamilyHeading } from '../../styles/theme/_typography';
 const TIMELINE_DATES = [
   {
     m: 'Oct',
-    d: '04',
+    d: '12',
     y: '2021',
     label: 'Registration Opens',
   },
@@ -21,16 +21,10 @@ const TIMELINE_DATES = [
   },
   {
     m: 'Nov',
-    d: '01',
-    y: '2021',
-    label: 'Idea Submission',
-  },
-  {
-    m: 'Nov',
     d: '??',
     y: '2021',
     sub: 'Remote Workshop',
-    label: 'App Design 101',
+    label: 'Business & Entrepeneurship 101',
   },
   {
     m: 'Nov',
@@ -42,6 +36,13 @@ const TIMELINE_DATES = [
   {
     m: 'Nov',
     d: '??',
+    y: '2021',
+    sub: 'Remote Workshop',
+    label: 'App Design 101',
+  },
+  {
+    m: 'Dec',
+    d: '03',
     y: '2021',
     label: 'Design & Pitch Submission',
   },

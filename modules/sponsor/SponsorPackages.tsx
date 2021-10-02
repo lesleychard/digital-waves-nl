@@ -9,7 +9,7 @@ import { fontFamilyBody } from '../../styles/theme/_typography';
 const SPONSOR_PACKAGES = [
   {
     id: 'tb',
-    tier: 'Terrabyte',
+    tier: 'Terabyte',
     cost: '$7500+',
     perks: [
       'Become an official Digital Waves 2021 partner.',
