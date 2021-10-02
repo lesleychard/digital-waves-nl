@@ -21,12 +21,6 @@ const TIMELINE_DATES = [
   },
   {
     m: 'Nov',
-    d: '01',
-    y: '2021',
-    label: 'Idea Submission',
-  },
-  {
-    m: 'Nov',
     d: '??',
     y: '2021',
     sub: 'Remote Workshop',
