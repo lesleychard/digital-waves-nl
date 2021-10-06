@@ -168,6 +168,37 @@ const TEAM_MEMBERS = [
       </Typography>
     ),
   },
+  {
+    id: "freddie-pike",
+    name: "Freddie Pike",
+    position: "Software Developer",
+    company: "CoLab Software",
+    imageUrl: "assets/images/bios/freddie-pike.jpeg",
+    profile: (
+      <>
+        <Typography gutterBottom>
+          Freddie (he/him) is a full stack developer living in CBS, NL. Freddie
+          has been fascinated with technology from an early age, which led to
+          pursuing a honours degree in Computer Science Software Engineering at
+          Memorial University. In 2017, he took on an internship as the first
+          employee of newly-formed startup CoLab Software. Two years later CoLab
+          became the first company in Atlantic Canada accepted to startup
+          accelerator Y Combinator and now, CoLab helps empower Fortune 500
+          engineering teams all over the world to speed up their design review
+          process. Still part of the CoLab team today, Freddie&apos;s current focus is
+          primarily on architecting and developing for the frontend web stack.
+        </Typography>
+        <Typography>
+          With previous experience mentoring for Canada Learning Code and The Boys
+          & Girls Clubs of St. John’s, Freddie is excited to volunteer with the
+          Digital Waves team. Female and gender-diverse people are vastly
+          underrepresented in the tech sector so he&apos;s pumped to contribute to this
+          year&apos;s design challenge and to help make tech more open and diverse for
+          young people of all identities.
+        </Typography>
+      </>
+    ),
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
