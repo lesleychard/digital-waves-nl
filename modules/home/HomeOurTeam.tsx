@@ -199,6 +199,34 @@ const TEAM_MEMBERS = [
       </>
     ),
   },
+  {
+    id: "john-lander",
+    name: "John Lander",
+    position: "Customer Success Manager",
+    company: "Metricsflow",
+    imageUrl: "assets/images/bios/john-lander.jpeg",
+    profile: (
+      <>
+        <Typography gutterBottom>
+          John Lander grew up in all the smallest Newfoundland towns. After
+          graduating from Grenfell Campus, Memorial University with a BBA,
+          Lander worked for the Association for New Canadians helping newcomers
+          to Canada get their bearings in our cold province. After that, he
+          entered the NL tech sector in the Marketing Operations Analyst with
+          Zorbit’s by Carnegie Learning. Currently, he works for Metricsflow as
+          their Customer Success Manager. Lander has also volunteered with the
+          Planned Parenthood 2SLGBTQIA+ Helpline, with Happy City St. John’s on
+          their board of directors, and is a part of the trail maintenance crew
+          on the East Coast Trail.
+        </Typography>
+        <Typography>
+          Lander is passionate about bringing the NL tech sector to rural
+          Newfoundland and helping girls and gender-diverse youth in small towns
+          see a future career in the sector.
+        </Typography>
+      </>
+    ),
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
