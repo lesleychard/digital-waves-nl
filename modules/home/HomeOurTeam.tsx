@@ -212,7 +212,7 @@ const TEAM_MEMBERS = [
           graduating from Grenfell Campus, Memorial University with a BBA,
           Lander worked for the Association for New Canadians helping newcomers
           to Canada get their bearings in our cold province. After that, he
-          entered the NL tech sector in the Marketing Operations Analyst with
+          entered the NL tech sector as a Marketing Operations Analyst with
           Zorbit’s by Carnegie Learning. Currently, he works for Metricsflow as
           their Customer Success Manager. Lander has also volunteered with the
           Planned Parenthood 2SLGBTQIA+ Helpline, with Happy City St. John’s on
