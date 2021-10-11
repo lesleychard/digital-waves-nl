@@ -266,9 +266,6 @@ const ContestRegister = (): ReactElement => {
       PARENT: 'true',
     };
 
-    console.log(participantData);
-    console.log(parentData);
-
     dispatch(subscribeToList(participantData, 'participant'));
     dispatch(subscribeToList(parentData, 'parent'));
   };
@@ -291,8 +288,6 @@ const ContestRegister = (): ReactElement => {
           const parentIndex = mailchimpState.submissions.findIndex(
             (sub => sub.type === 'parent')
           );
-
-          console.log(participantIndex, parentIndex);
 
           if (participantIndex >= 0 && parentIndex >= 0) {
             if (mailchimpState.submissions[participantIndex].code === 'error') {
@@ -489,6 +484,7 @@ const ContestRegister = (): ReactElement => {
                       required
                       error={Boolean(errors.DOB)}
                       helperText={errors.DOB?.message}
+                      openTo="year"
                     />
                   )}
                 />
