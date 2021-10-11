@@ -2,10 +2,11 @@ import { Dialog, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { ReactElement } from 'react';
-import Button from '../../components/Button';
 
+import Button from '../../components/Button';
 import { fade, lighten } from '../../styles/helpers/color';
 import { container } from '../../styles/helpers/extend';
+import { light } from '../../styles/theme/_palette';
 import ContestHeroIdeaDialog from './ContestHeroIdeaDialog';
 
 const useStyles = makeStyles(
@@ -74,6 +75,19 @@ const useStyles = makeStyles(
       transform: 'translate(-50%, 50%)',
     },
     buttonCta: {
+      marginTop: theme.spacing(4),
+      '&:visited,&:active': {
+        color: theme.palette.text.primary,
+      },
+    },
+    buttonSecondaryCta: {
+      marginTop: theme.spacing(2),
+      '&:visited,&:active': {
+        color: theme.palette.text.primary,
+      },
+      '&:hover': {
+        color: light,
+      },
     },
     imgEmoji:{
       marginRight: '1rem',
@@ -116,14 +130,24 @@ const ContestHero = (): ReactElement => {
               className={classes.buttonCta}
               variant="raised"
               color="secondary"
-              onClick={openDialog}
+              component="a"
+              href="#contest-register"
+              // onClick={openDialog}
             >
               <img
                 className={classes.imgEmoji}
                 src="assets/images/emojis/emoji-hand-raised.svg"
                 alt="Girl-representing person raises hand"
               />
-              I&rsquo;ve Got an Idea
+              Register Now
+            </Button>
+            <Button
+              className={classes.buttonSecondaryCta}
+              component="a"
+              href="#spread-the-word"
+              variant="text"
+            >
+              Help Spread the Word
             </Button>
           </div>
         </div>

@@ -209,20 +209,20 @@ const HomeHero = (): ReactElement => {
         </div>
       </div>
       <RetroUI className={classes.retroUI}>
-        <strong>Hey NL technology sector!</strong>&nbsp;
-        Sponsorship is now open for the Fall 2021 Digital Waves experience.
+        <strong>Calling all NL girls and gender-diverse youth!</strong>&nbsp;
+        Sign up for your chance to win over $10,000 in prizes.
         <div className={classes.retroUICta}>
           <img
             src="assets/images/emojis/emoji-tech-girl.svg"
             alt="Female-presenting technologist emoji"
             className={classes.imgRetroUIEmoji}
           />
-          <Link href="/sponsor">
+          <Link href="/contest-2021#contest-register">
             <Button
               component="a"
               className={classes.buttonRetroUISponsor}
             >
-              Sponsor Us
+              Register Now
             </Button>
           </Link>
         </div>

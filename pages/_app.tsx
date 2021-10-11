@@ -7,8 +7,11 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 import { ReactNode, useEffect } from 'react';
 
+import { wrapper } from '../store/store';
 import globals from '../styles/globals/globals';
 import theme from '../styles/theme/theme';
 
@@ -26,7 +29,7 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       globals,
-      { meta: 'RanLabGlobals' },
+      { meta: 'DigitalWavesGlobals' },
     ).attach();
 
     init(process.env.EMAILJS_USER_ID as string);
@@ -35,11 +38,13 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   return (
     <StylesProvider>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </MuiPickersUtilsProvider>
       </ThemeProvider>
     </StylesProvider>
   );
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
