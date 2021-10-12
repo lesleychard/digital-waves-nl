@@ -13,23 +13,20 @@ const BODY_ELIGIBILITY = [
 ];
 
 const BODY_COMPETE = [
-  'All applicants will receive a registration package which includes important information about this year’s design challenge, such as tips on effective brainstorming and current sustainability issues our province is facing.',
-  'After sending a game-changing idea submission, our contestants will be invited to digital skills workshops hosted by local industry leaders. Our applicants will learn the skills to create: interactive prototypes to help their ideas come to life; how to reach people to effect real change; and how to transform their idea into a branded, impact-driven business.',
+  'All applicants will receive a registration package which includes important information about this year’s design challenge, such as information on current sustainability issues our province is facing as well as tips to get started.',
+  'Our contestants will be invited to digital skills workshops hosted by local industry leaders. Our applicants will learn the skills to create: interactive prototypes to help their ideas come to life; how to reach people to effect real change; and how to transform their idea into a branded, impact-driven business.',
   'Using new digital skills, contestants will create a set of prototypes for their ideas, a unique name and logo design, and a 5-minute presentation explaining how their design will make our province a more sustainable place to live.',
   'Submissions will then be judged by local industry experts, and winners for all predetermined categories will be selected.',
 ];
 
 const BODY_JUDGING = [
-  'This part wouldn’t be possible without amazing local sponsors. We hope to offer prizes on many, diverse categories to show our youth that all aptitudes are wanted and valued in our industry.',
-  'We know what girls & gender-diverse youth in our province want (because we asked!) and it’s our intention to deliver to our category winners amazing prizes such as:',
+  'This part wouldn’t be possible without amazing local sponsors. We are offering prizes on many, diverse categories to show our youth that all aptitudes are wanted and valued in our industry.',
+  'Specifics on other prize categories will be announced closer to the submission deadline, but our offering includes:',
 ];
 
 const BODY_PRIZES = [
-  'Cash/bursaries',
-  'Laptop/desktop computers',
-  'Tablets',
-  'VR/Gaming systems',
-  'Gift cards',
+  'Grand prize of $2,000 cash',
+  '$10,000 in additional prizes, based on set categories such as age groups and different skill sets.',
 ];
 
 const useStyles = makeStyles(
@@ -79,7 +76,7 @@ const useStyles = makeStyles(
 const ContestOutline = (): ReactElement => {
   const classes = useStyles();
   return (
-    <section className={classes.root}>
+    <section className={classes.root} id="contest-outline">
       <div className={classes.container}>
         <Typography
           className={classes.typographyOverline}

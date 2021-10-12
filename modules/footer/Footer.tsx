@@ -42,6 +42,11 @@ const SOCIAL_ITEMS = [
     title: 'Twitter',
     link: 'https://twitter.com/digitalwavesnl',
   },
+  {
+    id: 'eventbrite',
+    title: 'Eventbrite',
+    link: 'https://www.eventbrite.ca/o/digital-waves-nl-36040126193',
+  },
   // {
   //   id: 'snapchat',
   //   title: 'Snapchat',
