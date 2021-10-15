@@ -43,6 +43,11 @@ const SOCIAL_ITEMS = [
     link: 'https://twitter.com/digitalwavesnl',
   },
   {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    link: 'https://linkedin.com/company/digital-waves-nl/',
+  },
+  {
     id: 'eventbrite',
     title: 'Eventbrite',
     link: 'https://www.eventbrite.ca/o/digital-waves-nl-36040126193',
