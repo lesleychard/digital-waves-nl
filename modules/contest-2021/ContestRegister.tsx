@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { DatePicker } from '@material-ui/pickers';
-import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
+import { ReactElement, useState, ChangeEvent, useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
@@ -223,6 +223,7 @@ const ContestRegister = (): ReactElement => {
     internet: false,
   });
   const [duplicateParentWarning, setDuplicateParentWarning] = useState<boolean>(false);
+  const registerSection = useRef<HTMLElement>(null);
 
   const defaultErrorMsg = (
     'Something went wrong and we could not register you at this time. '
@@ -268,6 +269,10 @@ const ContestRegister = (): ReactElement => {
 
     dispatch(subscribeToList(participantData, 'participant'));
     dispatch(subscribeToList(parentData, 'parent'));
+
+    if (registerSection.current) {
+      registerSection.current.scrollIntoView(true);
+    }
   };
 
   useEffect(
@@ -323,7 +328,7 @@ const ContestRegister = (): ReactElement => {
   );
 
   return (
-    <div className={classes.root} id="contest-register">
+    <div className={classes.root} id="contest-register" ref={registerSection}>
       <div className={classes.container}>
         <Typography
           variant="h1"
