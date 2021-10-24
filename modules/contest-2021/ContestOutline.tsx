@@ -26,7 +26,7 @@ const BODY_JUDGING = [
 
 const BODY_PRIZES = [
   'Grand prize of $2,000 cash',
-  '$10,000 in additional prizes, based on set categories such as age groups and different skill sets.',
+  'Around $8,000 in additional prizes, based on set categories such as age groups and different skill sets.',
 ];
 
 const useStyles = makeStyles(
