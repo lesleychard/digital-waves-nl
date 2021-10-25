@@ -223,7 +223,7 @@ const ContestRegister = (): ReactElement => {
     internet: false,
   });
   const [duplicateParentWarning, setDuplicateParentWarning] = useState<boolean>(false);
-  const registerSection = useRef<HTMLElement>(null);
+  const registerSection = useRef<HTMLDivElement>(null);
 
   const defaultErrorMsg = (
     'Something went wrong and we could not register you at this time. '
