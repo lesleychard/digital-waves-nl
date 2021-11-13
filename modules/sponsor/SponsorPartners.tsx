@@ -26,6 +26,11 @@ const CURRENT_SPONSORS = [
         name: 'Bluedrop Learning Networks',
         format: 'jpg',
       },
+      {
+        id: 'colab',
+        name: 'Colab Software',
+        format: 'png'
+      },
     ],
   },
   {
@@ -47,6 +52,26 @@ const CURRENT_SPONSORS = [
         name: 'Mysa',
         format: 'png',
       },
+      {
+        id: 'genoa',
+        name: 'Genoa Design',
+        format: 'jpeg',
+      },
+      {
+        id: 'milk-moovement',
+        name: 'Milk Moovement',
+        format: 'png',
+      },
+      {
+        id: 'rally',
+        name: 'Rally',
+        format: 'png',
+      },
+      {
+        id: 'carnegie-learning',
+        name: 'Carnegie Learning',
+        format: 'png',
+      },
     ],
   },
   {
@@ -63,6 +88,11 @@ const CURRENT_SPONSORS = [
         name: 'Chris Howse',
         noLogo: true,
       },
+      {
+        id: 'target',
+        name: 'Target Brand Architects',
+        format: 'jpeg'
+      }
     ],
   },
 ];
