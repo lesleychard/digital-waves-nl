@@ -127,6 +127,12 @@ const useStyles = makeStyles(
       maxWidth: `calc(100% - ${theme.spacing(2)}px)`,
       margin: theme.spacing(1),
     },
+    imgSponsorLogoContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: "wrap",
+    },
     'containerTier-gb': {
       '& $imgSponsorLogo': {
         width: '30rem',
@@ -200,26 +206,28 @@ const SponsorPartners = (): ReactElement => {
               >
                 {tier.tierName}
               </Typography>
-              {
-                tier.tierSponsors.map(sponsor => {
-                  if (sponsor.noLogo) {
-                    return (
-                      <Typography className={classes.typographySponsor}>
-                        {sponsor.name}
-                      </Typography>
-                    );
-                  }
-                  else {
-                    return (
-                      <img
-                        className={classes.imgSponsorLogo}
-                        src={`assets/images/sponsor/logos/${sponsor.id}.${sponsor.format}`}
-                        alt={sponsor.name}
-                      />
-                    );
-                  }
-                })
-              }
+              <div className={classes.imgSponsorLogoContainer}>
+                {
+                  tier.tierSponsors.map(sponsor => {
+                    if (sponsor.noLogo) {
+                      return (
+                        <Typography className={classes.typographySponsor}>
+                          {sponsor.name}
+                        </Typography>
+                      );
+                    }
+                    else {
+                      return (
+                        <img
+                          className={classes.imgSponsorLogo}
+                          src={`assets/images/sponsor/logos/${sponsor.id}.${sponsor.format}`}
+                          alt={sponsor.name}
+                        />
+                      );
+                    }
+                  })
+                }
+              </div>
             </div>
           ))
         }
