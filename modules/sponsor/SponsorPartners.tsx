@@ -26,6 +26,11 @@ const CURRENT_SPONSORS = [
         name: 'Bluedrop Learning Networks',
         format: 'jpg',
       },
+      {
+        id: 'colab',
+        name: 'Colab Software',
+        format: 'png'
+      },
     ],
   },
   {
@@ -47,6 +52,26 @@ const CURRENT_SPONSORS = [
         name: 'Mysa',
         format: 'png',
       },
+      {
+        id: 'genoa',
+        name: 'Genoa Design',
+        format: 'jpeg',
+      },
+      {
+        id: 'milk-moovement',
+        name: 'Milk Moovement',
+        format: 'png',
+      },
+      {
+        id: 'rally',
+        name: 'Rally',
+        format: 'png',
+      },
+      {
+        id: 'carnegie-learning',
+        name: 'Carnegie Learning',
+        format: 'png',
+      },
     ],
   },
   {
@@ -63,6 +88,11 @@ const CURRENT_SPONSORS = [
         name: 'Chris Howse',
         noLogo: true,
       },
+      {
+        id: 'target',
+        name: 'Target Brand Architects',
+        format: 'jpeg'
+      }
     ],
   },
 ];
@@ -96,6 +126,12 @@ const useStyles = makeStyles(
       width: '12rem',
       maxWidth: `calc(100% - ${theme.spacing(2)}px)`,
       margin: theme.spacing(1),
+    },
+    imgSponsorLogoContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: "wrap",
     },
     'containerTier-gb': {
       '& $imgSponsorLogo': {
@@ -170,26 +206,28 @@ const SponsorPartners = (): ReactElement => {
               >
                 {tier.tierName}
               </Typography>
-              {
-                tier.tierSponsors.map(sponsor => {
-                  if (sponsor.noLogo) {
-                    return (
-                      <Typography className={classes.typographySponsor}>
-                        {sponsor.name}
-                      </Typography>
-                    );
-                  }
-                  else {
-                    return (
-                      <img
-                        className={classes.imgSponsorLogo}
-                        src={`assets/images/sponsor/logos/${sponsor.id}.${sponsor.format}`}
-                        alt={sponsor.name}
-                      />
-                    );
-                  }
-                })
-              }
+              <div className={classes.imgSponsorLogoContainer}>
+                {
+                  tier.tierSponsors.map(sponsor => {
+                    if (sponsor.noLogo) {
+                      return (
+                        <Typography className={classes.typographySponsor}>
+                          {sponsor.name}
+                        </Typography>
+                      );
+                    }
+                    else {
+                      return (
+                        <img
+                          className={classes.imgSponsorLogo}
+                          src={`assets/images/sponsor/logos/${sponsor.id}.${sponsor.format}`}
+                          alt={sponsor.name}
+                        />
+                      );
+                    }
+                  })
+                }
+              </div>
             </div>
           ))
         }
