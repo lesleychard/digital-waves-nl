@@ -94,8 +94,8 @@ const SubscribeForm = (): ReactElement => {
         Subscribe to Updates
       </Typography>
       <Typography gutterBottom>
-        Stay updated on all news for the 2021 Digital Waves experience.
-        We will only send you the important stuff, like prize announcements and reminders of key contest dates.
+        Stay updated on all news about future Digital Waves experiences.
+        We will only send you the important stuff, like event announcements and other opportunities for local girls and gender-diverse youth.
       </Typography>
       {
         submitSuccess

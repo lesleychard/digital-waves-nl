@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { DatePicker } from '@material-ui/pickers';
+import Link from 'next/link';
 import { ReactElement, useState, ChangeEvent, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +27,8 @@ import { container } from '../../styles/helpers/extend';
 import { fade } from '../../styles/helpers/color';
 import { RootState } from '../../store';
 import { subscribeToList } from '../../store/actions/mailchimp';
+
+const REGISTRATION_OPEN = false;
 
 const TECH_ACCESS = [
   { value: 'computer', label: 'Computer' },
@@ -178,6 +181,13 @@ const useStyles = makeStyles(
         color: theme.palette.text.primary,
       },
     },
+    containerClosed: {
+      position: 'relative',
+      zIndex: 1,
+    },
+    buttonSubscribe: {
+      marginTop: theme.spacing(2),
+    },
     aside: {
       background: 'url(assets/images/home/home-about-us-aside.jpg) no-repeat center center',
       backgroundSize: 'cover',
@@ -322,20 +332,11 @@ const ContestRegister = (): ReactElement => {
     [mailchimpState]
   );
 
-  return (
-    <div className={classes.root} id="contest-register">
-      <div className={classes.container}>
-        <Typography
-          variant="h1"
-          className={classes.typographyH1}
-        >
-          <span>
-            Register
-          </span>
-          &nbsp;for
-          <br />
-          Digital Waves 2021
-        </Typography>
+  let render;
+
+  if (REGISTRATION_OPEN) {
+    render = (
+      <>
         <Typography gutterBottom>
           Please review the&nbsp;
           <a href="#contest-outline">
@@ -758,6 +759,47 @@ const ContestRegister = (): ReactElement => {
               </form>
             )
         }
+      </>
+    );
+  }
+  // Registration closed
+  else {
+    render = (
+      <div className={classes.containerClosed}>
+        <Typography gutterBottom>
+          Registration for this years eperience is now closed.
+          Want to join our future events?
+          Subscribe to our mailing list to be notified about future workshops, contests, and more!
+        </Typography>
+        <Link href='/subscribe'>
+          <Button
+            className={classes.buttonSubscribe}
+            component="a"
+            variant="raised"
+            color="secondary"
+          >
+            Subscribe to Updates
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className={classes.root} id="contest-register">
+      <div className={classes.container}>
+        <Typography
+          variant="h1"
+          className={classes.typographyH1}
+        >
+          <span>
+            Register
+          </span>
+          &nbsp;for
+          <br />
+          Digital Waves 2021
+        </Typography>
+        {render}
       </div>
       <div className={classes.aside} />
     </div>
