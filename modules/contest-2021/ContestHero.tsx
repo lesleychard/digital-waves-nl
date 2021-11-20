@@ -125,7 +125,7 @@ const ContestHero = (): ReactElement => {
           >
             How might we make Newfoundland &amp; Labrador more <strong>sustainable</strong> by using our smartphones?
           </Typography>
-          <div className={classes.containerButton}>
+          {/* <div className={classes.containerButton}>
             <Button
               className={classes.buttonCta}
               variant="raised"
@@ -149,7 +149,7 @@ const ContestHero = (): ReactElement => {
             >
               Help Spread the Word
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
       <Dialog onClose={handleDialogClose} open={dialogOpen}>

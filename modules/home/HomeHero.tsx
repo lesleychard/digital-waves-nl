@@ -209,20 +209,20 @@ const HomeHero = (): ReactElement => {
         </div>
       </div>
       <RetroUI className={classes.retroUI}>
-        <strong>Calling all NL girls and gender-diverse youth!</strong>&nbsp;
-        Sign up for your chance to win over $10,000 in prizes.
+        <strong>Registration for our 2021 experience is now closed.</strong>
+        &nbsp;Subscribe to stay updated about future events.
         <div className={classes.retroUICta}>
           <img
             src="assets/images/emojis/emoji-tech-girl.svg"
             alt="Female-presenting technologist emoji"
             className={classes.imgRetroUIEmoji}
           />
-          <Link href="/contest-2021#contest-register">
+          <Link href="/subscribe">
             <Button
               component="a"
               className={classes.buttonRetroUISponsor}
             >
-              Register Now
+              Subscribe Now
             </Button>
           </Link>
         </div>

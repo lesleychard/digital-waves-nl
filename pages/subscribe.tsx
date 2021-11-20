@@ -10,7 +10,7 @@ import SubscribeForm from '../modules/subscribe/SubscribeForm';
 const subscribe = (): ReactElement => {
   const title = (
     <>
-      Stay <strong>in the loop</strong> for the 2021 contest experience.
+      Stay <strong>in the loop</strong> about future Digital Waves experiences.
     </>
   );
 
