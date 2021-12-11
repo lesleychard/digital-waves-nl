@@ -64,8 +64,8 @@ const TEAM_MEMBERS = [
   {
     id: 'laura-douglas',
     name: 'Laura Douglas',
-    position: 'UX/UI Designer',
-    company: 'Target Marketing & Communications',
+    position: 'Product Designer',
+    company: 'CoLab Software',
     imageUrl: 'assets/images/bios/laura-douglas.jpg',
     profile: (
       <Typography>
