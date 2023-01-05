@@ -17,6 +17,10 @@ const MENU_ITEMS = [
     route: '/contest-2021',
   },
   {
+    title: '2023 Hackathon',
+    route: '/hackathon-2023',
+  },
+  {
     title: 'Sponsor Us',
     route: '/sponsor',
   },

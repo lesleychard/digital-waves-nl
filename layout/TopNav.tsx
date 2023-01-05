@@ -22,6 +22,11 @@ export const NAV_ITEMS: NavItem[][] = [
       label: 'Contest Fall 2021',
       route: '/contest-2021',
     },
+    {
+      id: 'hackathon-2023',
+      label: '2023 Hackathon',
+      route: '/hackathon-2023',
+    },
   ],
   [
     {
@@ -196,6 +201,8 @@ const TopNav = (): ReactElement => {
     []
   );
 
+  
+
   return (
     <nav
       className={classNames(
@@ -224,23 +231,25 @@ const TopNav = (): ReactElement => {
           <div key={index}>
             <ul className={classes.ul}>
               {
-                navCol.map(item => (
-                  <li key={item.id} className={classes.li}>
-                    <Link href={item.route}>
-                      <Button
-                        component="a"
-                        className={classNames({
-                          [classes.button]: item.id !== 'sponsor',
-                          [classes.buttonSelected]: router.pathname === item.route,
-                        })}
-                        variant="raised"
-                        color={item.id === 'sponsor' ? 'secondary' : 'primary'}
-                      >
-                        {item.label}
-                      </Button>
-                    </Link>
-                  </li>
-                ))
+                navCol.map(item => {
+                  
+                  return (
+                    <li key={item.id} className={classes.li}>
+                      <Link href={item.route}>
+                        <Button
+                          component="a"
+                          className={classNames({
+                            [classes.button]: item.id !== 'sponsor',
+                            [classes.buttonSelected]: router.pathname === item.route,
+                          })}
+                          variant="raised"
+                          color={item.id === 'sponsor' ? 'secondary' : 'primary'}
+                        >
+                          {item.label}
+                        </Button>
+                      </Link>
+                    </li>
+                  )})
               }
             </ul>
           </div>
