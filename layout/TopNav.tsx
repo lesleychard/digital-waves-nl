@@ -9,6 +9,7 @@ import { light } from '../styles/theme/_palette';
 import Button from '../components/Button';
 import MobileMenu from './MobileMenu';
 import Logo from '../components/Logo';
+import { getSiteVersion, SITE_VERSION_HACKATHON_2023 } from '../lib/getSiteVersion';
 
 export const NAV_ITEMS: NavItem[][] = [
   [
@@ -16,16 +17,6 @@ export const NAV_ITEMS: NavItem[][] = [
       id: 'home',
       label: 'About Us',
       route: '/',
-    },
-    {
-      id: 'contest-2021',
-      label: 'Contest Fall 2021',
-      route: '/contest-2021',
-    },
-    {
-      id: 'hackathon-2023',
-      label: '2023 Hackathon',
-      route: '/hackathon-2023',
     },
   ],
   [
@@ -41,6 +32,20 @@ export const NAV_ITEMS: NavItem[][] = [
     },
   ],
 ];
+
+if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
+  NAV_ITEMS[0].push({
+    id: "hackathon-2023",
+    label: "2023 Hackathon",
+    route: "/hackathon-2023",
+  });
+} else {
+  NAV_ITEMS[0].push({
+    id: "contest-2021",
+    label: "Contest Fall 2021",
+    route: "/contest-2021",
+  });
+}
 
 const useStyles = makeStyles(
   (theme) => ({

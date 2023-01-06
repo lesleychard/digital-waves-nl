@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
+import { getSiteVersion, SITE_VERSION_HACKATHON_2023 } from '../../lib/getSiteVersion';
 import Logo from '../../components/Logo';
 import { container, stripUl } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
@@ -11,14 +12,6 @@ const MENU_ITEMS = [
   {
     title: 'About Us',
     route: '/',
-  },
-  {
-    title: 'Contest Fall 2021',
-    route: '/contest-2021',
-  },
-  {
-    title: '2023 Hackathon',
-    route: '/hackathon-2023',
   },
   {
     title: 'Sponsor Us',
@@ -72,6 +65,18 @@ const SOCIAL_ITEMS = [
   //   link: '#',
   // },
 ];
+
+if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
+  MENU_ITEMS.push({
+    title: '2023 Hackathon',
+    route: '/hackathon-2023',
+  });
+} else {
+  MENU_ITEMS.push({
+    title: 'Contest Fall 2021',
+    route: '/contest-2021',
+  });
+}
 
 const useStyles = makeStyles(
   (theme) => ({
