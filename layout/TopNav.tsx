@@ -236,25 +236,23 @@ const TopNav = (): ReactElement => {
           <div key={index}>
             <ul className={classes.ul}>
               {
-                navCol.map(item => {
-                  
-                  return (
-                    <li key={item.id} className={classes.li}>
-                      <Link href={item.route}>
-                        <Button
-                          component="a"
-                          className={classNames({
-                            [classes.button]: item.id !== 'sponsor',
-                            [classes.buttonSelected]: router.pathname === item.route,
-                          })}
-                          variant="raised"
-                          color={item.id === 'sponsor' ? 'secondary' : 'primary'}
-                        >
-                          {item.label}
-                        </Button>
-                      </Link>
-                    </li>
-                  )})
+                navCol.map(item => (
+                  <li key={item.id} className={classes.li}>
+                    <Link href={item.route}>
+                      <Button
+                        component="a"
+                        className={classNames({
+                          [classes.button]: item.id !== 'sponsor',
+                          [classes.buttonSelected]: router.pathname === item.route,
+                        })}
+                        variant="raised"
+                        color={item.id === 'sponsor' ? 'secondary' : 'primary'}
+                      >
+                        {item.label}
+                      </Button>
+                    </Link>
+                  </li>
+                ))
               }
             </ul>
           </div>
