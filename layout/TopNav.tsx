@@ -206,8 +206,6 @@ const TopNav = (): ReactElement => {
     []
   );
 
-  
-
   return (
     <nav
       className={classNames(
