@@ -1,7 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Link } from '@material-ui/core';
 
+import Button from '../../components/Button';
 import { container } from '../../styles/helpers/extend';
 
 const useStyles = makeStyles(
@@ -9,6 +10,14 @@ const useStyles = makeStyles(
     root: {
       position: 'relative',
       background: theme.palette.background.paper,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
+    spaceContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
     },
     container: {
       ...container(theme),
@@ -49,6 +58,9 @@ const useStyles = makeStyles(
         },
       },
     },
+    button: {
+      marginBottom: theme.spacing(4),
+    },
     paragraph: {
       marginBottom: theme.spacing(4),
     },
@@ -69,6 +81,17 @@ const useStyles = makeStyles(
         margin: 0,
       },
     },
+    link: {
+      color: "black",
+    },
+    sponserContainer: {
+      marginTop: theme.spacing(50),
+      display: "flex",
+      justifyContent: "center",
+    },
+    upperCase: {
+      textTransform: "uppercase",
+    },
   })
 );
 
@@ -77,27 +100,43 @@ const Hackathon2023Hero = (): ReactElement => {
 
   return (
     <div className={classes.root} id="contest-register">
-      <div className={classes.container}>
-        <Typography
-          variant="h1"
-          className={classes.typographyH1}
-        >
-          <strong>Help us</strong> create NL&apos;s queer-owned and -inclusive resource app.
-        </Typography>
-        <Typography className={classes.paragraph}>
-          InQueeries will be Newfoundland & Labrador&apos;s first comprehensive 
-          2SLGBTQIA+ directory of businesses, organizations, and professionals 
-          who support the queer community, and we need your help to create our app.
-        </Typography>
-        <Typography>
-          We are calling on girls, gender-diverse and queer youth ages 11-18, residing
-          anywhere in the province of Newfoundland & Labrador to help us design and 
-          code the InQueeries web app in our 2023 Hackathon. Learn all the digital skills
-          required through our virtual workshops (beginner friendly!), build a real webpage
-          that will be included in our app, and enter to win amazing prizes.
-        </Typography>
+      <div>
+        <div className={classes.container}>
+          <Typography
+            variant="h1"
+            className={classes.typographyH1}
+          >
+            <strong>Help us</strong> create NL&apos;s queer-owned and -inclusive resource app.
+          </Typography>
+          <Typography className={classes.paragraph}>
+            InQueeries will be Newfoundland & Labrador&apos;s first comprehensive 
+            2SLGBTQIA+ directory of businesses, organizations, and professionals 
+            who support the queer community, and we need your help to create our app.
+          </Typography>
+          <Typography className={classes.paragraph}>
+            We are calling on girls, gender-diverse and queer youth ages 11-18, residing
+            anywhere in the province of Newfoundland & Labrador to help us design and 
+            code the InQueeries web app in our 2023 Hackathon. Learn all the digital skills
+            required through our virtual workshops (beginner friendly!), build a real webpage
+            that will be included in our app, and enter to win amazing prizes.
+          </Typography>
+          <div className={classes.spaceContainer}>
+            <Button
+              className={classes.button}
+              component="a"
+              variant="raised"
+              color="secondary"
+            >
+              Pre-register for 2023 Hackathon
+            </Button>
+            <Link><Typography className={classes.link}>Program Information & Key Dates</Typography></Link>
+          </div>
+        </div>
+        <div className={classes.aside} />
       </div>
-      <div className={classes.aside} />
+      <div className={classes.sponserContainer}>
+        <Typography className={classes.upperCase}>Proud partners of the 2023 Hackathon</Typography>
+      </div>
     </div>
   );
 };
