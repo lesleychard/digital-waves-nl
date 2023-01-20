@@ -2,6 +2,10 @@ import { init } from 'emailjs-com';
 import { create } from 'jss';
 import type { AppProps } from 'next/app';
 import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import {
   jssPreset,
   StylesProvider,
   ThemeProvider,
@@ -16,6 +20,8 @@ import globals from '../styles/globals/globals';
 import theme from '../styles/theme/theme';
 
 const jssGlobals = create().setup(jssPreset());
+
+const queryClient = new QueryClient()
 
 const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   useEffect(() => {
@@ -36,14 +42,16 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   }, []);
 
   return (
-    <StylesProvider>
-      <ThemeProvider theme={theme}>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    </StylesProvider>
+    <QueryClientProvider client={queryClient}>
+      <StylesProvider>
+        <ThemeProvider theme={theme}>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </MuiPickersUtilsProvider>
+        </ThemeProvider>
+      </StylesProvider>
+    </QueryClientProvider>
   );
 };
 
