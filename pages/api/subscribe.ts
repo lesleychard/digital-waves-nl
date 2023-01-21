@@ -1,7 +1,8 @@
 import md5 from "md5";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default async function handler(_req, res): void {
+export default async function handler(req, res): void {
+  const { name, message } = req.body;
   const checkSubscriber = await fetch(
     `https://us5.api.mailchimp.com/3.0/lists/936ef2fe33/members/${md5("freddiepike709@gmail.com")}`,
     {
