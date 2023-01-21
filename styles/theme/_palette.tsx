@@ -50,6 +50,7 @@ const palette = {
   },
   text: {
     primary: dark,
+    secondary: light,
   },
   divider: fade(primaryDark, 0.88),
   action: {

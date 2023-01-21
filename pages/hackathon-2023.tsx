@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
 
 import SocialMeta from '../components/SocialMeta';
+import Hackathon2023TopBanner from '../modules/hackathon-2023/Hackathon2023TopBanner';
 import Hackathon2023Hero from '../modules/hackathon-2023/Hackathon2023Hero';
 import Hackathon2023ProgramInfo from '../modules/hackathon-2023/Hackathon2023ProgramInfo';
 import Hackathon2023Register from '../modules/hackathon-2023/Hackathon2023Register';
@@ -25,6 +26,7 @@ const hackathon2023 = (): ReactElement => {
     <Layout>
       <SocialMeta title="Hackathon 2023" />
       <div className={classes.root}>
+        <Hackathon2023TopBanner />
         <Hackathon2023Hero />
         <Hackathon2023ProgramInfo />
         <Hackathon2023Register />
