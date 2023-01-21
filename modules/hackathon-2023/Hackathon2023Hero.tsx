@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
-import { Typography, Link } from '@material-ui/core';
+import { Typography, Link, Grid } from '@material-ui/core';
 
 import Button from '../../components/Button';
 import { container } from '../../styles/helpers/extend';
@@ -10,9 +10,6 @@ const useStyles = makeStyles(
     root: {
       position: 'relative',
       background: theme.palette.background.paper,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
     },
     spaceContainer: {
       display: "flex",
@@ -70,7 +67,8 @@ const useStyles = makeStyles(
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '50vh',
+      height: "75%",
+      flexBasis: "100%",
       margin: `0 ${theme.spacing(3)}px`,
       [theme.breakpoints.up('md')]: {
         position: 'absolute',
@@ -84,10 +82,23 @@ const useStyles = makeStyles(
     link: {
       color: "black",
     },
-    sponserContainer: {
-      marginTop: theme.spacing(50),
+    proudSponserContainer: {
+      marginTop: theme.spacing(5),
       display: "flex",
       justifyContent: "center",
+      flexBasis: "100%",
+    },
+    sponserContainer: {
+      marginTop: theme.spacing(5),
+      display: "flex",
+      justifyContent: "center",
+      flexBasis: "100%",
+    },
+    sponserImage: {
+      background: 'url(assets/images/hackathon/STEM_for_girls_test.png) no-repeat center center',
+      backgroundSize: 'cover',
+      height: "130px",
+      flexBasis: "20%",
     },
     upperCase: {
       textTransform: "uppercase",
@@ -99,9 +110,9 @@ const Hackathon2023Hero = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} id="contest-register">
-      <div>
-        <div className={classes.container}>
+    <Grid container className={classes.root}>
+      <Grid container spacing={8}>
+        <Grid className={classes.container}>
           <Typography
             variant="h1"
             className={classes.typographyH1}
@@ -120,7 +131,7 @@ const Hackathon2023Hero = (): ReactElement => {
             required through our virtual workshops (beginner friendly!), build a real webpage
             that will be included in our app, and enter to win amazing prizes.
           </Typography>
-          <div className={classes.spaceContainer}>
+          <Grid className={classes.spaceContainer}>
             <Button
               className={classes.button}
               component="a"
@@ -130,14 +141,19 @@ const Hackathon2023Hero = (): ReactElement => {
               Pre-register for 2023 Hackathon
             </Button>
             <Link><Typography className={classes.link}>Program Information & Key Dates</Typography></Link>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
         <div className={classes.aside} />
-      </div>
+      </Grid>
+      <Grid container className={classes.proudSponserContainer} alignItems="stretch" >
+        <Typography align="center" className={classes.upperCase}><strong>Proud partners of the 2023 Hackathon</strong></Typography>
+      </Grid>
       <div className={classes.sponserContainer}>
-        <Typography className={classes.upperCase}>Proud partners of the 2023 Hackathon</Typography>
+        <div className={classes.sponserImage} />
+        <div className={classes.sponserImage} />
+        <div className={classes.sponserImage} />
       </div>
-    </div>
+    </Grid>
   );
 };
 
