@@ -127,7 +127,7 @@ const Hackathon2023Hero = (): ReactElement => {
           <Typography className={classes.paragraph}>
             We are calling on girls, gender-diverse and queer youth ages 11-18, residing
             anywhere in the province of Newfoundland & Labrador to help us design and 
-            code the InQueeries web app in our 2023 Digital Trialathon. Learn all the digital skills
+            code the InQueeries web app in our 2023 Digital Triathlon. Learn all the digital skills
             required through our virtual workshops (beginner friendly!), build a real webpage
             that will be included in our app, and enter to win amazing prizes.
           </Typography>
@@ -138,7 +138,7 @@ const Hackathon2023Hero = (): ReactElement => {
               variant="raised"
               color="secondary"
             >
-              Pre-register for 2023 Digital Trialathon
+              Pre-register for 2023 Digital Triathlon
             </Button>
             <Link><Typography className={classes.link}>Program Information & Key Dates</Typography></Link>
           </Grid>
@@ -146,7 +146,7 @@ const Hackathon2023Hero = (): ReactElement => {
         <div className={classes.aside} />
       </Grid>
       <Grid container className={classes.proudSponserContainer} alignItems="stretch" >
-        <Typography align="center" className={classes.upperCase}><strong>Proud partners of the 2023 Digital Trialathon</strong></Typography>
+        <Typography align="center" className={classes.upperCase}><strong>Proud partners of the 2023 Digital Triathlon</strong></Typography>
       </Grid>
       <div className={classes.sponserContainer}>
         <div className={classes.sponserImage} />
