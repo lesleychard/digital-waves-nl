@@ -127,7 +127,7 @@ const Hackathon2023Hero = (): ReactElement => {
           <Typography className={classes.paragraph}>
             We are calling on girls, gender-diverse and queer youth ages 11-18, residing
             anywhere in the province of Newfoundland & Labrador to help us design and 
-            code the InQueeries web app in our 2023 Hackathon. Learn all the digital skills
+            code the InQueeries web app in our 2023 Digital Trialathon. Learn all the digital skills
             required through our virtual workshops (beginner friendly!), build a real webpage
             that will be included in our app, and enter to win amazing prizes.
           </Typography>
