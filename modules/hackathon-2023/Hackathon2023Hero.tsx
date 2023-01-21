@@ -138,7 +138,7 @@ const Hackathon2023Hero = (): ReactElement => {
               variant="raised"
               color="secondary"
             >
-              Pre-register for 2023 Hackathon
+              Pre-register for 2023 Digital Trialathon
             </Button>
             <Link><Typography className={classes.link}>Program Information & Key Dates</Typography></Link>
           </Grid>
@@ -146,7 +146,7 @@ const Hackathon2023Hero = (): ReactElement => {
         <div className={classes.aside} />
       </Grid>
       <Grid container className={classes.proudSponserContainer} alignItems="stretch" >
-        <Typography align="center" className={classes.upperCase}><strong>Proud partners of the 2023 Hackathon</strong></Typography>
+        <Typography align="center" className={classes.upperCase}><strong>Proud partners of the 2023 Digital Trialathon</strong></Typography>
       </Grid>
       <div className={classes.sponserContainer}>
         <div className={classes.sponserImage} />
