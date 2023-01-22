@@ -38,21 +38,27 @@ const useStyles = makeStyles(
 
 const Hackathon2023Register = (): ReactElement => {
   const classes = useStyles();
-  
-  // const updateMergeFieldMutation = useMutation({
-  //   mutationFn: (data) => {
-  //     return updateMergeField(data);
-  //   },
-  // });
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (!userExists) {
-  //     createSubMutation.mutate({ email: subscriberEmail, mergeField });
-  //   } else {
-  //     updateMergeFieldMutation.mutate({ subscriber_hash: subscriberHash, mergeField });
-  //   }
-  // };
+  const [subscriberEmail, setSubscriberEmail] = useState();
+  const [subscriberParentEmail, setSubscriberParentEmail] = useState();
+
+  const mutation = useMutation({
+    mutationFn: (newFormData) => {
+      return fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFormData),
+      });
+    },
+  });
+
+  const handleSubmit = (event: Event): void => {
+    event.preventDefault();
+    mutation.mutate({ email: subscriberEmail, parentEmail: subscriberParentEmail });
+    console.log('submit');
+  };
 
   return (
     <div className={classes.root}>
@@ -69,31 +75,25 @@ const Hackathon2023Register = (): ReactElement => {
               }}
             />
           </label>
-          <button type="submit" onClick={handleCheck}>Check</button>
-          {userExists ?
-            <>
-              <label htmlFor="FNAME">
-                First Name:
-                <input
-                  type="text"
-                  id="FNAME"
-                  value={mergeField.FNAME}
-                  onChange={(event) => {
-                    setMergeField({ ...mergeField, FNAME: event.target.value });
-                  }}
-                />
-              </label>
-              <button type="submit" disabled={updateMergeFieldMutation.status === "loading"}>
-                {updateMergeFieldMutation.status === "loading" ? "Loading..." : "Update"}
-              </button>
-              {updateMergeFieldMutation.error && <p style={{ color: "red" }}>{updateMergeFieldMutation.error}</p>}
-            </>
-            :
-            <button type="submit" disabled={createSubMutation.status === "loading"}>
-              {createSubMutation.status === "loading" ? "Loading..." : "Create"}
-            </button>
-          }
+          <label htmlFor="parent_email">
+            Parent Email:
+            <input
+              type="parent_email"
+              id="parent_email"
+              value={subscriberParentEmail}
+              onChange={(event) => {
+                setSubscriberParentEmail(event.target.value);
+              }}
+            />
+          </label>
+          <button type="submit">
+            Submit
+          </button>
         </form>
+        {mutation.isLoading && "loading"}
+        {mutation.error && mutation.error}
+        {mutation.data && JSON.stringify(mutation.data)}
+        {mutation.status && mutation.status}
       </div>
     </div>
 
