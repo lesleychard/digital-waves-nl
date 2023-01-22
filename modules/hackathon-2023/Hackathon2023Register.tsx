@@ -76,7 +76,7 @@ const Hackathon2023Register = (): ReactElement => {
             />
           </label>
           <label htmlFor="parent_email">
-            Parent Email:
+            Parent Email: freddie test
             <input
               type="parent_email"
               id="parent_email"
