@@ -37,6 +37,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.2",
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
