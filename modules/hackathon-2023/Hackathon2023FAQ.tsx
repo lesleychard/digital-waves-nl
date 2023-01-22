@@ -40,27 +40,6 @@ const useStyles = makeStyles(
     gridContainer: {
       marginBottom: theme.spacing(4),
     },
-    typographyH2: {
-      fontSize: '2rem',
-      marginBottom: theme.spacing(2),
-      '$gridContainer:first-of-type &': {
-        color: lighten(theme.palette.secondary.light, 0.05),
-      },
-      '$gridContainer:nth-of-type(2) &': {
-        color: lighten(theme.palette.highlight.light, 0.05),
-      },
-      '$gridContainer:nth-of-type(3) &': {
-        color: lighten(theme.palette.lowlight.light, 0.05),
-      },
-      [theme.breakpoints.up('md')]: {
-        textAlign: 'right',
-        paddingRight: theme.spacing(4),
-        marginBottom: theme.spacing(6),
-      },
-    },
-    typographyParagraph: {
-      marginBottom: theme.spacing(2),
-    },
   })
 );
 
@@ -137,7 +116,30 @@ type CustomTypographyProps = {
 };
 
 const TypographyHeading = ({ children }: CustomTypographyProps): ReactElement => {
-  const classes = useStyles();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const classes: any = makeStyles(
+    (theme) => ({
+      typographyH2: {
+        fontSize: '2rem',
+        marginBottom: theme.spacing(2),
+        '$gridContainer:first-of-type &': {
+          color: lighten(theme.palette.secondary.light, 0.05),
+        },
+        '$gridContainer:nth-of-type(2) &': {
+          color: lighten(theme.palette.highlight.light, 0.05),
+        },
+        '$gridContainer:nth-of-type(3) &': {
+          color: lighten(theme.palette.lowlight.light, 0.05),
+        },
+        [theme.breakpoints.up('md')]: {
+          textAlign: 'right',
+          paddingRight: theme.spacing(4),
+          marginBottom: theme.spacing(6),
+        },
+      },
+    })
+  );
+
   return (
     <Typography
       className={classes.typographyH2}
@@ -149,7 +151,15 @@ const TypographyHeading = ({ children }: CustomTypographyProps): ReactElement =>
 };
 
 const TypographyBody = ({ children }: CustomTypographyProps): ReactElement => {
-  const classes = useStyles();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const classes: any = makeStyles(
+    (theme) => ({
+      typographyParagraph: {
+        marginBottom: theme.spacing(2),
+      },
+    })
+  );
+
   return (
     <Typography
       className={classes.typographyParagraph}
