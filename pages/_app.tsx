@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import {
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query'
+} from '@tanstack/react-query';
 import {
   jssPreset,
   StylesProvider,
@@ -21,7 +21,7 @@ import theme from '../styles/theme/theme';
 
 const jssGlobals = create().setup(jssPreset());
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   useEffect(() => {
