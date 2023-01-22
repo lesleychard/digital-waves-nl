@@ -36,7 +36,7 @@ const FooterSubscribe = (): ReactElement => {
   return (
     <div className={classes.root}>
       <Typography className={classes.typography}>
-        Want to stay updated about future Digital Waves experiences?
+        Want to stay updated?
       </Typography>
       <Link href="/subscribe">
         <Button
