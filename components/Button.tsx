@@ -97,11 +97,12 @@ const useStyles = makeStyles(
         background: theme.palette.primary.main,
       },
       '&:hover': {
-        background: theme.palette.secondary.main,
-        color: theme.palette.secondary.contrastText,
+        background: theme.palette.lowlight.main,
+        color: theme.palette.highlight.contrastText,
       },
-      '&:active, &:focus': {
-        background: theme.palette.secondary.light,
+      '&:active, &:focus, &:visited': {
+        background: theme.palette.lowlight.light,
+        color: theme.palette.highlight.contrastText,
       },
     },
     raisedSmall: {

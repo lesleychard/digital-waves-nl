@@ -7,7 +7,7 @@ import Hackathon2023Hero from '../modules/hackathon-2023/Hackathon2023Hero';
 import Hackathon2023ProgramInfo from '../modules/hackathon-2023/Hackathon2023ProgramInfo';
 import Hackathon2023Register from '../modules/hackathon-2023/Hackathon2023Register';
 import Hackathon2023FAQ from '../modules/hackathon-2023/Hackathon2023FAQ';
-import Hackathon2023Footer from '../modules/footer/Hackathon2023Footer';
+import Hackathon2023Footer from '../modules/hackathon-2023/Hackathon2023Footer';
 import Footer from '../modules/footer/Footer';
 import FooterSubscribe from '../modules/footer/FooterSubscribe';
 
