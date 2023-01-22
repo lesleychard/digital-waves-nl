@@ -12,9 +12,9 @@ const useStyles = makeStyles(
       background: theme.palette.background.paper,
     },
     spaceContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
     },
     container: {
       ...container(theme),
@@ -67,8 +67,8 @@ const useStyles = makeStyles(
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      height: "75%",
-      flexBasis: "100%",
+      height: '75%',
+      flexBasis: '100%',
       margin: `0 ${theme.spacing(3)}px`,
       [theme.breakpoints.up('md')]: {
         position: 'absolute',
@@ -80,28 +80,28 @@ const useStyles = makeStyles(
       },
     },
     link: {
-      color: "black",
+      color: 'black',
     },
     proudSponserContainer: {
       marginTop: theme.spacing(5),
-      display: "flex",
-      justifyContent: "center",
-      flexBasis: "100%",
+      display: 'flex',
+      justifyContent: 'center',
+      flexBasis: '100%',
     },
     sponserContainer: {
       marginTop: theme.spacing(5),
-      display: "flex",
-      justifyContent: "center",
-      flexBasis: "100%",
+      display: 'flex',
+      justifyContent: 'center',
+      flexBasis: '100%',
     },
     sponserImage: {
       background: 'url(assets/images/hackathon/STEM_for_girls_test.png) no-repeat center center',
       backgroundSize: 'cover',
-      height: "130px",
-      flexBasis: "20%",
+      height: '130px',
+      flexBasis: '20%',
     },
     upperCase: {
-      textTransform: "uppercase",
+      textTransform: 'uppercase',
     },
   })
 );
