@@ -2,14 +2,15 @@ import md5 from "md5";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export default async function handler(req: any, res: any): Promise<any> {
-  const { email, parentEmail } = req.body;
-  console.log(`email: ${email}`);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const returnData: any = {};
+  const mergeFields = { ...req.body, "CONSENT": String(req.body.CONSENT) };
+
   console.log(`process.env.MAILCHIMP_API_KEY: ${process.env.MAILCHIMP_API_KEY}`);
+  console.log(`~~~mergeFields: ${JSON.stringify(mergeFields)}`);
 
   const checkSubscriber = await fetch(
-    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(email)}`,
+    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +23,7 @@ export default async function handler(req: any, res: any): Promise<any> {
 
   if (checkSubscriberData.status ===  'subscribed') {
     console.log('you are subscribed');
-    const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(email)}`, {
+    const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -52,12 +53,8 @@ export default async function handler(req: any, res: any): Promise<any> {
         },
         body: JSON.stringify({
           status: "subscribed",
-          email_address: email,
-          merge_fields: {
-            "FNAME": "Freddie",
-            "LNAME": "Pike",
-            "PARTIC_23": "true",
-          },
+          email_address: mergeFields.EMAIL,
+          merge_fields: mergeFields,
         }),
       }
     );
@@ -69,9 +66,9 @@ export default async function handler(req: any, res: any): Promise<any> {
     returnData['childEmail'] = createSubscriberData;
   }
 
-  if (parentEmail !== "") {
+  if (mergeFields.P_EMAIL !== "") {
     const checkParentSubscriber = await fetch(
-      `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(parentEmail)}`,
+      `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.P_EMAIL)}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +81,7 @@ export default async function handler(req: any, res: any): Promise<any> {
 
     if (checkParentSubscriberData.status ===  'subscribed') {
       console.log('you are subscribed');
-      const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(parentEmail)}`, {
+      const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.P_EMAIL)}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -114,12 +111,8 @@ export default async function handler(req: any, res: any): Promise<any> {
           },
           body: JSON.stringify({
             status: "subscribed",
-            email_address: parentEmail,
-            merge_fields: {
-              "FNAME": "parent Freddie",
-              "LNAME": "parent Pike",
-              "PARTIC_23": "true",
-            },
+            email_address: mergeFields.P_EMAIL,
+            merge_fields: { ...mergeFields, ...{ EMAIL: mergeFields.P_EMAIL, "P_FNAME": undefined, "P_LNAME": undefined } },
           }),
         }
       );

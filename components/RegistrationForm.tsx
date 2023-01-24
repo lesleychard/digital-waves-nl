@@ -23,7 +23,7 @@ import {
   ReactNode,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
 import moment from 'moment';
 import * as Yup from 'yup';
 
@@ -31,8 +31,6 @@ import Button from './Button';
 import useYupValidationResolver from '../lib/useYupValidationResolver';
 import { container } from '../styles/helpers/extend';
 import { fade } from '../styles/helpers/color';
-import { RootState } from '../store';
-import { subscribeToList } from '../store/actions/mailchimp';
 
 const TECH_ACCESS = [
   { value: 'computer', label: 'Computer' },
@@ -231,8 +229,6 @@ const RegistrationForm = ({
   participantMergeTag,
 }: Props): ReactElement => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const mailchimpState = useSelector((state: RootState) => state.mailchimp);
   const {
     control,
     handleSubmit,
@@ -241,12 +237,25 @@ const RegistrationForm = ({
   } = useForm<FormData>({
     resolver: useYupValidationResolver(VALIDATION_SCHEMA),
   });
+  const mutation = useMutation({
+    mutationFn: (newFormData: FormData) => {
+      return fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFormData),
+      });
+    },
+  });
+  
   const watchReferrer = watch('REFERRER');
   const dateFormat = 'MM/DD/YYYY';
 
   const [submitLoading, setSubmitLoading] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
-  const [submitError, setSubmitError] = useState<Error>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [submitError, setSubmitError] = useState<any>();
   const [techAccess, setTechAccess] = useState({
     computer: false,
     tablet: false,
@@ -302,60 +311,26 @@ const RegistrationForm = ({
       parentData[parentMergeTag] = 'true';
     }
 
-    dispatch(subscribeToList(participantData, 'participant'));
-    dispatch(subscribeToList(parentData, 'parent'));
+    mutation.mutate({ ...participantData });
   };
 
   useEffect(
     () => {
-      if (mailchimpState.error) {
-        setSubmitError(mailchimpState.error);
+      if (mutation.error) {
+        setSubmitError(mutation.error);
         setSubmitLoading(false);
       }
       else {
         if (
-          !mailchimpState.loading
-          && mailchimpState.submissions
-          && mailchimpState.submissions.length
-        ) {
-          const participantIndex = mailchimpState.submissions.findIndex(
-            (sub => sub.type === 'participant')
-          );
-          const parentIndex = mailchimpState.submissions.findIndex(
-            (sub => sub.type === 'parent')
-          );
-
-          if (participantIndex >= 0 && parentIndex >= 0) {
-            if (mailchimpState.submissions[participantIndex].code === 'error') {
-              const registeredError =
-                'Oops! According to our records you\'ve already registered for Digital Waves 2023. '
-                + 'If you have not registered already and would like to register with this email '
-                + 'please contact info@digitalwavesnl.ca and we will assist you.';
-
-              setSubmitError(new Error(registeredError));
-              setSubmitLoading(false);
-            }
-            else {
-              if (mailchimpState.submissions[parentIndex].code === 'error') {
-                setDuplicateParentWarning(true);
-              }
-              setSubmitSuccess(true);
-              setSubmitLoading(false);
-            }
-          }
-        }
-        if (
           submitLoading
-          && !mailchimpState.loading
-          && mailchimpState.submissions
-          && !mailchimpState.submissions.length
+          && !mutation.isLoading
         ) {
           setSubmitError(new Error(defaultErrorMsg));
           setSubmitLoading(false);
         }
       }
     },
-    [mailchimpState]
+    [mutation.error]
   );
 
   let render;
@@ -768,7 +743,7 @@ const RegistrationForm = ({
                     variant="raised"
                     color="secondary"
                     type="submit"
-                    disabled={submitLoading}
+                    // disabled={submitLoading} Makes testing easier haha.
                   >
                     Register for Digital Waves
                   </Button>
