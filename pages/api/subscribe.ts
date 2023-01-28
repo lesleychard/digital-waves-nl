@@ -1,13 +1,13 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
+
 import md5 from "md5";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export default async function handler(req: any, res: any): Promise<any> {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<any> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const returnData: any = {};
   const mergeFields = { ...req.body, "CONSENT": String(req.body.CONSENT) };
-
-  console.log(`process.env.MAILCHIMP_API_KEY: ${process.env.MAILCHIMP_API_KEY}`);
-  console.log(`~~~mergeFields: ${JSON.stringify(mergeFields)}`);
+  console.log(`mergeFields: ${mergeFields}`);
 
   const checkSubscriber = await fetch(
     `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}`,
@@ -22,7 +22,7 @@ export default async function handler(req: any, res: any): Promise<any> {
   const checkSubscriberData = await checkSubscriber.json();
 
   if (checkSubscriberData.status ===  'subscribed') {
-    console.log('you are subscribed');
+    console.log('child is subscribed');
     const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}`, {
       method: "PATCH",
       headers: {
@@ -32,17 +32,17 @@ export default async function handler(req: any, res: any): Promise<any> {
       },
       body: JSON.stringify({
         merge_fields: {
-          "PARTIC_23": "false",
+          merge_fields: mergeFields,
         },
       }),
     });
 
     const updateHackathonFieldData = await updateHackathonField.json();
-
-    res.status(200).json(updateHackathonFieldData);
-
+    console.log('Child Data');
+    console.log(updateHackathonFieldData);
+    returnData['childEmail'] = updateHackathonFieldData;
   } else {
-    console.log('you are not subscribed');
+    console.log('child is not subscribed');
     const createSubscriber = await fetch(
       `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/`,
       {
@@ -60,9 +60,8 @@ export default async function handler(req: any, res: any): Promise<any> {
     );
 
     const createSubscriberData = await createSubscriber.json();
-    console.log('subscriber data');
+    console.log('Child Data');
     console.log(createSubscriberData);
-
     returnData['childEmail'] = createSubscriberData;
   }
 
@@ -80,7 +79,7 @@ export default async function handler(req: any, res: any): Promise<any> {
     const checkParentSubscriberData = await checkParentSubscriber.json();
 
     if (checkParentSubscriberData.status ===  'subscribed') {
-      console.log('you are subscribed');
+      console.log('parent is subscribed');
       const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.P_EMAIL)}`, {
         method: "PATCH",
         headers: {
@@ -90,17 +89,18 @@ export default async function handler(req: any, res: any): Promise<any> {
         },
         body: JSON.stringify({
           merge_fields: {
-            "PARTIC_23": "false",
+            merge_fields: { ...mergeFields, ...{ EMAIL: mergeFields.P_EMAIL, "P_FNAME": undefined, "P_LNAME": undefined } },
           },
         }),
       });
   
       const updateHackathonFieldData = await updateHackathonField.json();
-  
-      res.status(200).json(updateHackathonFieldData);
+      console.log('Subscriber Data');
+      console.log(updateHackathonFieldData);
+      returnData['parentEmail'] = updateHackathonFieldData;
   
     } else {
-      console.log('you are not subscribed');
+      console.log('parent is not subscribed');
       const createSubscriber = await fetch(
         `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/`,
         {
@@ -118,7 +118,7 @@ export default async function handler(req: any, res: any): Promise<any> {
       );
   
       const createSubscriberData = await createSubscriber.json();
-      console.log('subscriber data');
+      console.log('Parent Data');
       console.log(createSubscriberData);
       returnData['parentEmail'] = createSubscriberData;
     }
