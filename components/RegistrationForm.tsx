@@ -261,8 +261,7 @@ const RegistrationForm = ({
 
   const [submitLoading, setSubmitLoading] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [submitError, setSubmitError] = useState<any>();
+  const [submitError, setSubmitError] = useState<Error>();
   const [techAccess, setTechAccess] = useState({
     computer: false,
     tablet: false,
