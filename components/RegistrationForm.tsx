@@ -319,18 +319,23 @@ const RegistrationForm = ({
       if (mutation.error) {
         setSubmitError(mutation.error);
         setSubmitLoading(false);
+        return undefined;
       }
-      else {
-        if (
-          submitLoading
-          && !mutation.isLoading
-        ) {
-          setSubmitError(new Error(defaultErrorMsg));
-          setSubmitLoading(false);
-        }
+      if (mutation.isSuccess) {
+        setSubmitSuccess(true);
+        setSubmitLoading(false);
+        return undefined;
+      }
+
+      if (
+        submitLoading
+        && !mutation.isLoading
+      ) {
+        setSubmitError(new Error(defaultErrorMsg));
+        setSubmitLoading(false);
       }
     },
-    [mutation.error]
+    [mutation.error, mutation.isSuccess, submitLoading, mutation.isLoading] // rules of hook eslint
   );
 
   let render;
@@ -743,7 +748,7 @@ const RegistrationForm = ({
                     variant="raised"
                     color="secondary"
                     type="submit"
-                    // disabled={submitLoading} Makes testing easier haha.
+                    disabled={submitLoading}
                   >
                     Register for Digital Waves
                   </Button>
