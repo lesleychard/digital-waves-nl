@@ -238,14 +238,21 @@ const RegistrationForm = ({
     resolver: useYupValidationResolver(VALIDATION_SCHEMA),
   });
   const mutation = useMutation({
-    mutationFn: (newFormData: FormData) => {
-      return fetch('/api/subscribe', {
+    mutationFn: async (newFormData: FormData) => {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newFormData),
       });
+      if (!response.ok) {
+        // fetch api doesn't handle errors. More info in the docs here:
+        // https://tinyurl.com/fetchNoError
+        setSubmitError(new Error(defaultErrorMsg));
+        setSubmitLoading(false);
+      }
+      return response.json();
     },
   });
   
@@ -316,11 +323,6 @@ const RegistrationForm = ({
 
   useEffect(
     () => {
-      if (mutation.error) {
-        setSubmitError(mutation.error);
-        setSubmitLoading(false);
-        return undefined;
-      }
       if (mutation.isSuccess) {
         setSubmitSuccess(true);
         setSubmitLoading(false);
@@ -335,7 +337,7 @@ const RegistrationForm = ({
         setSubmitLoading(false);
       }
     },
-    [mutation.error, mutation.isSuccess, submitLoading, mutation.isLoading] // rules of hook eslint
+    [mutation.isSuccess, submitLoading, mutation.isLoading] 
   );
 
   let render;
