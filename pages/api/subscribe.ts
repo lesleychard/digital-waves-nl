@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const updateHackathonFieldData = await updateHackathonField.json();
     console.log('Child Data');
     console.log(updateHackathonFieldData);
-    returnData['childEmail'] = updateHackathonFieldData;
+    returnData['childData'] = updateHackathonFieldData;
   } else {
     console.log('child is not subscribed');
     const createSubscriber = await fetch(
@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const createSubscriberData = await createSubscriber.json();
     console.log('Child Data');
     console.log(createSubscriberData);
-    returnData['childEmail'] = createSubscriberData;
+    returnData['childData'] = createSubscriberData;
   }
 
   if (mergeFields.P_EMAIL !== "") {
@@ -96,7 +96,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const updateHackathonFieldData = await updateHackathonField.json();
       console.log('Subscriber Data');
       console.log(updateHackathonFieldData);
-      returnData['parentEmail'] = updateHackathonFieldData;
+      returnData['parentData'] = updateHackathonFieldData;
   
     } else {
       console.log('parent is not subscribed');
@@ -119,7 +119,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const createSubscriberData = await createSubscriber.json();
       console.log('Parent Data');
       console.log(createSubscriberData);
-      returnData['parentEmail'] = createSubscriberData;
+      returnData['parentData'] = createSubscriberData;
     }
   }
 
