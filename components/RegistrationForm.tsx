@@ -257,10 +257,10 @@ const RegistrationForm = ({
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSuccess: async(data: Record<string, any>) => {
-      if (storedEmailValue === data.parentEmail.email_address) {
+      if (storedEmailValue === data.parentData.email_address) {
         setDuplicateParentWarning(true);
       }
-      setStoredEmailValue(data.parentEmail.email_address);
+      setStoredEmailValue(data.parentData.email_address);
     },
   });
   
