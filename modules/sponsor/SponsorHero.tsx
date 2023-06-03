@@ -1,6 +1,7 @@
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
+import DownloadIcon from '@material-ui/icons/GetApp';
 import Button from '../../components/Button';
 import { lighten } from '../../styles/helpers/color';
 import { container, fontSmoothOn } from '../../styles/helpers/extend';
@@ -92,16 +93,27 @@ const SponsorHero = (): ReactElement => {
             It&rsquo;s our vision that by boosting digital confidence and giving young people the experience to see themselves in technology that we will be able to close the future gender gap in our technology sector.
           </Typography>
           <div className={classes.containerCtas}>
-            <div>
-              <Button
-                variant="raised"
-                color="secondary"
-                component="a"
-                href="#sponsor-packages"
-              >
-                View Sponsorship Packages
-              </Button>
-            </div>
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                <Button
+                  variant="raised"
+                  color="secondary"
+                  component="a"
+                  href="#sponsor-packages"
+                >
+                  View Our Sponsorship Options
+                </Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  component="a"
+                  href="#"
+                >
+                  Sponsor Information Package (PDF)
+                  <DownloadIcon />
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         </div>
       </div>

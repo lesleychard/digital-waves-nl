@@ -9,7 +9,11 @@ import { light } from '../styles/theme/_palette';
 import Button from '../components/Button';
 import MobileMenu from './MobileMenu';
 import Logo from '../components/Logo';
-import { getSiteVersion, SITE_VERSION_HACKATHON_2023 } from '../lib/getSiteVersion';
+import {
+  getSiteVersion,
+  SITE_VERSION_HACKATHON_2023,
+  SITE_VERSION_SPONSOR_OUTREACH_2023,
+} from '../lib/getSiteVersion';
 
 export const NAV_ITEMS: NavItem[][] = [
   [
@@ -33,13 +37,19 @@ export const NAV_ITEMS: NavItem[][] = [
   ],
 ];
 
+console.log(getSiteVersion());
+
 if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
   NAV_ITEMS[0].push({
     id: "hackathon-2023",
     label: "2023 Hackathon",
     route: "/hackathon-2023",
   });
-} else {
+}
+if (getSiteVersion() === SITE_VERSION_SPONSOR_OUTREACH_2023) {
+  NAV_ITEMS[0].push();
+}
+else {
   NAV_ITEMS[0].push({
     id: "contest-2021",
     label: "Contest Fall 2021",

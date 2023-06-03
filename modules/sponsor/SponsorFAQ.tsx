@@ -11,13 +11,13 @@ const FAQ_ITEMS = [
     answer: [
       'We are committed to delivering an experience for participants that is authentic and engaging. We believe that by showing young people that technology can be used to help our communities and our planet they will start looking at the technology industry from a more accessible lens.',
       'All of our workshops will be delivered by real, local role models from diverse backgrounds. We hope that our participants will see themselves in our instructors, and thus themselves in a technology related field.',
-      'We have worked with local organizations (STEMforGirls - WRDC and WISE Atlantic) to ensure this experience integrates their outreach and teaching philosophies. To read more about the impact STEMforGirls has had on our local communities, please download their white paper.',
+      'We have partnered with a local organization (STEMforGIRLS - WRDC) to ensure this experience integrates their outreach and teaching philosophies. To read more about the impact STEMforGIRLS has had on our local communities, please download their white paper.',
     ],
   },
   {
     question: 'What organization will be receiving my donation?',
     answer: [
-      'Digital Waves has partnered with the Women in Resource Development Corporation (WRDC) to handle all donations and distribution of sponsored funds. All proceeds will go directly back into the community by an organization you can trust.',
+      'Digital Waves has partnered with STEMforGIRLS - Women in Resource Development Corporation (WRDC) to handle all donations and distribution of sponsored funds. All proceeds will go directly back into the community by an organization you can trust.',
     ],
   },
   {
@@ -25,13 +25,13 @@ const FAQ_ITEMS = [
     answer: [
       'We rely on sponsorships mainly for outreach and participant prizes. We hope that we can reward as many different skill sets during this experience to demonstrate that the technology industry has a wide range of careers to explore, and value different perspectives.',
       'We hope to reach as many Newfoundland and Labrador youth as possible, so some donations will also be funneled to targeted advertising and third-party endorsements.',
-      'Digital Waves is a volunteer initiative, therefore no funds will be used for personal gain or profit.',
+      'Digital Waves is a volunteer initiative, therefore no funds will be used for profit.',
     ],
   },
   {
     question: 'Will my donation be tax deductible?',
     answer: [
-      'Yes. Women in Resource Development Corporation (WRDC) - STEMforGirls is a registered charity.',
+      'Yes! STEMforGIRLS - Women in Resource Development Corporation (WRDC) is a registered charity (Charitable # 86287 0318 RR 0001)',
     ],
   },
   {
@@ -41,15 +41,15 @@ const FAQ_ITEMS = [
     ],
   },
   {
-    question: 'What happens to any donations not used in the 2021 experience?',
+    question: 'What happens to any donations not used for the 2023 experience?',
     answer: [
-      'In the event we receive an overwhelming amount of community support, all extra donations will be carried over to the STEMforGirls programme to help fund other STEM events and learning opportunities for girls and gender diverse youth.',
+      'In the event we receive an overwhelming amount of community support, all extra donations will be carried over to further Digital Waves programs.',
     ],
   },
   {
     question: 'How can I sponsor this initiative all year round?',
     answer: [
-      'If you are interested in supporting girls & gender-diverse youth after the Digital Waves experience, please consider donating to one of our official partners, WRDC STEMforGirls or WISE Atlantic.',
+      'If you are interested in supporting girls & gender-diverse youth after the Digital Waves experience, please consider donating to one of our official partner, STEMforGIRLS',
     ],
   },
 ];
@@ -107,7 +107,7 @@ const SponsorFAQ = (): ReactElement => {
         <Typography className={classes.typographyBody}>
           We&rsquo;re new in town and we know you have a lot of questions before partnering with us.
           These frequently asked questions should cover the basics, but we&rsquo;re here to assist with any additional questions you may have.
-          Please contact <a href="mailto:info@digitalwavesnl.ca">info@digitalwavesnl.ca</a> to connect with one of our team members, or simply submit our Sponsor Us form and we will follow up.
+          Please contact <a href="mailto:lesley@digitalwavesnl.ca">lesley@digitalwavesnl.ca</a> to connect with one of our team members, or simply submit our Sponsor Us form and we will follow up.
         </Typography>
         {
           FAQ_ITEMS.map((faq, faqIndex) => (

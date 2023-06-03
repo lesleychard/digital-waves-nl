@@ -76,7 +76,7 @@ const VolunteerForm = (): ReactElement => {
         Volunteer With Us
       </Typography>
       <Typography gutterBottom>
-        Are you interested in helping the Digital Waves 2021 experience come to life? We are looking for people with all skill sets to help us make our vision a reality.
+        Are you interested in helping the Digital Waves 2023 experience come to life? We are looking for people with all skill sets to help us make our vision a reality.
       </Typography>
 
       {

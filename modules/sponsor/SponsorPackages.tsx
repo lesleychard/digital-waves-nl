@@ -5,45 +5,48 @@ import { ReactElement } from 'react';
 import { containerSm } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
 import { fontFamilyBody } from '../../styles/theme/_typography';
+import DownloadIcon from '@material-ui/icons/GetApp';
+import Button from '../../components/Button';
 
 const SPONSOR_PACKAGES = [
   {
     id: 'tb',
     tier: 'Terabyte',
-    cost: '$7500+',
+    cost: '$5000+',
     perks: [
-      'Become an official Digital Waves 2021 partner.',
-      'Two (2) commercial spots during our remote workshops.',
-      'Five (5) dedicated social media shout outs from WRDC and/or Digital Waves accounts.',
-      'Your large, prominent logo on all digital and print participant deliverables, including the official contest package, website, and all experience slide decks. Your logo will also be featured in all email updates.',
+      'Become an official Digital Waves 2023 partner.',
+      'Two (2) commercial spots during remote workshops.',
+      'Three (3) dedicated social media shout outs from Digital Waves, STEMforGIRLS, and/or WRDC accounts as a partner.',
+      'Logo displayed as a partner on: DigitalWavesNL.ca, dedicated slides during opening and closing ceremonies, official email updates, opening slides of all workshops',
     ],
   },
   {
     id: 'gb',
     tier: 'Gigabyte',
-    cost: '$5000',
+    cost: '$2500',
     perks: [
-      'One (1) commercial spot during our remote workshops.',
-      'Three (3) dedicated social media shout outs from WRDC and/or Digital Waves accounts.',
-      'Your medium-sized logo on all digital and print participant deliverables, including the official contest package, website, and all experience slide decks.',
+      'One (1) commercial spot during remote workshops.',
+      'Dedicated social media shout outs from WRDC and/or Digital Waves accounts.',
+      'Included in two (2) Gigabyte Tier social media shout outs from WRDC and/or Digital Waves accounts.',
+      'Logo (medium size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
     ],
   },
   {
     id: 'mb',
     tier: 'Megabyte',
-    cost: '$2500',
+    cost: '$1000',
     perks: [
-      'One (1) dedicated social media shout out from WRDC and/or Digital Waves accounts.',
-      'Your small-sized logo on all digital and print participant deliverables, including the official contest package, website, and all experience slide decks.',
+      'Included in two (2) Megabyte Tier social media shout outs from WRDC and/or Digital Waves accounts.',
+      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
     ],
   },
   {
     id: 'kb',
     tier: 'Kilobyte',
-    cost: '$1000',
+    cost: '$500',
     perks: [
-      'One (1) social media shout out from WRDC and/or Digital Waves accounts.',
-      'Your small-sized logo on the Digital Waves website.',
+      'Included in Kilobyte Tier social media shout out from WRDC and/or Digital Waves accounts.',
+      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
     ],
   },
   {
@@ -51,6 +54,7 @@ const SPONSOR_PACKAGES = [
     tier: 'Build Your Own',
     perks: [
       'We also accept monetary donations of any size, company swag, and any cool tech we can give away to our well deserving participants.',
+      'Benefits for Build Your Own Tier vary: may include logo on DigitalWavesNL.ca, or logo on shared social post on Digital Waves accounts.',
     ],
   },
 ];
@@ -80,6 +84,14 @@ const useStyles = makeStyles(
         marginBottom: theme.spacing(8),
         fontSize: '3rem',
       },
+    },
+    containerDownload: {
+      position: 'relative',
+      zIndex: 1,
+      marginBottom: theme.spacing(8),
+    },
+    typographyDownload: {
+      marginBottom: theme.spacing(4),
     },
     gridContainer: {
       marginTop: theme.spacing(4),
@@ -141,7 +153,7 @@ const SponsorPackages = (): ReactElement => {
           component="h1"
           className={classes.typographyOverline}
         >
-          Sponsorship Packages
+          Sponsorship Options
         </Typography>
         <Typography
           variant="h1"
@@ -150,7 +162,22 @@ const SponsorPackages = (): ReactElement => {
         >
           Every byte helps.
         </Typography>
-
+        <div className={classes.containerDownload}>
+          <Typography className={classes.typographyDownload}>
+            Our Sponsor Information Package contains everything you (or your company) needs to know about
+            becoming a Digital Waves NL 2023 sponsor, including a sneak-peek of our upcoming program plans,
+            fundraising goals, and an itemized budget of projected expenses.
+          </Typography>
+          <Button
+            component="a"
+            href="#"
+            variant="raised"
+            color="primary"
+          >
+            Sponsor Information Package (PDF)
+            <DownloadIcon />
+          </Button>
+        </div>
         {
           SPONSOR_PACKAGES.map(pkg => (
             <Grid
