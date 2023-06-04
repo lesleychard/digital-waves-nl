@@ -37,8 +37,6 @@ export const NAV_ITEMS: NavItem[][] = [
   ],
 ];
 
-console.log(getSiteVersion());
-
 if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
   NAV_ITEMS[0].push({
     id: "hackathon-2023",

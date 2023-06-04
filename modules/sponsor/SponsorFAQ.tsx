@@ -49,7 +49,7 @@ const FAQ_ITEMS = [
   {
     question: 'How can I sponsor this initiative all year round?',
     answer: [
-      'If you are interested in supporting girls & gender-diverse youth after the Digital Waves experience, please consider donating to one of our official partner, STEMforGIRLS',
+      'If you are interested in supporting girls & gender-diverse youth after the Digital Waves experience, please consider donating to our official partner, STEMforGIRLS',
     ],
   },
 ];
