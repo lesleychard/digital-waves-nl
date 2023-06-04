@@ -28,7 +28,7 @@ const sponsor = (): ReactElement => {
         <SponsorPackages />
         <SponsorFAQ />
         <SponsorForm />
-        <FooterCTA hideSponsor noMinHeight />
+        <FooterCTA hideSponsor noMinHeight layoutThreeCols />
         <Footer />
         <FooterSubscribe />
       </div>

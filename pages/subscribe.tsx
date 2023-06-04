@@ -20,7 +20,7 @@ const subscribe = (): ReactElement => {
       <ShortPage title={title}>
         <SubscribeForm />
       </ShortPage>
-      <FooterCTA noMinHeight />
+      <FooterCTA noMinHeight layoutThreeCols />
       <Footer />
     </Layout>
   );

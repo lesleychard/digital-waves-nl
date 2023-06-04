@@ -12,7 +12,7 @@ const PROGRAM_STEPS = [
     img: 'assets/images/emojis/emoji-teacher.svg',
     alt: 'Female teacher emoji',
     title: 'Learn Digital Skills',
-    description: 'Our team of industry leaders will teach concepts like coding, design, and entrepreneurship.',
+    description: 'Learn concepts like coding, design, and entrepreneurship from our team of industry leaders.',
   },
   {
     img: 'assets/images/emojis/emoji-tech-girl.svg',

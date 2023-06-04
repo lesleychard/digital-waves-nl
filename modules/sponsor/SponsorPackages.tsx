@@ -16,8 +16,8 @@ const SPONSOR_PACKAGES = [
     perks: [
       'Become an official Digital Waves 2023 partner.',
       'Two (2) commercial spots during remote workshops.',
-      'Three (3) dedicated social media shout outs from Digital Waves, STEMforGIRLS, and/or WRDC accounts as a partner.',
-      'Logo displayed as a partner on: DigitalWavesNL.ca, dedicated slides during opening and closing ceremonies, official email updates, opening slides of all workshops',
+      'Three (3) dedicated social media shoutouts from Digital Waves, STEMforGIRLS, and/or WRDC accounts as a partner.',
+      'Logo displayed as a partner on: DigitalWavesNL.ca, dedicated slides during opening and closing ceremonies, official email updates, opening slides of all workshops.',
     ],
   },
   {
@@ -26,9 +26,9 @@ const SPONSOR_PACKAGES = [
     cost: '$2500',
     perks: [
       'One (1) commercial spot during remote workshops.',
-      'Dedicated social media shout outs from WRDC and/or Digital Waves accounts.',
-      'Included in two (2) Gigabyte Tier social media shout outs from WRDC and/or Digital Waves accounts.',
-      'Logo (medium size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
+      'Dedicated social media shoutouts from WRDC and/or Digital Waves accounts.',
+      'Included in two (2) Gigabyte Tier social media shoutouts from WRDC and/or Digital Waves accounts.',
+      'Logo (medium size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies.',
     ],
   },
   {
@@ -36,8 +36,8 @@ const SPONSOR_PACKAGES = [
     tier: 'Megabyte',
     cost: '$1000',
     perks: [
-      'Included in two (2) Megabyte Tier social media shout outs from WRDC and/or Digital Waves accounts.',
-      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
+      'Included in two (2) Megabyte Tier social media shoutouts from WRDC and/or Digital Waves accounts.',
+      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies.',
     ],
   },
   {
@@ -46,7 +46,7 @@ const SPONSOR_PACKAGES = [
     cost: '$500',
     perks: [
       'Included in Kilobyte Tier social media shout out from WRDC and/or Digital Waves accounts.',
-      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies',
+      'Logo (small size) displayed on: DigitalWavesNL.ca, included in slides during all workshops, plus opening and closing ceremonies.',
     ],
   },
   {
@@ -164,9 +164,10 @@ const SponsorPackages = (): ReactElement => {
         </Typography>
         <div className={classes.containerDownload}>
           <Typography className={classes.typographyDownload}>
-            Our Sponsor Information Package contains everything you (or your company) needs to know about
-            becoming a Digital Waves NL 2023 sponsor, including a sneak-peek of our upcoming program plans,
-            fundraising goals, and an itemized budget of projected expenses.
+            Our Sponsor Information Package contains everything you (or your organization)
+            may need to know about becoming a Digital Waves NL 2023 sponsor, including a
+            sneak-peek of our upcoming program plans, fundraising goals, and an itemized
+            budget of projected expenses.
           </Typography>
           <Button
             component="a"

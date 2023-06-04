@@ -86,11 +86,13 @@ const SponsorHero = (): ReactElement => {
             We believe that technology is the future, and the future has <strong>a place for everyone</strong>.
           </Typography>
           <Typography className={classes.typographyParagraph}>
-            This experience will not be possible without wonderful, local sponsors.
-            By sponsoring Digital Waves you&rsquo;re helping to provide life-changing experiences to local populations who are underrepresented in the global technology industry. 
+            This experience won&rsquo;t be possible without wonderful local sponsors. By sponsoring Digital Waves,
+            you&rsquo;re helping to provide life-changing experiences to local populations who are underrepresented
+            in the global technology industry.
           </Typography>
           <Typography className={classes.typographyParagraph}>
-            It&rsquo;s our vision that by boosting digital confidence and giving young people the experience to see themselves in technology that we will be able to close the future gender gap in our technology sector.
+            Our vision is that by boosting digital confidence and giving young people the opportunity to see themselves
+            in technology, we will be able to increase diversity in our technology sector.
           </Typography>
           <div className={classes.containerCtas}>
             <Grid container spacing={4}>
