@@ -15,7 +15,6 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { ReactNode, useEffect } from 'react';
 
-import { wrapper } from '../store/store';
 import globals from '../styles/globals/globals';
 import theme from '../styles/theme/theme';
 
@@ -55,4 +54,4 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   );
 };
 
-export default wrapper.withRedux(MyApp);
+export default MyApp;
