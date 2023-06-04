@@ -9,8 +9,11 @@ import {
   MailchimpListType,
 } from '../types/mailchimp';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export const subscribeToList = (data: any, type: MailchimpListType): MailchimpThunkResult => {
+export const subscribeToList = (
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+  data: any,
+  type: MailchimpListType,
+): MailchimpThunkResult => {
   return async (dispatch: MailchimpThunkDispatch) => {
     dispatch(subscribeToListStarted());
 
