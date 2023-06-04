@@ -29,6 +29,7 @@ import * as Yup from 'yup';
 
 import Button from './Button';
 import useYupValidationResolver from '../lib/useYupValidationResolver';
+import useLocalStorage from '../lib/useLocalStorage';
 import { container } from '../styles/helpers/extend';
 import { fade } from '../styles/helpers/color';
 
@@ -254,6 +255,13 @@ const RegistrationForm = ({
       }
       return response.json();
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onSuccess: async(data: Record<string, any>) => {
+      if (storedEmailValue === data.parentData.email_address) {
+        setDuplicateParentWarning(true);
+      }
+      setStoredEmailValue(data.parentData.email_address);
+    },
   });
   
   const watchReferrer = watch('REFERRER');
@@ -269,6 +277,7 @@ const RegistrationForm = ({
     internet: false,
   });
   const [duplicateParentWarning, setDuplicateParentWarning] = useState<boolean>(false);
+  const [storedEmailValue, setStoredEmailValue] = useLocalStorage("email", null);
 
   const defaultErrorMsg = (
     'Something went wrong and we could not register you at this time. '
