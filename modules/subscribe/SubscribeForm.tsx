@@ -35,6 +35,12 @@ const useStyles = makeStyles(
     textField: {
       margin: `${theme.spacing(2)}px 0`,
     },
+    textFieldLabel: {
+      color: theme.palette.text.primary,
+    },
+    checkbox: {
+      color: theme.palette.text.primary,
+    },
     containerSubmit: {
       marginTop: theme.spacing(2),
       textAlign: 'center',
@@ -95,7 +101,7 @@ const SubscribeForm = (): ReactElement => {
       </Typography>
       <Typography gutterBottom>
         Stay updated on all news about future Digital Waves experiences.
-        We will only send you the important stuff, like event announcements and other opportunities for local girls and gender-diverse youth.
+        We will only send you the important stuff, like event announcements and other opportunities for local girls and 2SLGBTQIA+ youth.
       </Typography>
       {
         submitSuccess
@@ -136,6 +142,7 @@ const SubscribeForm = (): ReactElement => {
                         label="First Name"
                         required
                         fullWidth
+                        InputLabelProps={{ className: classes.textFieldLabel }}
                       />
                     )}
                   />
@@ -153,6 +160,7 @@ const SubscribeForm = (): ReactElement => {
                         label="Last Name"
                         required
                         fullWidth
+                        InputLabelProps={{ className: classes.textFieldLabel }}
                       />
                     )}
                   />
@@ -171,6 +179,7 @@ const SubscribeForm = (): ReactElement => {
                     label="Email"
                     type="email"
                     fullWidth
+                    InputLabelProps={{ className: classes.textFieldLabel }}
                   />
                 )}
               />
@@ -181,7 +190,10 @@ const SubscribeForm = (): ReactElement => {
                 render={({ field }) => (
                   <FormControlLabel
                     control={(
-                      <Checkbox {...field} />
+                      <Checkbox
+                        className={classes.checkbox}
+                        {...field}
+                      />
                     )}
                     label="I reside in the province of Newfoundland & Labrador."
                   />
@@ -194,7 +206,10 @@ const SubscribeForm = (): ReactElement => {
                 render={({ field }) => (
                   <FormControlLabel
                     control={(
-                      <Checkbox {...field} />
+                      <Checkbox
+                        className={classes.checkbox}
+                        {...field}
+                      />
                     )}
                     label="I am interested in becoming a sponsor."
                   />

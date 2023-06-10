@@ -56,6 +56,11 @@ const useStyles = makeStyles(
         marginBottom: theme.spacing(2),
       },
     },
+    buttonDownload: {
+      '&:hover, &:visited': {
+        color: theme.palette.text.primary,
+      },
+    },
     containerImg: {
       background: 'url(assets/images/sponsor/hero-image.jpg) no-repeat center center',
       backgroundSize: 'cover',
@@ -109,7 +114,12 @@ const SponsorHero = (): ReactElement => {
               <Grid item xs={12}>
                 <Button
                   component="a"
-                  href="#"
+                  href="assets/documents/Digital-Waves-Sponsorship-Package-2023.pdf"
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.buttonDownload}
                 >
                   Sponsor Information Package (PDF)
                   <DownloadIcon />

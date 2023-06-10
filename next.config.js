@@ -9,5 +9,6 @@ module.exports = {
     MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
     MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID,
     NEXT_PUBLIC_SITE_VERSION: process.env.NEXT_PUBLIC_SITE_VERSION,
+    FORMS_ENABLED: process.env.FORMS_ENABLED,
   },
 };

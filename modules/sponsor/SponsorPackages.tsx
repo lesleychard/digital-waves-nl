@@ -171,9 +171,13 @@ const SponsorPackages = (): ReactElement => {
           </Typography>
           <Button
             component="a"
-            href="#"
             variant="raised"
             color="primary"
+            href="assets/documents/Digital-Waves-Sponsorship-Package-2023.pdf"
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Sponsor Information Package (PDF)
             <DownloadIcon />
