@@ -64,6 +64,9 @@ const useStyles = makeStyles(
       '&:active, &:focus': {
         background: theme.palette.primary.main,
       },
+      '&:visited': {
+        color: theme.palette.primary.contrastText,
+      },
     },
     raisedSecondary: {
       background: theme.palette.secondary.light,
@@ -76,6 +79,9 @@ const useStyles = makeStyles(
       },
       '&:active, &:focus': {
         background: theme.palette.secondary.light,
+      },
+      '&:visited': {
+        color: theme.palette.secondary.contrastText,
       },
     },
     raisedHighlight: {

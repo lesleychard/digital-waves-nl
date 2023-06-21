@@ -106,9 +106,6 @@ const FooterCTA = ( props: Props ): ReactElement => {
                   <Typography variant="h1" className={classes.typographyH1}>
                     Help us build an inclusive tech community.
                   </Typography>
-                  <Typography>
-                    If you don&rsquo;t meet the eligibility criteria to participate in Digital Waves, there are still many ways you can contribute.
-                  </Typography>
                 </div>
                 <Grid
                   className={classes.gridContainer}
@@ -189,7 +186,7 @@ const FooterCTA = ( props: Props ): ReactElement => {
                               By sponsoring this program you&rsquo;re helping provide life-changing experiences to 
                               those who are underrepresented in the tech sector.
                             </Typography>
-                            <Link href="/volunteer">
+                            <Link href="/sponsor">
                               <Button
                                 className={classes.button}
                                 component="a"
@@ -251,7 +248,7 @@ const FooterCTA = ( props: Props ): ReactElement => {
                             xs={12}
                             sm={hideVolunteer ? 12 : 6}
                           >
-                            <Link href="/volunteer">
+                            <Link href="/sponsor">
                               <Button
                                 className={classes.button}
                                 component="a"

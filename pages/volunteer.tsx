@@ -15,7 +15,7 @@ const subscribe = (): ReactElement => {
       <ShortPage>
         <VolunteerForm />
       </ShortPage>
-      <FooterCTA noMinHeight hideVolunteer />
+      <FooterCTA noMinHeight hideVolunteer layoutThreeCols />
       <Footer />
       <FooterSubscribe />
     </Layout>

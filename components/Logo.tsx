@@ -24,6 +24,7 @@ const useStyles = makeStyles(
     },
     typographyIntro: {
       position: 'absolute',
+      fontWeight: theme.typography.fontWeightBold,
       top: '-2.5rem',
       lineHeight: 1,
       textAlign: 'center',

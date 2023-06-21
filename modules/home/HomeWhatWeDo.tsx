@@ -12,7 +12,7 @@ const PROGRAM_STEPS = [
     img: 'assets/images/emojis/emoji-teacher.svg',
     alt: 'Female teacher emoji',
     title: 'Learn Digital Skills',
-    description: 'Our team of industry role models will teach concepts like digital design and entrepreneurship.',
+    description: 'Learn concepts like coding, design, and entrepreneurship from our team of industry leaders.',
   },
   {
     img: 'assets/images/emojis/emoji-tech-girl.svg',
@@ -23,14 +23,14 @@ const PROGRAM_STEPS = [
   {
     img: 'assets/images/emojis/emoji-business-woman.svg',
     alt: 'Female business woman emoji',
-    title: 'Present Ideas',
-    description: 'Create a 5-minute pitch and presentation explaining how an idea can change the world.',
+    title: 'Meet Mentors',
+    description: 'Connect with professionals in the local technology and learn from shared experiences.',
   },
   {
     img: 'assets/images/emojis/emoji-rockstar.svg',
     alt: 'Female rockstar emoji',
     title: 'Gain New Confidence',
-    description: 'Level up digital skills while being creative, meet real tech leaders... and did we mention the prizes?',
+    description: 'Level up digital skills with impactful projects, enter to win awesome prizes.',
   },
 ];
 

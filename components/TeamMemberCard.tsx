@@ -12,6 +12,7 @@ import Button from './Button';
 type Props = {
   imageUrl?: string,
   name?: string,
+  pronouns?: string,
   position?: string,
   company?: string,
   isPlaceholder?: boolean,
@@ -42,13 +43,17 @@ const useStyles = makeStyles(
       fontSize: '1.33em',
       paddingTop: theme.spacing(1),
       marginTop: theme.spacing(0.33),
-      marginBottom: theme.spacing(1),
       borderTop: `1px solid ${theme.palette.text.primary}`,
+    },
+    typographyPronouns: {
+      color: light,
+      fontSize: '1em',
     },
     typographyJob: {
       ...fontSmoothOn,
       fontSize: '0.8rem',
       lineHeight: 1.3,
+      marginTop: theme.spacing(1),
       '& strong': {
         display: 'block',
         marginBottom: theme.spacing(1),
@@ -106,6 +111,7 @@ const TeamMemberCard = (props: Props): ReactElement => {
     company,
     isPlaceholder,
     profile,
+    pronouns,
   } = props;
   const classes = useStyles();
   const [profileDialogOpen, setProfileDialogOpen] = useState<boolean>(false);
@@ -134,6 +140,9 @@ const TeamMemberCard = (props: Props): ReactElement => {
         />
         <Typography className={classes.typographyName}>
           {cardName}
+        </Typography>
+        <Typography className={classes.typographyPronouns}>
+          {pronouns}
         </Typography>
         <Typography className={classes.typographyJob}>
           <strong>

@@ -6,7 +6,7 @@ import { ReactElement } from 'react';
 
 import Button from '../../components/Button';
 import Logo from '../../components/Logo';
-import { lighten } from '../../styles/helpers/color';
+import { fade, darken } from '../../styles/helpers/color';
 import { light } from '../../styles/theme/_palette';
 import RetroUI from '../../components/RetroUI';
 
@@ -25,22 +25,44 @@ const useStyles = makeStyles(
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
         paddingLeft: '15vw',
-        paddingBottom: '10vw',
+        paddingBottom: '8vw',
       },
       [theme.breakpoints.up('lg')]: {
         paddingLeft: '20vw',
+      },
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        display: 'block',
+        background: fade(darken(theme.palette.primary.dark, 0.25), 0.65),
       },
     },
     containerContent: {
       position: 'relative',
       zIndex: 1,
       padding: `${theme.spacing(20)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
+      width: '100%',
       maxWidth: '55rem',
       [theme.breakpoints.up('sm')]: {
         padding: 0,
+        width: '60%',
+      },
+      [theme.breakpoints.up('md')]: {
+        padding: 0,
+        width: '100%',
+        maxWidth: '45rem',
       },
     },
     containerLogo: {
+      [theme.breakpoints.up('md')]: {
+        marginTop: '12rem',
+      },
+    },
+    logo: {
       [theme.breakpoints.up('md')]: {
         marginTop: '12rem',
       },
@@ -53,6 +75,8 @@ const useStyles = makeStyles(
       },
       [theme.breakpoints.up('md')]: {
         marginTop: theme.spacing(8),
+        transform: 'scale(1.25)',
+        transformOrigin: 'left',
       },
     },
     typographyH2: {
@@ -66,27 +90,27 @@ const useStyles = makeStyles(
     },
     typographyParagraph: {
       '& strong': {
-        color: lighten(theme.palette.secondary.light, 0.1),
+        background: theme.palette.text.primary,
+        color: theme.palette.secondary.main,
       },
       [theme.breakpoints.up('md')]: {
         fontSize: '1.25em',
       },
     },
     containerPartners: {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(6),
       [theme.breakpoints.up('sm')]: {
-        marginTop: theme.spacing(4),
+        marginTop: theme.spacing(12),
       },
+    },
+    typographyPartners: {
+      fontWeight: theme.typography.fontWeightBold,
     },
     imgPartner: {
-      width: '7rem',
-      '&:first-of-type': {
-        marginRight: theme.spacing(2),
-      },
-    },
-    imgPartnerWiseAtlantic: {
-      width: '5.75rem',
-      opacity: 0.8,
+      background: fade(theme.palette.background.paper, 0.4),
+      width: '9rem',
+      padding: '0.5rem',
+      borderRadius: '0.5rem',
     },
     retroUI: {
       zIndex: 1,
@@ -100,14 +124,22 @@ const useStyles = makeStyles(
         bottom: theme.spacing(4),
         margin: 0,
       },
+      [theme.breakpoints.up('md')]: {
+        transform: 'scale(1.1)',
+        transformOrigin: 'right',
+      },
     },
     retroUICta: {
       display: 'flex',
       justifyContent: 'space-between',
+      alignItems: 'flex-end',
       marginTop: theme.spacing(1),
     },
     imgRetroUIEmoji: {
       width: '1.75rem',
+      [theme.breakpoints.up('md')]: {
+        width: '2.5rem',
+      },
     },
     buttonRetroUISponsor: {
       letterSpacing: 0,
@@ -129,6 +161,9 @@ const useStyles = makeStyles(
       },
       [theme.breakpoints.up(800)]: {
         left: theme.spacing(8),
+      },
+      [theme.breakpoints.up('md')]: {
+        fontSize: '0.8rem',
       },
     },
     containerCircuit: {
@@ -182,47 +217,40 @@ const HomeHero = (): ReactElement => {
             gutterBottom
             variant="h2"
           >
-            Dream up world-changing tech for a chance to win big.
+            Dream up tech that will change the world.
           </Typography>
           <Typography className={classes.typographyParagraph}>
-            A <strong>digital skills experience</strong> for NL girls and gender-diverse youth ages 13-18.
+            We deliver <strong>digital skills experiences</strong> for NL girls and gender-diverse youth ages 11-18.
           </Typography>
         </div>
         <div className={classes.containerPartners}>
-          <Typography variant="overline" component="h2">
-            Our Partners
+          <Typography variant="overline" component="h2" className={classes.typographyPartners}>
+            Proud Partner
           </Typography>
           <a href="https://stemforgirls.ca" target="_blank" rel="noreferrer">
             <img
               className={classes.imgPartner}
-              src="assets/images/home/home-hero-partner-wrdc.png"
-              alt="Women in Resource Development Corporation"
-            />
-          </a>
-          <a href="http://wiseatlantic.ca/" target="_blank" rel="noreferrer">
-            <img
-              className={classNames(classes.imgPartner, classes.imgPartnerWiseAtlantic)}
-              src="assets/images/home/home-hero-partner-wiseatlantic.svg"
-              alt="WISEatlantic"
+              src="assets/images/home/home-hero-partner-s4g.png"
+              alt="STEMforGIRLS"
             />
           </a>
         </div>
       </div>
       <RetroUI className={classes.retroUI}>
-        <strong>Registration for our 2021 experience is now closed.</strong>
-        &nbsp;Subscribe to stay updated about future events.
+        <strong>Calling all sponsors!</strong>
+        &nbsp;Your donations will help make our 2023 program a reality.
         <div className={classes.retroUICta}>
           <img
-            src="assets/images/emojis/emoji-tech-girl.svg"
+            src="assets/images/emojis/emoji-rockstar.svg"
             alt="Female-presenting technologist emoji"
             className={classes.imgRetroUIEmoji}
           />
-          <Link href="/subscribe">
+          <Link href="/sponsor">
             <Button
               component="a"
-              className={classes.buttonRetroUISponsor}
+              variant="outlined"
             >
-              Subscribe Now
+              Sponsor Us
             </Button>
           </Link>
         </div>

@@ -8,17 +8,25 @@ const TEAM_MEMBERS = [
   {
     id: 'lesley-chard',
     name: 'Lesley Chard',
-    position: 'Lead Product Experience Designer',
-    company: 'Zorbit\'s by Carnegie Learning',
-    imageUrl: 'assets/images/bios/lesley-chard.jpg',
+    pronouns: 'she/her',
+    position: 'Vice President, Design and User Experience',
+    company: 'Carnegie Learning',
+    imageUrl: 'assets/images/bios/lesley-chard.jpeg',
     profile: (
-      <Typography>
-        Lesley is an app designer and developer living in St. John’s, NL. 
-        After designing her first webpage at nine years old, Lesley started freelance web designing at sixteen. 
-        As a result of her finding a passion for technology at an early age, she pursued a B.Sc. in computer science from Memorial University. 
-        She currently works for Zorbit’s by Carnegie Learning where she designs apps for early education. 
-        Lesley is also Chapter Lead with Canada Learning Code, where she delivers coding and design workshops to women, kids and teachers.
-      </Typography>
+      <>
+        <Typography gutterBottom>
+          Since entering NL&rsquo;s technology industry in 2015, Lesley has worked in almost every area of software production -
+          including marketing, engineering, design, user experience, and product management. She currently works for a Pittsburgh, PA
+          and St. John&rsquo;s, NL based Education Tecnology company, Carnegie Learning, where she acts as the company&rsquo;s head of Design and UX.
+          In this role, Lesley leads a team of designers shaping K-12 education products for teachers and students across North America.
+        </Typography>
+        <Typography>
+          Lesley has been an advocate for women in technology since her undergraduate degree in Computer Science at Memorial University.
+          In 2021, she helped found Digital Waves NL, a non-profit dedicated to showing young girls and gender-diverse youth the impact of
+          a career in technology. Through her professional and volunteer work, she hopes to help establish a more equitable and diverse
+          workforce in the technology sector of our future.
+        </Typography>
+      </>
     ),
   },
   {
@@ -45,127 +53,6 @@ const TEAM_MEMBERS = [
           </a>
         </Typography>
       </>
-    ),
-  },
-  {
-    id: 'sally-marchand',
-    name: 'Sally Marchand',
-    position: 'Program Manager',
-    company: 'Women in Science and Engineering - Atlantic Region (WISEatlantic)',
-    imageUrl: 'assets/images/bios/sally-marchand.jpg',
-    profile: (
-      <Typography>
-        Sally Marchand is the Program Manager of the Women in Science and Engineering - Atlantic Region (WISEatlantic) program which aims to shift gendered STEM stereotypes by empowering girls to consider STEM-based careers by raising their awareness of the diversity of jobs within these fields. 
-        Sally holds a BSc and BEd from Mount Saint Vincent University.
-        She is passionate about making science fun and engaging for students.
-      </Typography>
-    ),
-  },
-  {
-    id: 'laura-douglas',
-    name: 'Laura Douglas',
-    position: 'Product Designer',
-    company: 'CoLab Software',
-    imageUrl: 'assets/images/bios/laura-douglas.jpg',
-    profile: (
-      <Typography>
-        With experience in design, quality assurance, interactive media, and marketing, I have a unique perspective when it comes to designing thoughtful, elegant experiences backed by solid research and testing. I am curious and inquisitive, and I love to learn new things. 
-        I’m always looking for the ‘why’ behind something and am eager to dig deep into a problem.
-      </Typography>
-    ),
-  },
-  {
-    id: 'lysle-hood',
-    name: 'Lysle Hood',
-    position: 'Marketing Coordinator',
-    company: 'Zorbit\'s by Carnegie Learning',
-    imageUrl: 'assets/images/bios/lysle-hood.jpg',
-  },
-  {
-    id: 'charlene-denief',
-    name: 'Charlene Denief',
-    position: 'UI/UX Designer',
-    company: 'Zorbit\'s by Carnegie Learning',
-    imageUrl: 'assets/images/bios/charlene-denief.jpg',
-    profile: (
-      <Typography>
-        Since graduating in 2017 from CNA’s Graphic Design program, Charlene
-        Denief has spent the last four years working and volunteering with local
-        nonprofits in the arts and culture sector. Fascinated by the
-        ever-expanding potential of technology for positive change, she made the
-        transition to the technology sector in April 2021 and hasn’t looked back
-        since! Currently, she works as a UI/UX Designer at Zorbit’s Math by
-        Carnegie Learning and has been volunteering on the VANL Board of
-        Directors since November 2020.
-      </Typography>
-    ),
-  },
-  {
-    id: 'kara-strickland',
-    name: 'Kara Strickland',
-    position: 'Intellectual Property Officer',
-    company: 'Memorial University of Newfoundland (MUN)',
-    imageUrl: 'assets/images/bios/kara-strickland.jpg',
-  },
-  {
-    id: 'jillian-breau',
-    name: 'Jillian Breau',
-    position: 'Software Team Lead',
-    company: 'HYKE Technologies',
-    imageUrl: 'assets/images/bios/jillian-breau.jpg',
-    profile: (
-      <Typography>
-        Jillian (she/her) works with the software team at HYKE Technologies, a
-        local tech startup focused on bringing their first product to market.
-        She completed her Computer Engineering degree at Memorial University,
-        where she volunteered with groups focused on mental health and academic
-        advocacy. Jillian currently volunteers with She Connects, a mentorship
-        program for female and gender-diverse students across Canada. As someone
-        passionate about sustainability and about helping young people of all
-        identities see a future for themselves in tech, she is very excited for
-        this year’s design challenge.
-      </Typography>
-    ),
-  },
-  {
-    id: 'susan-kelly',
-    name: 'Susan Kelly',
-    position: 'High School Talent Lead',
-    company: 'techNL',
-    imageUrl: 'assets/images/bios/susan-kelly.jpg',
-    profile: (
-      <Typography>
-        Susan Kelly is an experienced educator and passionate community
-        connector who is currently serving as the High School Talent Lead at
-        techNL. She holds a B. Ed and M. Ed (Leadership Studies) and has
-        professional experience in the education and community sectors. Susan
-        has worked as a classroom teacher in various communities in the province
-        as well as in the community sector with youth and social programming.
-        She is passionate about inspiring students to discover a passion for
-        tech and envision meaningful careers right here in Newfoundland and
-        Labrador.
-      </Typography>
-    ),
-  },
-  {
-    id: 'steph-walsh',
-    name: 'Steph Walsh',
-    position: 'Software Developer',
-    company: 'Kraken Robotics',
-    imageUrl: 'assets/images/bios/steph-walsh.jpg',
-    profile: (
-      <Typography>
-        Steph is a software developer who recently relocated back home to St.
-        John's, NL. Starting out as a mechanical engineer, her career took her
-        to Calgary where she spent a few years working in the oil and gas
-        industry and at a digital marketing company. When she got into data she
-        taught herself to code, which brought her to complete her Master's in
-        Software Engineering. Upon completing the program she recognized that
-        the tech industry was booming in NL and sought opportunities in her home
-        province where she now works for Kraken Robotics. She recognizes that when she was growing up STEM wasn't a huge push for young females in
-        school and loves that she can help change that for the current and
-        future teenagers.
-      </Typography>
     ),
   },
   {
@@ -200,31 +87,106 @@ const TEAM_MEMBERS = [
     ),
   },
   {
-    id: "john-lander",
-    name: "John Lander",
-    position: "Customer Success Manager",
-    company: "Metricsflow",
-    imageUrl: "assets/images/bios/john-lander.jpeg",
+    id: 'charlene-denief',
+    name: 'Charlene Denief',
+    pronouns: 'she/her',
+    position: 'UI/UX Designer',
+    company: 'Carnegie Learning',
+    imageUrl: 'assets/images/bios/charlene-denief.jpg',
     profile: (
-      <>
-        <Typography gutterBottom>
-          John Lander grew up in all the smallest Newfoundland towns. After
-          graduating from Grenfell Campus, Memorial University with a BBA,
-          Lander worked for the Association for New Canadians helping newcomers
-          to Canada get their bearings in our cold province. After that, he
-          entered the NL tech sector as a Marketing Operations Analyst with
-          Zorbit’s by Carnegie Learning. Currently, he works for Metricsflow as
-          their Customer Success Manager. Lander has also volunteered with the
-          Planned Parenthood 2SLGBTQIA+ Helpline, with Happy City St. John’s on
-          their board of directors, and is a part of the trail maintenance crew
-          on the East Coast Trail.
-        </Typography>
-        <Typography>
-          Lander is passionate about bringing the NL tech sector to rural
-          Newfoundland and helping girls and gender-diverse youth in small towns
-          see a future career in the sector.
-        </Typography>
-      </>
+      <Typography>
+        Since graduating in 2017 from CNA’s Graphic Design program, Charlene
+        Denief has spent the last four years working and volunteering with local
+        nonprofits in the arts and culture sector. Fascinated by the
+        ever-expanding potential of technology for positive change, she made the
+        transition to the technology sector in April 2021 and hasn’t looked back
+        since! Currently, she works as a UI/UX Designer at Zorbit’s Math by
+        Carnegie Learning and has been volunteering on the VANL Board of
+        Directors since November 2020.
+      </Typography>
+    ),
+  },
+  {
+    id: 'kara-strickland',
+    name: 'Kara Strickland',
+    pronouns: 'she/her',
+    position: 'Intellectual Property Officer',
+    company: 'Memorial University of Newfoundland',
+    imageUrl: 'assets/images/bios/kara-strickland.jpg',
+  },
+  {
+    id: 'susan-kelly',
+    name: 'Susan Kelly',
+    position: 'High School Talent Lead',
+    company: 'techNL',
+    imageUrl: 'assets/images/bios/susan-kelly.jpg',
+    profile: (
+      <Typography>
+        Susan Kelly is an experienced educator and passionate community
+        connector who is currently serving as the High School Talent Lead at
+        techNL. She holds a B. Ed and M. Ed (Leadership Studies) and has
+        professional experience in the education and community sectors. Susan
+        has worked as a classroom teacher in various communities in the province
+        as well as in the community sector with youth and social programming.
+        She is passionate about inspiring students to discover a passion for
+        tech and envision meaningful careers right here in Newfoundland and
+        Labrador.
+      </Typography>
+    ),
+  },
+  {
+    id: 'steph-walsh',
+    name: 'Steph Walsh',
+    position: 'Software Developer',
+    company: 'Kraken Robotics',
+    imageUrl: 'assets/images/bios/steph-walsh.jpg',
+    profile: (
+      <Typography>
+        Steph is a software developer who recently relocated back home to St.
+        John&rsquo;s, NL. Starting out as a mechanical engineer, her career took her
+        to Calgary where she spent a few years working in the oil and gas
+        industry and at a digital marketing company. When she got into data she
+        taught herself to code, which brought her to complete her Master&rsquo;s in
+        Software Engineering. Upon completing the program she recognized that
+        the tech industry was booming in NL and sought opportunities in her home
+        province where she now works for Kraken Robotics. She recognizes that when she was
+        growing up STEM wasn&rsquo;t a huge push for young females in
+        school and loves that she can help change that for the current and
+        future teenagers.
+      </Typography>
+    ),
+  },
+  {
+    id: 'jillian-breau',
+    name: 'Jillian Breau',
+    position: 'Software Team Lead',
+    company: 'HYKE Technologies',
+    imageUrl: 'assets/images/bios/jillian-breau.jpg',
+    profile: (
+      <Typography>
+        Jillian (she/her) works with the software team at HYKE Technologies, a
+        local tech startup focused on bringing their first product to market.
+        She completed her Computer Engineering degree at Memorial University,
+        where she volunteered with groups focused on mental health and academic
+        advocacy. Jillian currently volunteers with She Connects, a mentorship
+        program for female and gender-diverse students across Canada. As someone
+        passionate about sustainability and about helping young people of all
+        identities see a future for themselves in tech, she is very excited for
+        this year’s design challenge.
+      </Typography>
+    ),
+  },
+  {
+    id: 'laura-douglas',
+    name: 'Laura Douglas',
+    position: 'Product Designer',
+    company: 'CoLab Software',
+    imageUrl: 'assets/images/bios/laura-douglas.jpg',
+    profile: (
+      <Typography>
+        With experience in design, quality assurance, interactive media, and marketing, I have a unique perspective when it comes to designing thoughtful, elegant experiences backed by solid research and testing. I am curious and inquisitive, and I love to learn new things. 
+        I&rsquo;m always looking for the &rsquo;why&rsquo; behind something and am eager to dig deep into a problem.
+      </Typography>
     ),
   },
 ];
@@ -232,7 +194,7 @@ const TEAM_MEMBERS = [
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.secondary.main,
-    position: "relative",
+    position: 'relative',
     zIndex: 0,
   },
   container: {
@@ -243,8 +205,8 @@ const useStyles = makeStyles((theme) => ({
   },
   typographyHeading: {
     marginBottom: theme.spacing(6),
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "3rem",
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '3rem',
     },
   },
 }));
@@ -275,6 +237,7 @@ const HomeOurTeam = (): ReactElement => {
               <Grid item key={member.id} xs={6} sm={4} md={3}>
                 <TeamMemberCard
                   name={member.name}
+                  pronouns={member.pronouns}
                   position={member.position}
                   company={member.company}
                   imageUrl={member.imageUrl}

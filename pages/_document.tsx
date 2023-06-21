@@ -26,6 +26,7 @@ export default class MyDocument extends Document {
           </script>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <meta charSet="utf-8" />
+          <meta name="color-scheme" content="light only" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&display=swap" rel="stylesheet" />

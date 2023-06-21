@@ -5,6 +5,8 @@ import { ReactElement, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import Button from '../../components/Button';
+import { getFormsEnabled } from '../../lib/getFormsEnabled';
+import FormFallback from '../../components/FormFallback';
 
 type FormData = {
   firstName: string;
@@ -27,6 +29,9 @@ const useStyles = makeStyles(
     typographyOverline: {
       marginBottom: theme.spacing(2),
       opacity: 0.5,
+    },
+    typographyBody: {
+      marginBottom: theme.spacing(2),
     },
     form: {
       position: 'relative',
@@ -75,128 +80,137 @@ const VolunteerForm = (): ReactElement => {
       <Typography variant="overline" component="h2" className={classes.typographyOverline}>
         Volunteer With Us
       </Typography>
-      <Typography gutterBottom>
-        Are you interested in helping the Digital Waves 2021 experience come to life? We are looking for people with all skill sets to help us make our vision a reality.
+      <Typography className={classes.typographyBody}>
+        Are you interested in helping the Digital Waves 2023 experience come to life? We are looking for people with all skill sets to help us make our vision a reality.
       </Typography>
-
       {
-        submitSuccess
+        getFormsEnabled()
           ? (
-            <Typography className={classes.form}>
-              <strong>
-                Thank you for your interest in volunteering with Digital Waves.
-                One of our team members will be in touch as soon as possible.
-              </strong>
-            </Typography>
-          )
-          : (
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className={classes.form}
-              id="volunteer-form"
-            >
+            <>
               {
-                submitError
+                submitSuccess
                   ? (
-                    <Typography color="error">
-                      There was an error submitting your request. Please try again.
+                    <Typography className={classes.form}>
+                      <strong>
+                        Thank you for your interest in volunteering with Digital Waves.
+                        One of our team members will be in touch as soon as possible.
+                      </strong>
                     </Typography>
                   )
-                  : null
+                  : (
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className={classes.form}
+                      id="volunteer-form"
+                    >
+                      {
+                        submitError
+                          ? (
+                            <Typography color="error">
+                              There was an error submitting your request. Please try again.
+                            </Typography>
+                          )
+                          : null
+                      }
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                          <Controller
+                            name="firstName"
+                            control={control}
+                            defaultValue=""
+                            rules={{ required: true }}
+                            render={({ field }) => (
+                              <TextField
+                                {...field}
+                                variant="outlined"
+                                label="First Name"
+                                required
+                                fullWidth
+                              />
+                            )}
+                          />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <Controller
+                            name="lastName"
+                            control={control}
+                            defaultValue=""
+                            rules={{ required: true }}
+                            render={({ field }) => (
+                              <TextField
+                                {...field}
+                                variant="outlined"
+                                label="Last Name"
+                                required
+                                fullWidth
+                              />
+                            )}
+                          />
+                        </Grid>
+                      </Grid>
+                      <Controller
+                        name="jobTitle"
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            className={classes.textField}
+                            variant="outlined"
+                            label="Job Title"
+                            required
+                            fullWidth
+                          />
+                        )}
+                      />
+                      <Controller
+                        name="companyName"
+                        control={control}
+                        defaultValue=""
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            className={classes.textField}
+                            variant="outlined"
+                            label="Company Name"
+                            fullWidth
+                          />
+                        )}
+                      />
+                      <Controller
+                        name="email"
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            className={classes.textField}
+                            variant="outlined"
+                            label="Email"
+                            type="email"
+                            fullWidth
+                          />
+                        )}
+                      />
+                      <div className={classes.containerSubmit}>
+                        <Button
+                          variant="raised"
+                          color="secondary"
+                          type="submit"
+                          disabled={submitLoading}
+                        >
+                          Request To Volunteer
+                        </Button>
+                      </div>
+                    </form>
+                  )
               }
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Controller
-                    name="firstName"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        variant="outlined"
-                        label="First Name"
-                        required
-                        fullWidth
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Controller
-                    name="lastName"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        variant="outlined"
-                        label="Last Name"
-                        required
-                        fullWidth
-                      />
-                    )}
-                  />
-                </Grid>
-              </Grid>
-              <Controller
-                name="jobTitle"
-                control={control}
-                defaultValue=""
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    className={classes.textField}
-                    variant="outlined"
-                    label="Job Title"
-                    required
-                    fullWidth
-                  />
-                )}
-              />
-              <Controller
-                name="companyName"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    className={classes.textField}
-                    variant="outlined"
-                    label="Company Name"
-                    fullWidth
-                  />
-                )}
-              />
-              <Controller
-                name="email"
-                control={control}
-                defaultValue=""
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    className={classes.textField}
-                    variant="outlined"
-                    label="Email"
-                    type="email"
-                    fullWidth
-                  />
-                )}
-              />
-              <div className={classes.containerSubmit}>
-                <Button
-                  variant="raised"
-                  color="secondary"
-                  type="submit"
-                  disabled={submitLoading}
-                >
-                  Request To Volunteer
-                </Button>
-              </div>
-            </form>
+            </>
+          )
+          : (
+            <FormFallback emailSubject="Volunteering Inquiry" />
           )
       }
     </div>

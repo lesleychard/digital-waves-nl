@@ -1,6 +1,7 @@
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
+import DownloadIcon from '@material-ui/icons/GetApp';
 import Button from '../../components/Button';
 import { lighten } from '../../styles/helpers/color';
 import { container, fontSmoothOn } from '../../styles/helpers/extend';
@@ -55,6 +56,11 @@ const useStyles = makeStyles(
         marginBottom: theme.spacing(2),
       },
     },
+    buttonDownload: {
+      '&:hover, &:visited': {
+        color: theme.palette.text.primary,
+      },
+    },
     containerImg: {
       background: 'url(assets/images/sponsor/hero-image.jpg) no-repeat center center',
       backgroundSize: 'cover',
@@ -85,23 +91,41 @@ const SponsorHero = (): ReactElement => {
             We believe that technology is the future, and the future has <strong>a place for everyone</strong>.
           </Typography>
           <Typography className={classes.typographyParagraph}>
-            This experience will not be possible without wonderful, local sponsors.
-            By sponsoring Digital Waves you&rsquo;re helping to provide life-changing experiences to local populations who are underrepresented in the global technology industry. 
+            This experience won&rsquo;t be possible without wonderful local sponsors. By sponsoring Digital Waves,
+            you&rsquo;re helping to provide life-changing experiences to local populations who are underrepresented
+            in the global technology industry.
           </Typography>
           <Typography className={classes.typographyParagraph}>
-            It&rsquo;s our vision that by boosting digital confidence and giving young people the experience to see themselves in technology that we will be able to close the future gender gap in our technology sector.
+            Our vision is that by boosting digital confidence and giving young people the opportunity to see themselves
+            in technology, we will be able to increase diversity in our technology sector.
           </Typography>
           <div className={classes.containerCtas}>
-            <div>
-              <Button
-                variant="raised"
-                color="secondary"
-                component="a"
-                href="#sponsor-packages"
-              >
-                View Sponsorship Packages
-              </Button>
-            </div>
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                <Button
+                  variant="raised"
+                  color="secondary"
+                  component="a"
+                  href="#sponsor-packages"
+                >
+                  View Our Sponsorship Options
+                </Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  component="a"
+                  href="assets/documents/Digital-Waves-Sponsorship-Package-2023.pdf"
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.buttonDownload}
+                >
+                  Sponsor Information Package (PDF)
+                  <DownloadIcon />
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         </div>
       </div>

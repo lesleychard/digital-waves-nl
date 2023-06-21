@@ -65,7 +65,7 @@ const index = (): ReactElement => {
         <HomeAboutUs />
         <HomeOurTeam />
         <HomeWhatWeDo />
-        <FooterCTA />
+        <FooterCTA layoutThreeCols />
         <Footer />
         <FooterSubscribe />
       </div>
