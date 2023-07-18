@@ -1,6 +1,6 @@
-import { sendForm } from 'emailjs-com';
 import { Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useMutation } from '@tanstack/react-query';
 import { ReactElement } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
@@ -88,22 +88,48 @@ const SponsorForm = (): ReactElement => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
 
-  const onSubmit = () => {
+  const mutation = useMutation({
+    mutationFn: async (newFormData: FormData) => {
+      const response = await fetch('/api/sponsor', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFormData),
+      });
+      if (!response.ok) {
+        // fetch api doesn't handle errors. More info in the docs here:
+        // https://tinyurl.com/fetchNoError
+        setSubmitError(true);
+        setSubmitLoading(false);
+      }
+      return response.json();
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onSuccess: async(data: Record<string, any>) => {
+      console.log(`success!`);
+      setSubmitSuccess(true);
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
     setSubmitLoading(true);
     setSubmitError(false);
 
-    sendForm('sponsor_us_form', 'sponsor_us_template', '#sponsor-form')
-      .then(
-        () => {
-          setSubmitSuccess(true);
-          setSubmitLoading(false);
-        },
-        (error) => {
-          setSubmitError(true);
-          setSubmitLoading(false);
-          console.error(error);
-        },
-      );
+    const sponsorData = {
+      ...data,
+      FNAME: data.firstName || '',
+      LNAME: data.lastName || '',
+      EMAIL: data.email || '',
+      JOB: data.jobTitle || '',
+      COMPANY: data.companyName || '',
+      TIER: data.tier || '',
+      SPONSER: 'true',
+    }
+
+    console.log(`data: ${data}`)
+
+    mutation.mutate({ ...sponsorData });
   };
 
   return (
@@ -157,6 +183,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="First Name"
+                              inputProps={{"data-testid": "sponsor-form-first-name"}}
                               required
                               fullWidth
                             />
@@ -173,6 +200,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Last Name"
+                              inputProps={{"data-testid": "sponsor-form-last-name"}}
                               required
                               fullWidth
                             />
@@ -189,6 +217,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Job Title"
+                              inputProps={{"data-testid": "sponsor-form-job-title"}}
                               required
                               fullWidth
                             />
@@ -204,6 +233,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Company Name"
+                              inputProps={{"data-testid": "sponsor-form-company-name"}}
                               fullWidth
                             />
                           )}
@@ -220,6 +250,7 @@ const SponsorForm = (): ReactElement => {
                               variant="outlined"
                               label="Email"
                               type="email"
+                              inputProps={{"data-testid": "sponsor-form-email"}}
                               fullWidth
                             />
                           )}
@@ -229,6 +260,7 @@ const SponsorForm = (): ReactElement => {
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
+                            // figure out how to playwright here.
                             <FormControl
                               className={classes.formControl}
                               variant="outlined"
@@ -239,6 +271,7 @@ const SponsorForm = (): ReactElement => {
                               </InputLabel>
                               <Select
                                 {...field}
+                                data-testid="sponsor-form-package"
                                 labelId="sponsor-package-label"
                               >
                                 <MenuItem value="">
@@ -249,6 +282,7 @@ const SponsorForm = (): ReactElement => {
                                     <MenuItem
                                       key={pkg.value}
                                       value={pkg.label}
+                                      data-testid={`sponsor-form-${pkg.value}`}
                                     >
                                       {pkg.label}
                                     </MenuItem>
@@ -265,6 +299,7 @@ const SponsorForm = (): ReactElement => {
                             type="submit"
                             className={classes.buttonSubmit}
                             disabled={submitLoading}
+                            data-testid="sponsor-request-button"
                           >
                             Request To Sponsor
                           </Button>

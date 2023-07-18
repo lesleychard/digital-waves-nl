@@ -35,3 +35,6 @@ yarn-error.log*
 
 # editor
 .vscode/
+/test-results/
+/playwright-report/
+/playwright/.cache/

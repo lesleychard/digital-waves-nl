@@ -33,6 +33,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@playwright/test": "^1.36.1",
     "@types/md5": "^2.3.2",
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
