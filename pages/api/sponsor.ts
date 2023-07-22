@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const returnData: any = {};
   const mergeFields = { ...req.body };
-  console.log(`mergeFields: ${JSON.stringify(mergeFields)}`);
+  console.log(`mergeFields: ${JSON.stringify(mergeFields.FNAME)}`);
 
   const checkSubscriber = await fetch(
     `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.email
@@ -27,8 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (checkSubscriberData.status ===  'subscribed') {
     console.log('sponsor is subscribed');
-    console.log(`sponsor is subscribed mergeFields: ${JSON.stringify(mergeFields)}`)
-    const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.email)}`, {
+    const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.email)}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -36,20 +35,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        merge_fields: {
-          merge_fields: mergeFields,
-        },
+        status: "subscribed",
+        email_address: mergeFields.email,
+        merge_fields: mergeFields,
       }),
     });
 
     const updateHackathonFieldData = await updateHackathonField.json();
 
+    console.log(`status: ${updateHackathonField.status}`);
     if (updateHackathonFieldData.errors) {
       console.log(`checkSubscriberData error: ${updateHackathonFieldData.errors}`);
       throw Error("Failed to update child.");
     }
 
-    console.log(`updateHackathonFieldData: ${JSON.stringify(updateHackathonFieldData)}`);
     returnData['childData'] = updateHackathonFieldData;
   } else {
     console.log('sponsor is not subscribed');
