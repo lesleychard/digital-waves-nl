@@ -1,9 +1,8 @@
 import md5 from "md5";
 
 const checkMailChimpContact = async (mergeFields: any): Promise<any> => {
-  console.log(`checkMailChimpContact mergeFields: ${JSON.stringify(mergeFields)}`)
-  const checkSubscriber = await fetch(
-    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.email
+  const checkContact = await fetch(
+    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL
     )}`,
     {
       headers: {
@@ -13,16 +12,16 @@ const checkMailChimpContact = async (mergeFields: any): Promise<any> => {
     }
   );
 
-  const checkSubscriberData = await checkSubscriber.json();
-  if (checkSubscriberData.errors) {
-    console.log(`checkSubscriberData error: ${checkSubscriberData.errors}`);
-    throw Error("Failed to check if sponsor exists.");
+  const checkContactData = await checkContact.json();
+  if (checkContactData.errors) {
+    console.log(`check mailchimp contact error error: ${checkContactData.errors}`);
+    throw Error("Failed to check if contact exists.");
   }
-  return checkSubscriberData;
+  return checkContactData;
 };
 
 const createMailChimpContact = async (mergeFields: any): Promise<any> => {
-  const createSubscriber = await fetch(
+  const createContact = await fetch(
     `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/`,
     {
       method: "POST",
@@ -32,24 +31,24 @@ const createMailChimpContact = async (mergeFields: any): Promise<any> => {
       },
       body: JSON.stringify({
         status: "subscribed",
-        email_address: mergeFields.email,
+        email_address: mergeFields.EMAIL,
         merge_fields: mergeFields,
       }),
     }
   );
 
-  const createSubscriberData = await createSubscriber.json();
+  const createContactData = await createContact.json();
 
-  if (createSubscriberData.errors) {
-    console.log(`checkSubscriberData error: ${JSON.stringify(createSubscriberData.errors)}`);
+  if (createContactData.errors) {
+    console.log(`checkSubscriberData error: ${JSON.stringify(createContactData.errors)}`);
     throw Error("Failed to create child.");
   }
 
-  return createSubscriberData;
+  return createContactData;
 };
 
 const updateMailChimpContact = async (mergeFields: any): Promise<any> => {
-  const updateHackathonField = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.email)}/`, {
+  const updateContact = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -58,20 +57,20 @@ const updateMailChimpContact = async (mergeFields: any): Promise<any> => {
       },
       body: JSON.stringify({
         status: "subscribed",
-        email_address: mergeFields.email,
+        email_address: mergeFields.EMAIL,
         merge_fields: mergeFields,
       }),
     });
 
-    const updateHackathonFieldData = await updateHackathonField.json();
+    const updateContactData = await updateContact.json();
 
-    console.log(`status: ${updateHackathonField.status}`);
-    if (updateHackathonFieldData.errors) {
-      console.log(`checkSubscriberData error: ${updateHackathonFieldData.errors}`);
+    console.log(`status: ${updateContactData.status}`);
+    if (updateContactData.errors) {
+      console.log(`checkSubscriberData error: ${updateContactData.errors}`);
       throw Error("Failed to update child.");
     }
 
-    return updateHackathonFieldData;
+    return updateContactData;
 };
 
 export {

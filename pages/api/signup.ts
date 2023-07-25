@@ -5,15 +5,16 @@ import { checkMailChimpContact, createMailChimpContact, updateMailChimpContact }
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<any> {
   let returnData: any = {};
   const mergeFields = { ...req.body };
+  console.log(`merging fields ${JSON.stringify(mergeFields)}`)
 
   const sponserEmailStatus: any = await checkMailChimpContact(mergeFields);
 
   if (sponserEmailStatus.status ===  'subscribed') {
-    console.log('volunteer is subscribed');
+    console.log('contact is subscribed');
     const updateSponserEmailData: any = await updateMailChimpContact(mergeFields);
     returnData = updateSponserEmailData;
   } else {
-    console.log('volunteer is not subscribed');
+    console.log('contact is not subscribed');
     const newSponserEmailData: any = await createMailChimpContact(mergeFields);
     returnData = newSponserEmailData;
   }

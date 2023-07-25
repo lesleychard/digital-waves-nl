@@ -90,7 +90,7 @@ const SponsorForm = (): ReactElement => {
 
   const mutation = useMutation({
     mutationFn: async (newFormData: FormData) => {
-      const response = await fetch('/api/sponsor', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
