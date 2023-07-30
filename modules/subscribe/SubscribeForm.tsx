@@ -58,7 +58,7 @@ const SubscribeForm = (): ReactElement => {
 
   const [submitLoading, setSubmitLoading] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
-  const [submitError, setSubmitError] = useState<boolean | string>();
+  const [submitError, setSubmitError] = useState<string>();
 
   const defaultErrorMsg = (
     'Something went wrong and we could not subscribe you to updates at this time.'
@@ -78,7 +78,7 @@ const SubscribeForm = (): ReactElement => {
       if (!response.ok) {
         // fetch api doesn't handle errors. More info in the docs here:
         // https://tinyurl.com/fetchNoError
-        setSubmitError(true);
+        setSubmitError(defaultErrorMsg);
         setSubmitLoading(false);
       }
       return response.json();
