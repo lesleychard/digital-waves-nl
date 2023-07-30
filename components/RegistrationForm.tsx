@@ -240,7 +240,7 @@ const RegistrationForm = ({
   });
   const mutation = useMutation({
     mutationFn: async (newFormData: FormData) => {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
