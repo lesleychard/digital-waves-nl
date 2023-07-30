@@ -58,7 +58,7 @@ const SubscribeForm = (): ReactElement => {
 
   const [submitLoading, setSubmitLoading] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
-  const [submitError, setSubmitError] = useState<string>();
+  const [submitError, setSubmitError] = useState<boolean | string>();
 
   const defaultErrorMsg = (
     'Something went wrong and we could not subscribe you to updates at this time.'
