@@ -27,7 +27,7 @@ const useStyles = makeStyles(
   })
 );
 
-const ScrollMonitor = ({ className: classNameProp, progress }: Props, ref: LegacyRef<HTMLDivElement>): ReactElement => {
+const ScrollMonitor = ({ className: classNameProp }: Props, ref: LegacyRef<HTMLDivElement>): ReactElement => {
   const classes = useStyles();
 
   return (
