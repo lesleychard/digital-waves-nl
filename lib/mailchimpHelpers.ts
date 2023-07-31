@@ -43,7 +43,7 @@ const checkMailChimpContact = async (mergeFields: mergeFields): Promise<any> => 
 
   const checkContactData = await checkContact.json();
   if (checkContactData.errors) {
-    console.log(`check mailchimp contact error error: ${checkContactData.errors}`);
+    console.log(`Error when checking if mailchimp contact exists: ${checkContactData.errors}`);
     throw Error("Failed to check if contact exists.");
   }
   return checkContactData;
@@ -68,9 +68,8 @@ const createMailChimpContact = async (mergeFields: mergeFields): Promise<any> =>
   );
 
   const createContactData = await createContact.json();
-
   if (createContactData.errors) {
-    console.log(`checkSubscriberData error: ${JSON.stringify(createContactData.errors)}`);
+    console.log(`Error when creating new mailchimp contact: ${JSON.stringify(createContactData.errors)}`);
     throw Error("Failed to create child.");
   }
 
@@ -94,8 +93,6 @@ const updateMailChimpContact = async (mergeFields: mergeFields): Promise<any> =>
   });
 
   const updateContactData = await updateContact.json();
-
-  console.log(`status: ${updateContactData.status}`);
   if (updateContactData.errors) {
     console.log(`checkSubscriberData error: ${updateContactData.errors}`);
     throw Error("Failed to update child.");
