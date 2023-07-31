@@ -34,7 +34,7 @@ test('Fill in volunteer form twice', async ({ page }) => {
   await expect(page.getByText('Thanks for subscribing to Digital Waves NL. We will be in touch with important updates, announcements, and key contest reminders.')).toBeVisible();
 });
 
-test('Fill in volunteer without checkboxes', async ({ page }) => {
+test('Fill in volunteer form without checkboxes', async ({ page }) => {
   const testEmail = `fredmental709+subscribe${generateUUID()}@gmail.com`;
   console.log(`testEmail ${testEmail}`);
 
