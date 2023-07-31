@@ -79,7 +79,6 @@ const VolunteerForm = (): ReactElement => {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSuccess: async(data: Record<string, any>) => {
-      console.log(`success!`);
       setSubmitSuccess(true);
     },
   });
@@ -96,9 +95,7 @@ const VolunteerForm = (): ReactElement => {
       JOB: data.jobTitle || '',
       COMPANY: data.companyName || '',
       VOLUNTEER: 'true',
-    }
-
-    console.log(`data: ${data}`)
+    };
 
     mutation.mutate({ ...volunteerData });
   };

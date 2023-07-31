@@ -85,7 +85,6 @@ const SubscribeForm = (): ReactElement => {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSuccess: async(data: Record<string, any>) => {
-      console.log(`success!`);
       setSubmitSuccess(true);
     },
   });
@@ -101,8 +100,6 @@ const SubscribeForm = (): ReactElement => {
       SPONSOR: String(data.SPONSOR),
       ISNL: String(data.ISNL || false),
     }
-
-    console.log(`data: ${JSON.stringify(data)}`);
 
     mutation.mutate({ ...subscribeData });
   };

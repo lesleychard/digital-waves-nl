@@ -1,6 +1,6 @@
 import md5 from "md5";
 
-type mergeFields = {
+export type mergeFields = {
   EMAIL: string,
   FNAME: string,
   LNAME: string, 
@@ -26,6 +26,7 @@ type mergeFields = {
   TIER?: string,
   VOLUNTEER?: string,
   SUBSCRIBER?: string,
+  status?: string,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

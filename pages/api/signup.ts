@@ -1,25 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { checkMailChimpContact, createMailChimpContact, updateMailChimpContact } from "../../lib/mailchimpHelpers";
+import { checkMailChimpContact, createMailChimpContact, updateMailChimpContact, mergeFields } from "../../lib/mailchimpHelpers";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<any> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let returnData: any = {};
+  let returnData: mergeFields;
   const mergeFields = { ...req.body };
-  console.log(`merging fields ${JSON.stringify(mergeFields)}`);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sponserEmailStatus: any = await checkMailChimpContact(mergeFields);
+  const sponserEmailStatus: mergeFields = await checkMailChimpContact(mergeFields);
 
   if (sponserEmailStatus.status ===  'subscribed') {
     console.log('contact is subscribed');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const updateSponserEmailData: any = await updateMailChimpContact(mergeFields);
+    const updateSponserEmailData: mergeFields = await updateMailChimpContact(mergeFields);
     returnData = updateSponserEmailData;
   } else {
     console.log('contact is not subscribed');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const newSponserEmailData: any = await createMailChimpContact(mergeFields);
+    const newSponserEmailData: mergeFields = await createMailChimpContact(mergeFields);
     returnData = newSponserEmailData;
   }
 

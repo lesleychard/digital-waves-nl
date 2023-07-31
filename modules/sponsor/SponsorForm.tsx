@@ -107,7 +107,6 @@ const SponsorForm = (): ReactElement => {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSuccess: async(data: Record<string, any>) => {
-      console.log(`success!`);
       setSubmitSuccess(true);
     },
   });
@@ -126,8 +125,6 @@ const SponsorForm = (): ReactElement => {
       TIER: data.tier || '',
       SPONSER: 'true',
     }
-
-    console.log(`data: ${data}`)
 
     mutation.mutate({ ...sponsorData });
   };
@@ -260,7 +257,6 @@ const SponsorForm = (): ReactElement => {
                           control={control}
                           defaultValue=""
                           render={({ field }) => (
-                            // figure out how to playwright here.
                             <FormControl
                               className={classes.formControl}
                               variant="outlined"
