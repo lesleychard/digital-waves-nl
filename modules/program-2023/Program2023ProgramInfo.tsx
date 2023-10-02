@@ -1,44 +1,42 @@
-import { Grid, Link, makeStyles, Typography } from '@material-ui/core';
+import { Grid, makeStyles, Typography } from '@material-ui/core';
 import { ReactElement } from 'react';
 import RetroUI from '../../components/RetroUI';
 import { containerSm } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
 import { fontFamilyHeading, fontFamilyBody } from '../../styles/theme/_typography';
-import Button from '../../components/Button';
 
 const EVENTS = [
   {
     title: 'Virtual Beginners Workshops',
     image: 'assets/images/emojis/emoji-teacher.svg',
     label: 'Learn To Design & Code',
-    description: 'Learn the digital skills needed for your hackathon project, no prior design or coding knowledge required. We’ll teach you everything you need to know!',
-    time: '12pm - 2pm (Online)',
-    date: 'April 1 & 8, 2023', 
+    description: 'Learn the digital skills needed for your website, no prior design or coding knowledge required. We’ll teach you everything you need to know!',
+    time: 'November 22, 5-7pm',
+    date: 'November 25 & 26, 1-3pm', 
     step: '1',
   },
   {
     title: 'Work with Industry Mentors',
     image: 'assets/images/emojis/emoji-tech-girl.svg',
     label: 'Get 1:1 Support',
-    description: 'Level-up your hackathon project with the help of our diverse pool of local design and coding experts in NL’s technology sector.',
-    time: '12pm - 2pm (Online)',
-    date: 'April 15 & 22, 2023',
+    description: 'Level-up your unique digital creation with the help of diverse industry experts in NL’s technology sector.',
+    time: 'November 29 & 30, 5-7pm',
+    date: '',
     step: '2',
   },
   {
-    title: 'In-Person Or Online Event',
+    title: 'Program Showcase & Awards',
     image: 'assets/images/emojis/emoji-rockstar.svg',
     label: 'Show Off Your New Skills',
-    description: 'Join us this spring for a virtual-friendly, in-person event to celebrate the launch of InQueeries, where your work will be exhibited!',
-    time: '1pm - 4pm (Online or In-Person)',
-    date: 'May 6, 2023',
+    description: 'Join us to celebrate all of your hard work! All participants will be entered to win awesome prizes.',
+    time: 'Date TBA',
+    date: '',
     step: '3',
   },
 ];
 
 const useStyles = makeStyles(
   (theme) => {
-    const retroUIWidth = '50rem';
     return {
       root: {
         background: 'url(assets/images/brand/section-bg-teal.jpg) no-repeat center center',
@@ -146,11 +144,11 @@ const useStyles = makeStyles(
   }
 );
 
-const Hackathon2023ProgramInfo = (): ReactElement => {
+const Program2023ProgramInfo = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="info">
       <div className={classes.container}>
         <Typography
           variant="overline"
@@ -161,11 +159,11 @@ const Hackathon2023ProgramInfo = (): ReactElement => {
         </Typography>
         <Typography variant="h1" className={classes.typographyH1}>
           What&rsquo;s included in the&nbsp;
-          <strong>2023 Hackathon</strong>
+          <strong>2023 Program</strong>
           ?
         </Typography>
         <Typography>
-        Interested in participating in our 2023 Hackathon? Registration is free, and participants will be entered to win prizes and swag from our amazing local sponsors. Here’s what to expect by signing up:
+        Interested in participating in our 2023 Program? Registration is free, and participants will be entered to win prizes and swag from our amazing local sponsors.
         </Typography>
 
         <Grid
@@ -215,29 +213,10 @@ const Hackathon2023ProgramInfo = (): ReactElement => {
             ))
           }
         </Grid>
-        <div className={classes.containerCTAs}>
-          <Button
-            component="a"
-            variant="raised"
-            color="secondary"
-            href="#"
-          >
-            Pre-Register For 2023 Hackaton
-          </Button>
-          <div>
-            <Button
-              component="a"
-              className={classes.buttonFaq}
-              href="#"
-            >
-              Frequently Asked Questions
-            </Button>
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Hackathon2023ProgramInfo;
+export default Program2023ProgramInfo;
 

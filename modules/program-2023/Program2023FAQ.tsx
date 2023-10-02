@@ -43,7 +43,7 @@ const useStyles = makeStyles(
   })
 );
 
-const Hackathon2023FAQ = (): ReactElement => {
+const Program2023FAQ = (): ReactElement => {
   const classes = useStyles();
   return (
     <section className={classes.root} id="contest-outline">
@@ -169,4 +169,4 @@ const TypographyBody = ({ children }: CustomTypographyProps): ReactElement => {
   );
 };
 
-export default Hackathon2023FAQ;
+export default Program2023FAQ;

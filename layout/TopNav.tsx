@@ -11,7 +11,7 @@ import MobileMenu from './MobileMenu';
 import Logo from '../components/Logo';
 import {
   getSiteVersion,
-  SITE_VERSION_HACKATHON_2023,
+  SITE_VERSION_PROGRAM_2023,
   SITE_VERSION_SPONSOR_OUTREACH_2023,
 } from '../lib/getSiteVersion';
 
@@ -37,15 +37,12 @@ export const NAV_ITEMS: NavItem[][] = [
   ],
 ];
 
-if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
+if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
   NAV_ITEMS[0].push({
-    id: "hackathon-2023",
-    label: "2023 Hackathon",
-    route: "/hackathon-2023",
+    id: "program-2023",
+    label: "Program Fall 2023",
+    route: "/program-2023",
   });
-}
-if (getSiteVersion() === SITE_VERSION_SPONSOR_OUTREACH_2023) {
-  NAV_ITEMS[0].push();
 }
 else {
   NAV_ITEMS[0].push({
