@@ -628,7 +628,7 @@ const RegistrationForm = (): ReactElement => {
                     variant="raised"
                     color="secondary"
                     type="submit"
-                    disabled={submitLoading || (isDirty && !isValid)}
+                    disabled={submitLoading}
                   >
                     Register for Digital Waves
                   </Button>

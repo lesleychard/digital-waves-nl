@@ -12,7 +12,7 @@ import Logo from '../components/Logo';
 import {
   getSiteVersion,
   SITE_VERSION_PROGRAM_2023,
-  SITE_VERSION_SPONSOR_OUTREACH_2023,
+  SITE_VERSION_CONTEST_2021,
 } from '../lib/getSiteVersion';
 
 export const NAV_ITEMS: NavItem[][] = [
@@ -39,16 +39,17 @@ export const NAV_ITEMS: NavItem[][] = [
 
 if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
   NAV_ITEMS[0].push({
-    id: "program-2023",
-    label: "Program Fall 2023",
-    route: "/program-2023",
+    id: 'program-2023',
+    label: 'Program Fall 2023',
+    route: '/program-2023',
   });
 }
-else {
+
+if (getSiteVersion() === SITE_VERSION_CONTEST_2021) {
   NAV_ITEMS[0].push({
-    id: "contest-2021",
-    label: "Contest Fall 2021",
-    route: "/contest-2021",
+    id: 'contest-2021',
+    label: 'Contest Fall 2021',
+    route: '/contest-2021',
   });
 }
 

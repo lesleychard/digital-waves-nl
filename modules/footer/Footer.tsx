@@ -3,7 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { getSiteVersion, SITE_VERSION_PROGRAM_2023 } from '../../lib/getSiteVersion';
+import {
+  getSiteVersion,
+  SITE_VERSION_PROGRAM_2023,
+  SITE_VERSION_CONTEST_2021,
+} from '../../lib/getSiteVersion';
 import Logo from '../../components/Logo';
 import { container, stripUl } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
@@ -68,10 +72,11 @@ const SOCIAL_ITEMS = [
 
 if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
   MENU_ITEMS.push({
-    title: '2023 Hackathon',
-    route: '/hackathon-2023',
+    title: 'Program Fall 2023',
+    route: '/program-2023',
   });
-} else {
+}
+if (getSiteVersion() === SITE_VERSION_CONTEST_2021) {
   MENU_ITEMS.push({
     title: 'Contest Fall 2021',
     route: '/contest-2021',
