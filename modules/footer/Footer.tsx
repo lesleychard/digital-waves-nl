@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { getSiteVersion, SITE_VERSION_HACKATHON_2023 } from '../../lib/getSiteVersion';
+import { getSiteVersion, SITE_VERSION_PROGRAM_2023 } from '../../lib/getSiteVersion';
 import Logo from '../../components/Logo';
 import { container, stripUl } from '../../styles/helpers/extend';
 import { light } from '../../styles/theme/_palette';
@@ -66,7 +66,7 @@ const SOCIAL_ITEMS = [
   // },
 ];
 
-if (getSiteVersion() === SITE_VERSION_HACKATHON_2023) {
+if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
   MENU_ITEMS.push({
     title: '2023 Hackathon',
     route: '/hackathon-2023',
