@@ -1,5 +1,6 @@
 import { FormControlLabel, TextField, Typography, Checkbox, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useMutation } from '@tanstack/react-query';
 import fetchJsonp from 'fetch-jsonp';
 import { ReactElement, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -10,8 +11,8 @@ type FormData = {
   FNAME: string;
   LNAME: string;
   EMAIL: string;
-  ISNL: boolean;
-  SPONSOR: boolean;
+  ISNL: boolean | string;
+  SPONSOR: boolean | string;
 };
 
 const useStyles = makeStyles(
@@ -65,33 +66,41 @@ const SubscribeForm = (): ReactElement => {
     + '<a href="mailto:info@digitalwavesnl.ca">info@digitalwavesnl.ca</a>'
   );
 
+  const mutation = useMutation({
+    mutationFn: async (newFormData: FormData) => {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFormData),
+      });
+      if (!response.ok) {
+        // fetch api doesn't handle errors. More info in the docs here:
+        // https://tinyurl.com/fetchNoError
+        setSubmitError(defaultErrorMsg);
+        setSubmitLoading(false);
+      }
+      return response.json();
+    },
+    onSuccess: async(data: Record<string, any>) => {
+      setSubmitSuccess(true);
+    },
+  });
+
   const onSubmit = (data: FormData) => {
     setSubmitLoading(true);
     setSubmitError(undefined);
 
-    const formData = new URLSearchParams(data as unknown as URLSearchParams).toString();
-    const submitUrl = `${process.env.MAILCHIMP_SUBSCRIBE_URL}&amp;c=?&${formData}`;
-    fetchJsonp(submitUrl, { jsonpCallback: 'c', jsonpCallbackFunction: '' })
-      .then((response) => {
-        return response.json();
-      })
-      .then((jsonRes) => {
-        if (jsonRes.result === 'success') {
-          setSubmitSuccess(true);
-        }
-        else {
-          const errorMsg = jsonRes.msg
-            ? jsonRes.msg
-            : defaultErrorMsg;
-          setSubmitError(errorMsg);
-          setSubmitLoading(false);
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        setSubmitError(defaultErrorMsg);
-        setSubmitLoading(false);
-      });
+    const subscribeData = {
+      FNAME: data.FNAME || '',
+      LNAME: data.LNAME || '',
+      EMAIL: data.EMAIL || '',
+      SPONSOR: String(data.SPONSOR),
+      ISNL: String(data.ISNL || false),
+    }
+
+    mutation.mutate({ ...subscribeData });
   };
 
   return (
@@ -143,6 +152,7 @@ const SubscribeForm = (): ReactElement => {
                         required
                         fullWidth
                         InputLabelProps={{ className: classes.textFieldLabel }}
+                        inputProps={{"data-testid": "subscribe-form-first-name"}}
                       />
                     )}
                   />
@@ -161,6 +171,7 @@ const SubscribeForm = (): ReactElement => {
                         required
                         fullWidth
                         InputLabelProps={{ className: classes.textFieldLabel }}
+                        inputProps={{"data-testid": "subscribe-form-last-name"}}
                       />
                     )}
                   />
@@ -180,6 +191,7 @@ const SubscribeForm = (): ReactElement => {
                     type="email"
                     fullWidth
                     InputLabelProps={{ className: classes.textFieldLabel }}
+                    inputProps={{"data-testid": "subscribe-form-email"}}
                   />
                 )}
               />
@@ -196,6 +208,7 @@ const SubscribeForm = (): ReactElement => {
                       />
                     )}
                     label="I reside in the province of Newfoundland & Labrador."
+                    data-testid="subscribe-form-isNL"
                   />
                 )}
               />
@@ -209,6 +222,7 @@ const SubscribeForm = (): ReactElement => {
                       <Checkbox
                         className={classes.checkbox}
                         {...field}
+                        data-testid="subscribe-form-sponsor"
                       />
                     )}
                     label="I am interested in becoming a sponsor."
@@ -221,6 +235,7 @@ const SubscribeForm = (): ReactElement => {
                   color="secondary"
                   type="submit"
                   disabled={submitLoading}
+                  data-testid="subscribe-request-button"
                 >
                   Subscribe to Updates
                 </Button>

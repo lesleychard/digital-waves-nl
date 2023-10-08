@@ -1,7 +1,9 @@
-import { sendForm } from 'emailjs-com';
 import { TextField, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useMutation } from '@tanstack/react-query';
+
 import { ReactElement, useState } from 'react';
+
 import { useForm, Controller } from 'react-hook-form';
 
 import Button from '../../components/Button';
@@ -58,22 +60,43 @@ const VolunteerForm = (): ReactElement => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
 
-  const onSubmit = () => {
+  const mutation = useMutation({
+    mutationFn: async (newFormData: FormData) => {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFormData),
+      });
+      if (!response.ok) {
+        // fetch api doesn't handle errors. More info in the docs here:
+        // https://tinyurl.com/fetchNoError
+        setSubmitError(true);
+        setSubmitLoading(false);
+      }
+      return response.json();
+    },
+    onSuccess: async(data: Record<string, any>) => {
+      setSubmitSuccess(true);
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
     setSubmitLoading(true);
     setSubmitError(false);
 
-    sendForm('volunteer_form', 'volunteer_template', '#volunteer-form')
-      .then(
-        () => {
-          setSubmitSuccess(true);
-          setSubmitLoading(false);
-        },
-        (error) => {
-          setSubmitError(true);
-          setSubmitLoading(false);
-          console.error(error);
-        },
-      );
+    const volunteerData = {
+      ...data,
+      FNAME: data.firstName || '',
+      LNAME: data.lastName || '',
+      EMAIL: data.email || '',
+      JOB: data.jobTitle || '',
+      COMPANY: data.companyName || '',
+      VOLUNTEER: 'true',
+    };
+
+    mutation.mutate({ ...volunteerData });
   };
   return (
     <div className={classes.root}>
@@ -124,6 +147,7 @@ const VolunteerForm = (): ReactElement => {
                                 {...field}
                                 variant="outlined"
                                 label="First Name"
+                                inputProps={{"data-testid": "volunteer-form-first-name"}}
                                 required
                                 fullWidth
                               />
@@ -141,6 +165,7 @@ const VolunteerForm = (): ReactElement => {
                                 {...field}
                                 variant="outlined"
                                 label="Last Name"
+                                inputProps={{"data-testid": "volunteer-form-last-name"}}
                                 required
                                 fullWidth
                               />
@@ -159,6 +184,7 @@ const VolunteerForm = (): ReactElement => {
                             className={classes.textField}
                             variant="outlined"
                             label="Job Title"
+                            inputProps={{"data-testid": "volunteer-form-job-title"}}
                             required
                             fullWidth
                           />
@@ -174,6 +200,7 @@ const VolunteerForm = (): ReactElement => {
                             className={classes.textField}
                             variant="outlined"
                             label="Company Name"
+                            inputProps={{"data-testid": "volunteer-form-company-name"}}
                             fullWidth
                           />
                         )}
@@ -190,6 +217,7 @@ const VolunteerForm = (): ReactElement => {
                             variant="outlined"
                             label="Email"
                             type="email"
+                            inputProps={{"data-testid": "volunteer-form-email"}}
                             fullWidth
                           />
                         )}
@@ -200,6 +228,7 @@ const VolunteerForm = (): ReactElement => {
                           color="secondary"
                           type="submit"
                           disabled={submitLoading}
+                          data-testid="volunteer-request-button"
                         >
                           Request To Volunteer
                         </Button>
