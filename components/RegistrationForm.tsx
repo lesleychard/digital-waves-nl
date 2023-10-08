@@ -69,7 +69,6 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     .required('Must provide student\'s date of birth.')
     .nullable()
     .default(undefined)
-    // @todo age min/max birthdates as prop 
     .min(new Date('2005-11-20'), 'Student must not be older than 18 on November 20, 2023 to register.')
     .max(new Date('2012-11-20'), 'Student must be at least 11 years old by November 20, 2023 to register.'),
   city: Yup.string()
@@ -125,18 +124,21 @@ const useStyles = makeStyles(
       marginTop: theme.spacing(3),
     },
     textField: {
-      margin: `${theme.spacing(2)}px 0 0`,
+      margin: `${theme.spacing(3)}px 0 0`,
     },
     formGroup: {
       margin: `${theme.spacing(2)}px 0`,
     },
     formLabel: {
-      marginBottom: theme.spacing(2),
+      margin: `${theme.spacing(1)}px 0`,
       lineHeight: 1.5,
     },
     formControl: {
       margin: `${theme.spacing(1.5)}px 0`,
       textAlign: 'left',
+    },
+    inputLabelShrink: {
+      background: theme.palette.background.paper,
     },
     typographyH2Parent: {
       margin: `${theme.spacing(2)}px 0`,
@@ -456,7 +458,12 @@ const RegistrationForm = (): ReactElement => {
                   fullWidth
                   error={Boolean(errors.referrer)}
                 >
-                  <InputLabel id="referrer-label">
+                  <InputLabel
+                    id="referrer-label"
+                    classes={{
+                      shrink: classes.inputLabelShrink,
+                    }}
+                  >
                     How did you learn about Digital Waves? 
                   </InputLabel>
                   <Controller
@@ -621,7 +628,7 @@ const RegistrationForm = (): ReactElement => {
                     variant="raised"
                     color="secondary"
                     type="submit"
-                    disabled={submitLoading || isValid}
+                    disabled={submitLoading || (isDirty && !isValid)}
                   >
                     Register for Digital Waves
                   </Button>
