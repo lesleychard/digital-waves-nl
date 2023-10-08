@@ -123,7 +123,7 @@ const SponsorForm = (): ReactElement => {
       JOB: data.jobTitle || '',
       COMPANY: data.companyName || '',
       TIER: data.tier || '',
-      SPONSER: 'true',
+      SPONSOR: 'true',
     };
 
     mutation.mutate({ ...sponsorData });
