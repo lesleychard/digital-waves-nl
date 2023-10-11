@@ -163,7 +163,8 @@ const Program2023ProgramInfo = (): ReactElement => {
           ?
         </Typography>
         <Typography>
-        Interested in participating in our 2023 Program? Registration is free, and participants will be entered to win prizes and swag from our amazing local sponsors.
+          Interested in participating in our 2023 Program? Registration is free, and participants will
+          be entered to win prizes and swag from our amazing local sponsors.
         </Typography>
 
         <Grid

@@ -10,7 +10,7 @@ import { animationChildDelay } from '../../styles/helpers/animations';
 const SPEECH_BUBBLES: SpeechBubbleProps[] = [
   // Light Pink
   {
-    children: 'How might we make it easier for NLers to support the queer community?',
+    children: 'How might we make it easier for NLers to support the 2SLGBTQIA+ community?',
     size: 'lg',
     caretDirection: 'right',
     style: { left: '-13%', top: '15%', zIndex: 1 },
@@ -38,7 +38,7 @@ const SPEECH_BUBBLES: SpeechBubbleProps[] = [
   },
   // Yellow
   {
-    children: 'How might we help find spaces and services that are queer-inclusive?',
+    children: 'How might we help find spaces and services that are queer- and trans-inclusive?',
     color: 'yellow',
     style: { left: '15%', bottom: '13%', zIndex: 2 },
   },
@@ -234,12 +234,12 @@ const Program2023Hero = (): ReactElement => {
           className={classes.typographyH1}
         >
           <strong>Help us</strong>
-          &nbsp;create NL&rsquo;s queer-owned and -inclusive resource app.
+          &nbsp;create NL&rsquo;s 2SLGBTQIA+ -owned and -inclusive resource app.
         </Typography>
         <Typography className={classes.paragraph}>
           Help us create Newfoundland & Labrador&apos;s first comprehensive 
           2SLGBTQIA+ directory of businesses, organizations, and professionals 
-          who support the queer community.
+          who support the queer and trans community.
         </Typography>
         <Typography className={classes.paragraph}>
           We are calling on girls, gender-diverse and 2SLGBTQIA+ youth ages 11-18, residing

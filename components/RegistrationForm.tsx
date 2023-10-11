@@ -15,9 +15,10 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { useMutation } from '@tanstack/react-query';
 import { DatePicker } from '@material-ui/pickers';
-import { ReactElement, useState, ChangeEvent } from 'react';
+import { ReactElement, useState, ChangeEvent, ReactNode } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import * as Yup from 'yup';
+import DownloadIcon from '@material-ui/icons/GetApp';
 
 import Button from './Button';
 import useYupValidationResolver from '../lib/useYupValidationResolver';
@@ -38,21 +39,35 @@ const REFERRALS = [
   { value: 'other', label: 'Other' },
 ];
 
+const DEMOGRAPHIC_OPTIONS = [
+  { value: 'true', label: 'Yes' },
+  { value: 'false', label: 'No' },
+  { value: 'not disclosed', label: 'Prefer not to say' },
+];
+
 type FormData = {
   firstName: string;
   lastName: string;
   dateOfBirth: string;
   email: string;
+  pronouns: string;
   city: string;
   school: string;
   grade: string;
   techAccess: string;
   referrer: string;
   referrerOther: string;
+  indigenous: string;
+  immigrant: string;
+  racialized: string;
+  disability: string;
+  additionalSupports: string;
   parentFirstName: string;
   parentLastName: string;
   parentEmail: string;
+  parentPhone: string;
   consent: boolean;
+  rules: boolean;
 };
 
 const VALIDATION_SCHEMA = Yup.object().shape({
@@ -69,7 +84,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     .required('Must provide student\'s date of birth.')
     .nullable()
     .default(undefined)
-    .min(new Date('2005-11-20'), 'Student must not be older than 18 on November 20, 2023 to register.')
+    .min(new Date('2005-12-01'), 'Student must not be older than 18 on December 1, 2023 to register.')
     .max(new Date('2012-11-20'), 'Student must be at least 11 years old by November 20, 2023 to register.'),
   city: Yup.string()
     .required('Must provide student\'s city or town.')
@@ -99,8 +114,12 @@ const VALIDATION_SCHEMA = Yup.object().shape({
   parentEmail: Yup.string()
     .required('Must provide parent or guardian\'s email.')
     .email('Please provide a valid parent or guardian email.'),
+  parentPhone: Yup.string()
+    .required('Must provide parent or guardian\'s phone number.'),
   consent: Yup.boolean()
     .oneOf([true], 'You must consent to the above conditions to enter.'),
+  rules: Yup.boolean()
+    .oneOf([true], 'You must read and agree to the Rules and Regulations to enter.'),
 });
 
 const useStyles = makeStyles(
@@ -137,6 +156,9 @@ const useStyles = makeStyles(
       margin: `${theme.spacing(1.5)}px 0`,
       textAlign: 'left',
     },
+    textFieldSupports: {
+      marginBottom: theme.spacing(1.5),
+    },
     inputLabelShrink: {
       background: theme.palette.background.paper,
     },
@@ -147,6 +169,9 @@ const useStyles = makeStyles(
       margin: `${theme.spacing(2)}px 0`,
     },
     formHelperTextConsent: {
+      marginBottom: theme.spacing(2),
+    },
+    buttonDownloadRules: {
       marginBottom: theme.spacing(2),
     },
     containerSubmit: {
@@ -162,7 +187,11 @@ const useStyles = makeStyles(
   })
 );
 
-const RegistrationForm = (): ReactElement => {
+type Props = {
+  eligibility?: ReactNode,
+};
+
+const RegistrationForm = ({ eligibility }: Props): ReactElement => {
   const classes = useStyles();
   const {
     control,
@@ -172,7 +201,7 @@ const RegistrationForm = (): ReactElement => {
   } = useForm<FormData>({
     resolver: useYupValidationResolver(VALIDATION_SCHEMA),
     shouldFocusError: true,
-    mode: 'onBlur',
+    mode: 'onChange',
   });
   const watchReferrer = watch('referrer');
   const dateFormat = 'MM/DD/YYYY';
@@ -236,16 +265,24 @@ const RegistrationForm = (): ReactElement => {
       LNAME: data.lastName || '',
       EMAIL: data.email || '',
       DOB: data.dateOfBirth || '',
+      PRONOUNS: data.pronouns || '',
       CITY: data.city || '',
       SCHOOL: data.school || '',
       GRADE: data.grade || '',
       TECHACCESS: getTechAccessList() || '',
       REFERRER: data.referrer || '',
       REF_OTHER: data.referrerOther || '',
+      INDIGENOUS: data.indigenous || '',
+      IMMIGRANT: data.immigrant || '',
+      RACIALIZED: data.racialized || '',
+      DISABILITY: data.disability || '',
+      SUPPORTS: data.additionalSupports || '',
       P_FNAME: data.parentFirstName || '',
       P_LNAME: data.parentLastName || '',
       P_EMAIL: data.parentEmail || '',
+      P_PHONE: data.parentPhone || '',
       CONSENT: data.consent.toString() || '',
+      RULES: data.rules.toString() || '',
     };
 
     mutation.mutate({ ...participantData });
@@ -273,10 +310,7 @@ const RegistrationForm = (): ReactElement => {
           )
           : (
             <>
-              <Typography gutterBottom>
-                Please review the program information on this page with your parent or guardian before registering to
-                ensure you meet the eligibility requirements and understand your commitment to Digital Waves.
-              </Typography>
+              {eligibility}
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className={classes.form}
@@ -360,13 +394,33 @@ const RegistrationForm = (): ReactElement => {
                       inputVariant="outlined"
                       label="Date of Birth"
                       value={field.value}
-                      onChange={(date) => field.onChange(date)}
+                      onChange={
+                        (date) => {
+                          field.onChange(date ? new Date(date.toString()) : null);
+                          console.log(date?.format(dateFormat));
+                        }
+                      }
                       fullWidth
                       format={dateFormat}
                       required
                       error={Boolean(errors.dateOfBirth)}
                       helperText={errors.dateOfBirth?.message}
                       openTo="year"
+                    />
+                  )}
+                />
+                <Controller
+                  name="pronouns"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      className={classes.textField}
+                      variant="outlined"
+                      label="Preferred Pronouns (Optional)"
+                      fullWidth
                     />
                   )}
                 />
@@ -451,6 +505,24 @@ const RegistrationForm = (): ReactElement => {
                     ))
                   }
                 </FormGroup>
+                <Typography>
+                  What supports, if any, can we provide to ensure your
+                  accessibility needs are met while participating in Digital Waves Programing?
+                </Typography>
+                <Controller
+                  name="additionalSupports"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      className={classes.textFieldSupports}
+                      {...field}
+                      variant="outlined"
+                      label="Enter additional supports if needed (optional)"
+                      fullWidth
+                    />
+                  )}
+                />
                 <FormControl
                   className={classes.formControl}
                   variant="outlined"
@@ -474,7 +546,7 @@ const RegistrationForm = (): ReactElement => {
                       <Select
                         labelId="referrer-label"
                         value={field.value}
-                        onChange={(value) => field.onChange(value)}
+                        onChange={(e) => field.onChange(e.target.value)}
                       >
                         {
                           REFERRALS.map((ref) => (
@@ -522,6 +594,166 @@ const RegistrationForm = (): ReactElement => {
                     )
                     : null
                 }
+
+                {/** STUDENT DEMOGRAPHICS SECTION */}
+
+                <Typography
+                  variant="h3"
+                  className={classes.typographyH2Parent}
+                >
+                  Student Demographics (Optional):
+                </Typography>
+                <FormControl
+                  className={classes.formControl}
+                  variant="outlined"
+                  fullWidth
+                >
+                  <InputLabel
+                    id="indigenous-label"
+                    classes={{
+                      shrink: classes.inputLabelShrink,
+                    }}
+                  >
+                    Do you consider yourself to be an Indigenous person?
+                  </InputLabel>
+                  <Controller
+                    name="indigenous"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => (
+                      <Select
+                        labelId="indigenous-label"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      >
+                        {
+                          DEMOGRAPHIC_OPTIONS.map((ref) => (
+                            <MenuItem
+                              key={ref.value}
+                              value={ref.value}
+                            >
+                              {ref.label}
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
+                    )}
+                  />
+                </FormControl>
+                <FormControl
+                  className={classes.formControl}
+                  variant="outlined"
+                  fullWidth
+                >
+                  <InputLabel
+                    id="immigrant-label"
+                    classes={{
+                      shrink: classes.inputLabelShrink,
+                    }}
+                  >
+                    Do you identify as an immigrant or refugee?
+                  </InputLabel>
+                  <Controller
+                    name="immigrant"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => (
+                      <Select
+                        labelId="immigrant-label"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      >
+                        {
+                          DEMOGRAPHIC_OPTIONS.map((ref) => (
+                            <MenuItem
+                              key={ref.value}
+                              value={ref.value}
+                            >
+                              {ref.label}
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
+                    )}
+                  />
+                </FormControl>
+                <FormControl
+                  className={classes.formControl}
+                  variant="outlined"
+                  fullWidth
+                >
+                  <InputLabel
+                    id="racialized-label"
+                    classes={{
+                      shrink: classes.inputLabelShrink,
+                    }}
+                  >
+                    Do you identify as a member of a racialized group?
+                  </InputLabel>
+                  <Controller
+                    name="racialized"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => (
+                      <Select
+                        labelId="racialized-label"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      >
+                        {
+                          DEMOGRAPHIC_OPTIONS.map((ref) => (
+                            <MenuItem
+                              key={ref.value}
+                              value={ref.value}
+                            >
+                              {ref.label}
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
+                    )}
+                  />
+                </FormControl>
+                <FormControl
+                  className={classes.formControl}
+                  variant="outlined"
+                  fullWidth
+                >
+                  <InputLabel
+                    id="disability-label"
+                    classes={{
+                      shrink: classes.inputLabelShrink,
+                    }}
+                  >
+                    Do you identify as someone with a visible or invisible disability?
+                  </InputLabel>
+                  <Controller
+                    name="disability"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => (
+                      <Select
+                        labelId="disability-label"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      >
+                        {
+                          DEMOGRAPHIC_OPTIONS.map((ref) => (
+                            <MenuItem
+                              key={ref.value}
+                              value={ref.value}
+                            >
+                              {ref.label}
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
+                    )}
+                  />
+                </FormControl>
+
+                {/** PARENT GUARDIAN SECTION */}
+
                 <Typography
                   variant="h2"
                   className={classes.typographyH2Parent}
@@ -593,6 +825,25 @@ const RegistrationForm = (): ReactElement => {
                   )}
                 />
                 <Controller
+                  name="parentPhone"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      className={classes.textField}
+                      variant="outlined"
+                      label="Phone Number"
+                      type="tel"
+                      required
+                      fullWidth
+                      error={Boolean(errors.parentPhone)}
+                      helperText={errors.parentPhone?.message}
+                    />
+                  )}
+                />
+                <Controller
                   name="consent"
                   control={control}
                   defaultValue={false}
@@ -601,7 +852,9 @@ const RegistrationForm = (): ReactElement => {
                       <FormControlLabel
                         className={classes.formControlLabelConsent}
                         control={(
-                          <Checkbox {...field} />
+                          <Checkbox
+                            {...field}
+                          />
                         )}
                         label="I give my consent to Digital Waves to contact the above student and parent/guardian with program information."
                       />
@@ -617,6 +870,53 @@ const RegistrationForm = (): ReactElement => {
                           )
                           : null
                       }
+                    </>
+                  )}
+                />
+                <Controller
+                  name="rules"
+                  control={control}
+                  defaultValue={false}
+                  render={({ field }) => (
+                    <>
+                      <FormControlLabel
+                        className={classes.formControlLabelConsent}
+                        control={(
+                          <Checkbox
+                            {...field}
+                          />
+                        )}
+                        label={(
+                          <>
+                            I have read and agree to the program&rsquo;s Rules and Regulations.
+                          </>
+                        )}
+                      />
+                      {
+                        errors.rules
+                          ? (
+                            <FormHelperText
+                              error
+                              className={classes.formHelperTextConsent}
+                            >
+                              {errors.rules?.message}
+                            </FormHelperText>
+                          )
+                          : null
+                      }
+                      <Button
+                        className={classes.buttonDownloadRules}
+                        component="a"
+                        variant="outlined"
+                        href="assets/documents/Digital-Waves-2023-Official-Rules-and-Regulations.pdf"
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Download Rules and Regulations (PDF)
+                        <DownloadIcon />
+                      </Button>
                     </>
                   )}
                 />

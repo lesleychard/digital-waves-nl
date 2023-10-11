@@ -32,6 +32,12 @@ const useStyles = makeStyles(
         color: theme.palette.primary.main,
       },
     },
+    typographyH2: {
+      marginBottom: theme.spacing(4),
+    },
+    typography: {
+      marginBottom: theme.spacing(2),
+    },
     aside: {
       background: 'url(assets/images/home/home-about-us-aside.jpg) no-repeat center center',
       backgroundSize: 'cover',
@@ -74,7 +80,33 @@ const ContestRegister2021 = (): ReactElement => {
         >
           {title}
         </Typography>
-        <RegistrationForm />
+        <RegistrationForm
+          eligibility={(
+            <>
+              <Typography variant="h2" className={classes.typographyH2}>
+                Eligibility Requirements:
+              </Typography>
+              <Typography className={classes.typography}>
+                To be eligible to participate in Digital Waves NL 2023, you must meet the following requirements:
+              </Typography>
+              <Typography className={classes.typography}>
+                <ol>
+                  <li>You must reside in the province of Newfoundland and Labrador.</li>
+                  <li>You must be between the ages of 11-18 during the entire course of the program (November 22 - December 1, 2023).</li>
+                  <li>Your gender identification must be female or gender diverse (e.g. non-binary, two-spirit, gender fluid, agender, or third gender), or self-identify within the 2SLGBTQIA+ spectrum.</li>
+                  <li>You must communicate in English throughout Digital Waves NL virtual events.</li>
+                  <li>Your legal guardian must agree to these terms and conditions on your behalf.</li>
+                  <li>Family members and/or persons who share residences with Digital Waves NL organizers are eligible to participate providing they meet all other eligibility requirements.</li>
+                  <li>Multiple students per household are welcome to join simultaneously.</li>
+                </ol>
+              </Typography>
+              <Typography className={classes.typographyH2}>
+                Please review the program information on this page with your parent or guardian before registering to
+                ensure you meet the eligibility requirements and understand your commitment to Digital Waves.
+              </Typography>
+            </>
+          )}
+        />
       </div>
       <div className={classes.aside} />
     </div>

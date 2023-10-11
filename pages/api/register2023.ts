@@ -33,6 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     FNAME: mergeFields.P_FNAME,
     LNAME: mergeFields.P_LNAME,
     EMAIL: mergeFields.P_EMAIL,
+    PHONE: mergeFields.P_PHONE,
     PARENT: 'true',
   };
 

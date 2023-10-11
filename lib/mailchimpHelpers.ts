@@ -34,6 +34,15 @@ export type mergeFields = {
   TIER?: string,
   VOLUNTEER?: string,
   SUBSCRIBER?: string,
+  PRONOUNS?: string,
+  INDIGENOUS?: string,
+  IMMIGRANT?: string,
+  RACIALIZED?: string,
+  DISABILITY?: string,
+  SUPPORTS?: string,
+  RULES?: string,
+  P_PHONE?: string,
+  PHONE?: string,
   status?: string,
 };
 
