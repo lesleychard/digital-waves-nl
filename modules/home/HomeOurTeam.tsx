@@ -159,6 +159,7 @@ const TEAM_MEMBERS = [
   {
     id: 'jillian-breau',
     name: 'Jillian Breau',
+    pronouns: 'she/her',
     position: 'Frontend Engineer',
     company: 'Sylvera',
     imageUrl: 'assets/images/bios/jillian-breau.jpg',
