@@ -159,20 +159,23 @@ const TEAM_MEMBERS = [
   {
     id: 'jillian-breau',
     name: 'Jillian Breau',
-    position: 'Software Team Lead',
-    company: 'HYKE Technologies',
+    position: 'Frontend Engineer',
+    company: 'Sylvera',
     imageUrl: 'assets/images/bios/jillian-breau.jpg',
     profile: (
       <Typography>
-        Jillian (she/her) works with the software team at HYKE Technologies, a
-        local tech startup focused on bringing their first product to market.
-        She completed her Computer Engineering degree at Memorial University,
-        where she volunteered with groups focused on mental health and academic
-        advocacy. Jillian currently volunteers with She Connects, a mentorship
-        program for female and gender-diverse students across Canada. As someone
-        passionate about sustainability and about helping young people of all
-        identities see a future for themselves in tech, she is very excited for
-        this year’s design challenge.
+        Jillian (she/her) works with the Web Foundations team at Sylvera,
+        a climate tech company based in the UK. She is also a Coach at Get Coding,
+        a local training organization where she gets to help others prepare for a
+        career in software development. She currently volunteers as a Chapter Lead
+        with Canada Learning Code in St. John&rsquo;s, working to offer beginner-friendly
+        technology experiences, and grow a diverse community of learners. Recently,
+        she has volunteered with groups focused on gender equality, education, mentorship for female
+        and gender-diverse youth, and mental health advocacy. Jillian completed
+        her Computer Engineering degree at Memorial University. As someone
+        passionate about sustainability and about helping people of all
+        identities see a future for themselves in tech, she is very excited to
+        help youth make an impact on their community through Digital Waves.
       </Typography>
     ),
   },
