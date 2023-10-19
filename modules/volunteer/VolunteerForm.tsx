@@ -77,7 +77,7 @@ const VolunteerForm = (): ReactElement => {
       }
       return response.json();
     },
-    onSuccess: async(data: Record<string, any>) => {
+    onSuccess: async() => {
       setSubmitSuccess(true);
     },
   });
@@ -147,7 +147,7 @@ const VolunteerForm = (): ReactElement => {
                                 {...field}
                                 variant="outlined"
                                 label="First Name"
-                                inputProps={{"data-testid": "volunteer-form-first-name"}}
+                                inputProps={{ 'data-testid': 'volunteer-form-first-name' }}
                                 required
                                 fullWidth
                               />
@@ -165,7 +165,7 @@ const VolunteerForm = (): ReactElement => {
                                 {...field}
                                 variant="outlined"
                                 label="Last Name"
-                                inputProps={{"data-testid": "volunteer-form-last-name"}}
+                                inputProps={{ 'data-testid': 'volunteer-form-last-name' }}
                                 required
                                 fullWidth
                               />
@@ -184,7 +184,7 @@ const VolunteerForm = (): ReactElement => {
                             className={classes.textField}
                             variant="outlined"
                             label="Job Title"
-                            inputProps={{"data-testid": "volunteer-form-job-title"}}
+                            inputProps={{ 'data-testid': 'volunteer-form-job-title' }}
                             required
                             fullWidth
                           />
@@ -200,7 +200,7 @@ const VolunteerForm = (): ReactElement => {
                             className={classes.textField}
                             variant="outlined"
                             label="Company Name"
-                            inputProps={{"data-testid": "volunteer-form-company-name"}}
+                            inputProps={{ 'data-testid': 'volunteer-form-company-name' }}
                             fullWidth
                           />
                         )}
@@ -217,7 +217,7 @@ const VolunteerForm = (): ReactElement => {
                             variant="outlined"
                             label="Email"
                             type="email"
-                            inputProps={{"data-testid": "volunteer-form-email"}}
+                            inputProps={{ 'data-testid': 'volunteer-form-email' }}
                             fullWidth
                           />
                         )}

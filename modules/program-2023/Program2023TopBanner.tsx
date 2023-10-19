@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
@@ -9,7 +10,10 @@ const useStyles = makeStyles(
     root: {
       background: `linear-gradient(to bottom, ${darken(theme.palette.primary.dark, 0.3)}, ${theme.palette.primary.dark})`,
       color: theme.palette.text.secondary,
-      paddingTop: theme.spacing(12),
+      paddingTop: theme.spacing(10),
+      [theme.breakpoints.up('md')]: {
+        paddingTop: theme.spacing(12),
+      },
     },
     gridContainer: {
       padding: theme.spacing(4),
@@ -21,60 +25,32 @@ const useStyles = makeStyles(
     },
     gridItemLeft: {
       textAlign: 'center',
-      [theme.breakpoints.up('md')]: {
-        padding: `0 ${theme.spacing(3)}px`,
-        textAlign: 'right',
-        position: 'relative',
-        '&:after': {
-          content: '""',
-          display: 'block',
-          width: '0.1em',
-          top: 0,
-          bottom: 0,
-          background: theme.palette.text.secondary,
-          opacity: 0.5,
-          position: 'absolute',
-          right: 0,
-        },
-      },
     },
     gridItemRight: {
       textAlign: 'center',
-      [theme.breakpoints.up('md')]: {
-        padding: `0 ${theme.spacing(3)}px`,
-        textAlign: 'left',
-      },
     },
   })
 );
 
-const Hackathon2023TopBanner = (): ReactElement => {
+const Program2023TopBanner = (): ReactElement => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid
         container
-        className={classes.gridContainer}
+        className={classNames(
+          classes.gridContainer
+        )}
       >
         <Grid
           item
           xs={12}
-          md={6}
+          md={12}
           className={classes.gridItemLeft}
         >
           <Typography className={classes.typography}>
-            Free Virtual Digital Skills Program
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          className={classes.gridItemRight}
-        >
-          <Typography className={classes.typography}>
-            April 1, 2023 to May 6, 2023
+            Free Digital Skills Program Coming November 2023
           </Typography>
         </Grid>
       </Grid>
@@ -82,5 +58,5 @@ const Hackathon2023TopBanner = (): ReactElement => {
   );
 };
 
-export default Hackathon2023TopBanner;
+export default Program2023TopBanner;
 

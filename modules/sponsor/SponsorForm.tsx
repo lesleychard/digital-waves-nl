@@ -25,6 +25,7 @@ type FormData = {
   companyName?: string;
   email: string;
   tier?: string;
+  sponsor?: string;
 };
 
 const useStyles = makeStyles(
@@ -105,7 +106,7 @@ const SponsorForm = (): ReactElement => {
       }
       return response.json();
     },
-    onSuccess: async(data: Record<string, any>) => {
+    onSuccess: async() => {
       setSubmitSuccess(true);
     },
   });
@@ -122,8 +123,8 @@ const SponsorForm = (): ReactElement => {
       JOB: data.jobTitle || '',
       COMPANY: data.companyName || '',
       TIER: data.tier || '',
-      SPONSER: 'true',
-    }
+      SPONSOR: 'true',
+    };
 
     mutation.mutate({ ...sponsorData });
   };
@@ -179,7 +180,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="First Name"
-                              inputProps={{"data-testid": "sponsor-form-first-name"}}
+                              inputProps={{ 'data-testid': 'sponsor-form-first-name' }}
                               required
                               fullWidth
                             />
@@ -196,7 +197,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Last Name"
-                              inputProps={{"data-testid": "sponsor-form-last-name"}}
+                              inputProps={{ 'data-testid': 'sponsor-form-last-name' }}
                               required
                               fullWidth
                             />
@@ -213,7 +214,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Job Title"
-                              inputProps={{"data-testid": "sponsor-form-job-title"}}
+                              inputProps={{ 'data-testid': 'sponsor-form-job-title' }}
                               required
                               fullWidth
                             />
@@ -229,7 +230,7 @@ const SponsorForm = (): ReactElement => {
                               className={classes.textField}
                               variant="outlined"
                               label="Company Name"
-                              inputProps={{"data-testid": "sponsor-form-company-name"}}
+                              inputProps={{ 'data-testid': 'sponsor-form-company-name' }}
                               fullWidth
                             />
                           )}
@@ -246,7 +247,7 @@ const SponsorForm = (): ReactElement => {
                               variant="outlined"
                               label="Email"
                               type="email"
-                              inputProps={{"data-testid": "sponsor-form-email"}}
+                              inputProps={{ 'data-testid': 'sponsor-form-email' }}
                               fullWidth
                             />
                           )}

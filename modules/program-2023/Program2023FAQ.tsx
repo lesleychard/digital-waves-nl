@@ -8,16 +8,16 @@ import { light } from '../../styles/theme/_palette';
 
 const BODY_HACKATHON = [
   'Hackathons get people together to hack (or code) a solution to a real-life problem in a short amount of time. While hackathons generate apps and other tech quickly, they offer infinite possibilities to be creative and learn new skills, all while helping make a real impact.',
-  'Our Hackathon will be engaging girls, gender-diverse and queer youth ages 11-18, from anywhere in Newfoundland and Labrador, to help build NL\'s 2SLGBTQIA+ online resource supporting the queer community.',
+  'Our Hackathon will be engaging girls and 2SLGBTQIA+ youth ages 11-18, from anywhere in Newfoundland and Labrador, to help build NL\'s 2SLGBTQIA+ online resource supporting the queer and trans community.',
 ];
 
 const BODY_INQUEERIES= [
-  'Have you ever wanted to support a queer-owned business? Have you ever wondered where to find a service that’s queer-inclusive? Have you ever wondered what resources and organizations are out there for queer people in NL?',
-  'The InQueeries app aims to increase awareness of queer-owned and -inclusive businesses, organizations, and professionals by creating a crowdsourced, searchable directory of listings. InQueeries will not only make it easier to be an ally by supporting queer-owned businesses with greater ease, but will also provide valuable resources to queer people in the province.',
+  'Have you ever wanted to support a 2SLGBTQIA+-owned business? Have you ever wondered where to find a service that’s queer- and trans- inclusive? Have you ever wondered what resources and organizations are out there for 2SLGBTQIA+ people in NL?',
+  'The InQueeries app aims to increase awareness of queer-owned and -inclusive businesses, organizations, and professionals by creating a crowdsourced, searchable directory of listings. InQueeries will not only make it easier to be an ally by supporting 2SLGBTQIA+-owned businesses with greater ease, but will also provide valuable resources to queer and trans people in the province.',
 ];
 
 const BODY_PARTICIPANT_TASKS = [
-  'By registering to participate, you will be attending two virtual digital skills classes and creating a single-page website highlighting a queer-owned or -inclusive business, organization, or professional. After the hackathon, we will combine all of the single-pages in a searchable directory, creating a crowdsourced online resource that is truly authentic to the province and its community!',
+  'By registering to participate, you will be attending two virtual digital skills classes and creating a single-page website highlighting a 2SLGBTQIA+-owned or -inclusive business, organization, or professional. After the hackathon, we will combine all of the single-pages in a searchable directory, creating a crowdsourced online resource that is truly authentic to the province and its community!',
 ];
 
 const useStyles = makeStyles(
@@ -43,7 +43,7 @@ const useStyles = makeStyles(
   })
 );
 
-const Hackathon2023FAQ = (): ReactElement => {
+const Program2023FAQ = (): ReactElement => {
   const classes = useStyles();
   return (
     <section className={classes.root} id="contest-outline">
@@ -169,4 +169,4 @@ const TypographyBody = ({ children }: CustomTypographyProps): ReactElement => {
   );
 };
 
-export default Hackathon2023FAQ;
+export default Program2023FAQ;

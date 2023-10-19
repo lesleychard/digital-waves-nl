@@ -17,6 +17,11 @@ const overrides = {
       borderRadius: 10,
     },
   },
+  MuiCheckbox: {
+    root: {
+      color: dark,
+    },
+  },
   MuiDialog: {
     paper: {
       '@media (max-width: 768px)': {
@@ -36,6 +41,16 @@ const overrides = {
       '@media (max-width: 768px)': {
         padding: 12,
       },
+    },
+  },
+  MuiFormLabel: {
+    root: {
+      color: dark,
+    },
+  },
+  MuiInputLabel: {
+    root: {
+      color: dark,
     },
   },
   MuiCssBaseline: {

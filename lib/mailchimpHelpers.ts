@@ -1,5 +1,13 @@
 import md5 from "md5";
 
+export type mailchimpList = 'general' | 'participant';
+
+const getListId = (list: mailchimpList | undefined) => {
+  return list === 'participant'
+    ? process.env.MAILCHIMP_PARTICIPANT_LIST_ID
+    : process.env.MAILCHIMP_LIST_ID;
+};
+
 export type mergeFields = {
   EMAIL: string,
   FNAME: string,
@@ -26,14 +34,24 @@ export type mergeFields = {
   TIER?: string,
   VOLUNTEER?: string,
   SUBSCRIBER?: string,
+  PRONOUNS?: string,
+  INDIGENOUS?: string,
+  IMMIGRANT?: string,
+  RACIALIZED?: string,
+  DISABILITY?: string,
+  SUPPORTS?: string,
+  RULES?: string,
+  P_PHONE?: string,
+  PHONE?: string,
   status?: string,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const checkMailChimpContact = async (mergeFields: mergeFields): Promise<any> => {
+const checkMailChimpContact = async (mergeFields: mergeFields, list?: mailchimpList | undefined): Promise<any> => {
+  const listId = getListId(list);
+
   const checkContact = await fetch(
-    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL
-    )}`,
+    `https://us5.api.mailchimp.com/3.0/lists/${listId}/members/${md5(mergeFields.EMAIL)}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -51,9 +69,11 @@ const checkMailChimpContact = async (mergeFields: mergeFields): Promise<any> => 
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createMailChimpContact = async (mergeFields: mergeFields): Promise<any> => {
+const createMailChimpContact = async (mergeFields: mergeFields, tags?: string[], list?: mailchimpList | undefined): Promise<any> => {
+  const listId = getListId(list);
+
   const createContact = await fetch(
-    `https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/`,
+    `https://us5.api.mailchimp.com/3.0/lists/${listId}/members/`,
     {
       method: "POST",
       headers: {
@@ -64,6 +84,7 @@ const createMailChimpContact = async (mergeFields: mergeFields): Promise<any> =>
         status: "subscribed",
         email_address: mergeFields.EMAIL,
         merge_fields: mergeFields,
+        tags: tags,
       }),
     }
   );
@@ -78,8 +99,10 @@ const createMailChimpContact = async (mergeFields: mergeFields): Promise<any> =>
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const updateMailChimpContact = async (mergeFields: mergeFields): Promise<any> => {
-  const updateContact = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${md5(mergeFields.EMAIL)}/`, {
+const updateMailChimpContact = async (mergeFields: mergeFields, tags?: string[], list?: mailchimpList | undefined): Promise<any> => {
+  const listId = getListId(list);
+
+  const updateContact = await fetch(`https://us5.api.mailchimp.com/3.0/lists/${listId}/members/${md5(mergeFields.EMAIL)}/`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -90,6 +113,7 @@ const updateMailChimpContact = async (mergeFields: mergeFields): Promise<any> =>
       status: "subscribed",
       email_address: mergeFields.EMAIL,
       merge_fields: mergeFields,
+      tags: tags,
     }),
   });
 

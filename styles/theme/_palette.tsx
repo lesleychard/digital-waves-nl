@@ -10,7 +10,7 @@ export const background = '#53AED8';
 
 // Teal
 export const primary = '#5BD6DE';
-export const primaryDark = darken(primary, 0.33);
+export const primaryDark = darken(primary, 0.4);
 // Pink
 export const secondary = '#F6A5C6';
 export const secondaryDark = darken(secondary, 0.15);
@@ -19,6 +19,8 @@ export const highlight = '#68E8AA';
 export const highlightDark = darken(highlight, 0.15);
 // Purple
 export const lowlight = '#9E99DC';
+// Yellow
+export const yellow = '#F8DE64';
 
 const palette = {
   background: {
