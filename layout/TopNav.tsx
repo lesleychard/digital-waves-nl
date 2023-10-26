@@ -9,11 +9,7 @@ import { light } from '../styles/theme/_palette';
 import Button from '../components/Button';
 import MobileMenu from './MobileMenu';
 import Logo from '../components/Logo';
-import {
-  getSiteVersion,
-  SITE_VERSION_PROGRAM_2023,
-  SITE_VERSION_CONTEST_2021,
-} from '../lib/getSiteVersion';
+import { getSiteVersion, SITE_VERSION_CONTEST_2021, SITE_VERSION_PROGRAM_2023 } from '../lib/getSiteVersion';
 
 export const NAV_ITEMS: NavItem[][] = [
   [
@@ -91,7 +87,7 @@ const useStyles = makeStyles(
       },
     },
     buttonMenu: {
-      background: `url(assets/images/icons/icon-menu.svg) no-repeat center center`,
+      background: `url(/assets/images/icons/icon-menu.svg) no-repeat center center`,
       backgroundSize: '60%',
       borderRadius: '50%',
       fontSize: 0,

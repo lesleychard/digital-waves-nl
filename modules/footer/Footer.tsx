@@ -25,6 +25,10 @@ const MENU_ITEMS = [
     title: 'Volunteer with Us',
     route: '/volunteer',
   },
+  {
+    title: 'Press Room',
+    route: '/press-room',
+  },
 ];
 
 const SOCIAL_ITEMS = [
