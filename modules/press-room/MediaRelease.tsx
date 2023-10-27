@@ -29,6 +29,7 @@ const useStyles = makeStyles(
     },
     heroContainer: {
       ...container(theme),
+      padding: '10vw 0',
       [theme.breakpoints.up('sm')]: {
         maxWidth: '50rem',
       },

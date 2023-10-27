@@ -25,11 +25,26 @@ const MENU_ITEMS = [
     title: 'Volunteer with Us',
     route: '/volunteer',
   },
-  {
-    title: 'Press Room',
-    route: '/press-room',
-  },
 ];
+
+if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
+  MENU_ITEMS.push({
+    title: 'Program Fall 2023',
+    route: '/program-2023',
+  });
+}
+
+if (getSiteVersion() === SITE_VERSION_CONTEST_2021) {
+  MENU_ITEMS.push({
+    title: 'Contest Fall 2021',
+    route: '/contest-2021',
+  });
+}
+
+MENU_ITEMS.push(  {
+  title: 'Press Room',
+  route: '/press-room',
+});
 
 const SOCIAL_ITEMS = [
   {
@@ -73,19 +88,6 @@ const SOCIAL_ITEMS = [
   //   link: '#',
   // },
 ];
-
-if (getSiteVersion() === SITE_VERSION_PROGRAM_2023) {
-  MENU_ITEMS.push({
-    title: 'Program Fall 2023',
-    route: '/program-2023',
-  });
-}
-if (getSiteVersion() === SITE_VERSION_CONTEST_2021) {
-  MENU_ITEMS.push({
-    title: 'Contest Fall 2021',
-    route: '/contest-2021',
-  });
-}
 
 const useStyles = makeStyles(
   (theme) => ({
