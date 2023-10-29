@@ -73,6 +73,7 @@ const useStyles = makeStyles(
     'containerTier-gb': {
       '& $imgSponsorLogo': {
         width: '30rem',
+        margin: theme.spacing(3),
       },
     },
     'containerTier-mb': {
@@ -80,11 +81,7 @@ const useStyles = makeStyles(
         width: '20rem',
       },
     },
-    'containerTier-kb': {
-      '& $imgSponsorLogo': {
-        width: '10rem',
-      },
-    },
+    'containerTier-kb': {},
     'containerTier-build-your-own': {
       '& $imgSponsorLogo': {
         width: '6rem',
