@@ -183,6 +183,7 @@ const TEAM_MEMBERS = [
   {
     id: 'laura-douglas',
     name: 'Laura Douglas',
+    pronouns: 'she/her',
     position: 'Product Designer',
     company: 'CoLab Software',
     imageUrl: 'assets/images/bios/laura-douglas.jpg',

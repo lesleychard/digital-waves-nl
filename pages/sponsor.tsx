@@ -10,12 +10,21 @@ import FooterCTA from '../modules/footer/FooterCTA';
 import Footer from '../modules/footer/Footer';
 import FooterSubscribe from '../modules/footer/FooterSubscribe';
 import SocialMeta from '../components/SocialMeta';
+import SponsorPartners from '../modules/sponsor/SponsorPartners/SponsorPartners';
+import {
+  getSiteVersion,
+  SITE_VERSION_PROGRAM_2023,
+  SITE_VERSION_CONTEST_2021,
+} from '../lib/getSiteVersion';
 
 const useStyles = makeStyles(
   () => ({
     root: {},
   })
 );
+
+const siteVersion = getSiteVersion();
+const siteVersionsWithPartners = [SITE_VERSION_CONTEST_2021, SITE_VERSION_PROGRAM_2023];
 
 const sponsor = (): ReactElement => {
   const classes = useStyles();
@@ -25,6 +34,9 @@ const sponsor = (): ReactElement => {
       <SocialMeta title="Sponsor Us" />
       <div className={classes.root}>
         <SponsorHero />
+        {(siteVersion && siteVersionsWithPartners.includes(siteVersion)) && (
+          <SponsorPartners />
+        )}
         <SponsorPackages />
         <SponsorFAQ />
         <SponsorForm />

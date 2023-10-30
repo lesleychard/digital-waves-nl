@@ -1,4 +1,3 @@
-const SITE_VERSION_SPONSOR_OUTREACH_2023 = 'sponsor-outreach-2023';
 const SITE_VERSION_PROGRAM_2023 = 'program-2023';
 const SITE_VERSION_CONTEST_2021 = 'contest-2021';
 
@@ -9,6 +8,5 @@ const getSiteVersion = (): string | undefined => {
 export {
   getSiteVersion,
   SITE_VERSION_PROGRAM_2023,
-  SITE_VERSION_SPONSOR_OUTREACH_2023,
   SITE_VERSION_CONTEST_2021,
 };

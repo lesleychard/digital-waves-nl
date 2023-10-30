@@ -3,99 +3,33 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 
-import { containerSm } from '../../styles/helpers/extend';
+import { containerSm } from '../../../styles/helpers/extend';
+import {
+  getSiteVersion,
+  SITE_VERSION_PROGRAM_2023,
+  SITE_VERSION_CONTEST_2021,
+} from '../../../lib/getSiteVersion';
+import {
+  SPONSORS_2021,
+  SPONSORS_2023,
+} from './constants';
+import {
+  SponsorTiers,
+} from './types';
 
-const CURRENT_SPONSORS = [
-  {
-    tierId: 'gb',
-    tierName: 'Gigabyte Tier',
-    tierSponsors: [
-      {
-        id: 'verafin',
-        name: 'Verafin',
-        format: 'jpg',
-      },
-    ],
-  },
-  {
-    tierId: 'mb',
-    tierName: 'Megabyte Tier',
-    tierSponsors: [
-      {
-        id: 'bluedrop',
-        name: 'Bluedrop Learning Networks',
-        format: 'jpg',
-      },
-      {
-        id: 'colab',
-        name: 'Colab Software',
-        format: 'png'
-      },
-    ],
-  },
-  {
-    tierId: 'kb',
-    tierName: 'Kilobyte Tier',
-    tierSponsors: [
-      {
-        id: 'ray',
-        name: 'Ray Agency',
-        format: 'png',
-      },
-      {
-        id: 'icbts',
-        name: 'I Code by the Sea Inc.',
-        format: 'png',
-      },
-      {
-        id: 'mysa',
-        name: 'Mysa',
-        format: 'png',
-      },
-      {
-        id: 'genoa',
-        name: 'Genoa Design',
-        format: 'jpeg',
-      },
-      {
-        id: 'milk-moovement',
-        name: 'Milk Moovement',
-        format: 'png',
-      },
-      {
-        id: 'rally',
-        name: 'Rally',
-        format: 'png',
-      },
-      {
-        id: 'carnegie-learning',
-        name: 'Carnegie Learning',
-        format: 'png',
-      },
-    ],
-  },
-  {
-    tierId: 'build-your-own',
-    tierName: 'Build Your Own',
-    tierSponsors: [
-      {
-        id: 'vision33',
-        name: 'Vision33',
-        format: 'png',
-      },
-      {
-        id: 'chris-howse',
-        name: 'Chris Howse',
-        noLogo: true,
-      },
-      {
-        id: 'target',
-        name: 'Target Brand Architects',
-        format: 'jpeg'
-      }
-    ],
-  },
-];
+const siteVersion = getSiteVersion();
+
+const getSponsorYearAndPartners = (): [string | null, SponsorTiers] => {
+  switch (siteVersion) {
+    case SITE_VERSION_PROGRAM_2023:
+      return ['2023', SPONSORS_2023];
+    case SITE_VERSION_CONTEST_2021:
+      return ['2021', SPONSORS_2021];
+    default:
+      return [null, []];
+  }
+};
+const [sponsorYear, sponsorYearPartners] = getSponsorYearAndPartners();
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -121,11 +55,14 @@ const useStyles = makeStyles(
     containerTier: {
       marginBottom: theme.spacing(2),
     },
-    typographyTierName: {},
+    typographyTierName: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(1),
+    },
     imgSponsorLogo: {
       width: '12rem',
       maxWidth: `calc(100% - ${theme.spacing(2)}px)`,
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
     imgSponsorLogoContainer: {
       display: 'flex',
@@ -136,6 +73,7 @@ const useStyles = makeStyles(
     'containerTier-gb': {
       '& $imgSponsorLogo': {
         width: '30rem',
+        margin: theme.spacing(3),
       },
     },
     'containerTier-mb': {
@@ -143,17 +81,10 @@ const useStyles = makeStyles(
         width: '20rem',
       },
     },
-    'containerTier-kb': {
-      '& $typographyTierName': {
-        marginBottom: theme.spacing(3),
-      },
-    },
+    'containerTier-kb': {},
     'containerTier-build-your-own': {
       '& $imgSponsorLogo': {
         width: '6rem',
-      },
-      '& $typographyTierName': {
-        marginBottom: theme.spacing(3),
       },
     },
     typographySponsor: {},
@@ -168,7 +99,7 @@ const SponsorPartners = (): ReactElement => {
       <div className={classes.container}>
         <div className={classes.containerCopy}>
           <Typography variant="overline" component="h1" gutterBottom>
-            2021 Sponsors
+            {sponsorYear ? `${sponsorYear} ` : ''}Sponsors
           </Typography>
           <Typography
             className={classes.typographyH1}
@@ -179,17 +110,18 @@ const SponsorPartners = (): ReactElement => {
           </Typography>
           <Typography gutterBottom>
             <strong>
-              We are still accepting contributions for our 2021 Digital Waves experience!
+              We are still accepting contributions for our {sponsorYear ? `${sponsorYear} ` : ''}Digital Waves experience!
             </strong>
           </Typography>
           <Typography>
-            100% of proceeds go towards participant outreach and prizes for our 2021 contest.
-            Scroll down to learn more about how your organization can help.
+            100% of proceeds go towards program development, participant outreach, and prizes for
+            our {sponsorYear ? `${sponsorYear} ` : ''}program. Scroll down to learn more about
+            how your organization can help.
           </Typography>
         </div>
 
         {
-          CURRENT_SPONSORS.map(tier => (
+          sponsorYearPartners?.map(tier => (
             <div
               className={classNames(
                 classes.containerTier,
