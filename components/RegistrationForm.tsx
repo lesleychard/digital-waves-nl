@@ -419,7 +419,7 @@ const RegistrationForm = ({ eligibility }: Props): ReactElement => {
                       {...field}
                       className={classes.textField}
                       variant="outlined"
-                      label="Preferred Pronouns (Optional)"
+                      label="Pronouns (Optional)"
                       fullWidth
                     />
                   )}
