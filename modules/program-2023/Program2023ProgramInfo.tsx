@@ -201,6 +201,12 @@ const Program2023ProgramInfo = (): ReactElement => {
                     </div>
                     <div className={classes.description}>
                       {event.description}
+                      {event.title === "Virtual Beginners Workshops" && (
+                        <>
+                          <br/><br/>
+                           &nbsp;Registration closes on December 22nd but each workshop is recorded and viewable if you can't make the dates!
+                        </>
+                      )}
                     </div>
                     <div className={classes.time}>
                       {event.time}
