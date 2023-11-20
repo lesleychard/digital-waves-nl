@@ -98,6 +98,7 @@ const ContestRegister2021 = (): ReactElement => {
                   <li>Your legal guardian must agree to these terms and conditions on your behalf.</li>
                   <li>Family members and/or persons who share residences with Digital Waves NL organizers are eligible to participate providing they meet all other eligibility requirements.</li>
                   <li>Multiple students per household are welcome to join simultaneously.</li>
+                  <li>Registration closes on December 22nd. All workshops will be recorded and viewable at any time.</li>
                 </ol>
               </Typography>
               <Typography className={classes.typographyH2}>
